@@ -6,10 +6,65 @@
  * and re-run `payload generate:types` to regenerate this file.
  */
 
+/**
+ * Supported timezones in IANA format.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "supportedTimezones".
+ */
+export type SupportedTimezones =
+  | 'Pacific/Midway'
+  | 'Pacific/Niue'
+  | 'Pacific/Honolulu'
+  | 'Pacific/Rarotonga'
+  | 'America/Anchorage'
+  | 'Pacific/Gambier'
+  | 'America/Los_Angeles'
+  | 'America/Tijuana'
+  | 'America/Denver'
+  | 'America/Phoenix'
+  | 'America/Chicago'
+  | 'America/Guatemala'
+  | 'America/New_York'
+  | 'America/Bogota'
+  | 'America/Caracas'
+  | 'America/Santiago'
+  | 'America/Buenos_Aires'
+  | 'America/Sao_Paulo'
+  | 'Atlantic/South_Georgia'
+  | 'Atlantic/Azores'
+  | 'Atlantic/Cape_Verde'
+  | 'Europe/London'
+  | 'Europe/Berlin'
+  | 'Africa/Lagos'
+  | 'Europe/Athens'
+  | 'Africa/Cairo'
+  | 'Europe/Moscow'
+  | 'Asia/Riyadh'
+  | 'Asia/Dubai'
+  | 'Asia/Baku'
+  | 'Asia/Karachi'
+  | 'Asia/Tashkent'
+  | 'Asia/Calcutta'
+  | 'Asia/Dhaka'
+  | 'Asia/Almaty'
+  | 'Asia/Jakarta'
+  | 'Asia/Bangkok'
+  | 'Asia/Shanghai'
+  | 'Asia/Singapore'
+  | 'Asia/Tokyo'
+  | 'Asia/Seoul'
+  | 'Australia/Sydney'
+  | 'Pacific/Guam'
+  | 'Pacific/Noumea'
+  | 'Pacific/Auckland'
+  | 'Pacific/Fiji';
+
 export interface Config {
   auth: {
     users: UserAuthOperations;
   };
+  blocks: {};
   collections: {
     pages: Page;
     posts: Post;
@@ -134,6 +189,212 @@ export interface Page {
         }[]
       | null;
     media?: (string | null) | Media;
+    heroBgGradient?: {
+      type?:
+        | (
+            | 'bg-gradient-to-r'
+            | 'bg-gradient-to-l'
+            | 'bg-gradient-to-b'
+            | 'bg-gradient-to-t'
+            | 'bg-gradient-to-br'
+            | 'bg-gradient-to-bl'
+            | 'bg-gradient-to-tl'
+            | 'bg-gradient-to-tr'
+          )
+        | null;
+      fromColor?:
+        | (
+            | 'from-inherit'
+            | 'from-current'
+            | 'from-transparent'
+            | 'from-black'
+            | 'from-white'
+            | 'from-slate-50'
+            | 'from-slate-100'
+            | 'from-slate-200'
+            | 'from-slate-300'
+            | 'from-slate-400'
+            | 'from-slate-500'
+            | 'from-slate-600'
+            | 'from-slate-700'
+            | 'from-slate-800'
+            | 'from-slate-900'
+            | 'from-slate-950'
+            | 'from-gray-50'
+            | 'from-gray-100'
+            | 'from-gray-200'
+            | 'from-gray-300'
+            | 'from-gray-400'
+            | 'from-gray-500'
+            | 'from-gray-600'
+            | 'from-gray-700'
+            | 'from-gray-800'
+            | 'from-gray-900'
+            | 'from-gray-950'
+            | 'from-zinc-50'
+            | 'from-zinc-100'
+            | 'from-zinc-200'
+            | 'from-zinc-300'
+            | 'from-zinc-400'
+            | 'from-zinc-500'
+            | 'from-zinc-600'
+            | 'from-zinc-700'
+            | 'from-zinc-800'
+            | 'from-zinc-900'
+            | 'from-zinc-950'
+            | 'from-blue-50'
+            | 'from-blue-100'
+            | 'from-blue-200'
+            | 'from-blue-300'
+            | 'from-blue-400'
+            | 'from-blue-500'
+            | 'from-blue-600'
+            | 'from-blue-700'
+            | 'from-blue-800'
+            | 'from-blue-900'
+            | 'from-blue-950'
+            | 'from-green-50'
+            | 'from-green-100'
+            | 'from-green-200'
+            | 'from-green-300'
+            | 'from-green-400'
+            | 'from-green-500'
+            | 'from-green-600'
+            | 'from-green-700'
+            | 'from-green-800'
+            | 'from-green-900'
+            | 'from-green-950'
+          )
+        | null;
+      viaColor?:
+        | (
+            | 'via-inherit'
+            | 'via-current'
+            | 'via-transparent'
+            | 'via-black'
+            | 'via-white'
+            | 'via-slate-50'
+            | 'via-slate-100'
+            | 'via-slate-200'
+            | 'via-slate-300'
+            | 'via-slate-400'
+            | 'via-slate-500'
+            | 'via-slate-600'
+            | 'via-slate-700'
+            | 'via-slate-800'
+            | 'via-slate-900'
+            | 'via-slate-950'
+            | 'via-gray-50'
+            | 'via-gray-100'
+            | 'via-gray-200'
+            | 'via-gray-300'
+            | 'via-gray-400'
+            | 'via-gray-500'
+            | 'via-gray-600'
+            | 'via-gray-700'
+            | 'via-gray-800'
+            | 'via-gray-900'
+            | 'via-gray-950'
+            | 'via-zinc-50'
+            | 'via-zinc-100'
+            | 'via-zinc-200'
+            | 'via-zinc-300'
+            | 'via-zinc-400'
+            | 'via-zinc-500'
+            | 'via-zinc-600'
+            | 'via-zinc-700'
+            | 'via-zinc-800'
+            | 'via-zinc-900'
+            | 'via-zinc-950'
+            | 'via-blue-50'
+            | 'via-blue-100'
+            | 'via-blue-200'
+            | 'via-blue-300'
+            | 'via-blue-400'
+            | 'via-blue-500'
+            | 'via-blue-600'
+            | 'via-blue-700'
+            | 'via-blue-800'
+            | 'via-blue-900'
+            | 'via-blue-950'
+            | 'via-green-50'
+            | 'via-green-100'
+            | 'via-green-200'
+            | 'via-green-300'
+            | 'via-green-400'
+            | 'via-green-500'
+            | 'via-green-600'
+            | 'via-green-700'
+            | 'via-green-800'
+            | 'via-green-900'
+            | 'via-green-950'
+          )
+        | null;
+      toColor?:
+        | (
+            | 'to-inherit'
+            | 'to-current'
+            | 'to-transparent'
+            | 'to-black'
+            | 'to-white'
+            | 'to-slate-50'
+            | 'to-slate-100'
+            | 'to-slate-200'
+            | 'to-slate-300'
+            | 'to-slate-400'
+            | 'to-slate-500'
+            | 'to-slate-600'
+            | 'to-slate-700'
+            | 'to-slate-800'
+            | 'to-slate-900'
+            | 'to-slate-950'
+            | 'to-gray-50'
+            | 'to-gray-100'
+            | 'to-gray-200'
+            | 'to-gray-300'
+            | 'to-gray-400'
+            | 'to-gray-500'
+            | 'to-gray-600'
+            | 'to-gray-700'
+            | 'to-gray-800'
+            | 'to-gray-900'
+            | 'to-gray-950'
+            | 'to-zinc-50'
+            | 'to-zinc-100'
+            | 'to-zinc-200'
+            | 'to-zinc-300'
+            | 'to-zinc-400'
+            | 'to-zinc-500'
+            | 'to-zinc-600'
+            | 'to-zinc-700'
+            | 'to-zinc-800'
+            | 'to-zinc-900'
+            | 'to-zinc-950'
+            | 'to-blue-50'
+            | 'to-blue-100'
+            | 'to-blue-200'
+            | 'to-blue-300'
+            | 'to-blue-400'
+            | 'to-blue-500'
+            | 'to-blue-600'
+            | 'to-blue-700'
+            | 'to-blue-800'
+            | 'to-blue-900'
+            | 'to-blue-950'
+            | 'to-green-50'
+            | 'to-green-100'
+            | 'to-green-200'
+            | 'to-green-300'
+            | 'to-green-400'
+            | 'to-green-500'
+            | 'to-green-600'
+            | 'to-green-700'
+            | 'to-green-800'
+            | 'to-green-900'
+            | 'to-green-950'
+          )
+        | null;
+    };
   };
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
   meta?: {
@@ -382,44 +643,67 @@ export interface CallToActionBlock {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
-  columns?:
+  rows?:
     | {
-        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
-        richText?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        enableLink?: boolean | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
+        columns?:
+          | {
+              size?:
+                | (
+                    | 'oneFifth'
+                    | 'oneQuarter'
+                    | 'oneThird'
+                    | 'twoFifths'
+                    | 'half'
+                    | 'threeFifths'
+                    | 'twoThirds'
+                    | 'threeQuarters'
+                    | 'fourFifths'
+                    | 'full'
+                  )
+                | null;
+              content?:
+                | {
+                    contentType: 'richText' | 'link';
+                    richText?: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: string;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    } | null;
+                    link?: {
+                      type?: ('reference' | 'custom') | null;
+                      newTab?: boolean | null;
+                      reference?:
+                        | ({
+                            relationTo: 'pages';
+                            value: string | Page;
+                          } | null)
+                        | ({
+                            relationTo: 'posts';
+                            value: string | Post;
+                          } | null);
+                      url?: string | null;
+                      label: string;
+                      /**
+                       * Choose how the link should be rendered.
+                       */
+                      appearance?: ('default' | 'outline') | null;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -951,6 +1235,14 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        heroBgGradient?:
+          | T
+          | {
+              type?: T;
+              fromColor?: T;
+              viaColor?: T;
+              toColor?: T;
+            };
       };
   layout?:
     | T
@@ -1004,21 +1296,31 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock_select".
  */
 export interface ContentBlockSelect<T extends boolean = true> {
-  columns?:
+  rows?:
     | T
     | {
-        size?: T;
-        richText?: T;
-        enableLink?: T;
-        link?:
+        columns?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
+              size?: T;
+              content?:
+                | T
+                | {
+                    contentType?: T;
+                    richText?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                          appearance?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
             };
         id?: T;
       };

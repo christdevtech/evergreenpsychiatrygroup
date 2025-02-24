@@ -5,6 +5,8 @@ node_modules
 .env
 .next
 .vercel
+.pnpm-store
+.vscode
 
 # Payload default media upload directory
 public/media/

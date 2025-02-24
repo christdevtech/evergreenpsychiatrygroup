@@ -9,27 +9,32 @@ import {
 
 import { link } from '@/fields/link'
 
-const columnFields: Field[] = [
+export type ContentColumnSize =
+  | 'oneFifth'
+  | 'oneQuarter'
+  | 'oneThird'
+  | 'twoFifths'
+  | 'half'
+  | 'threeFifths'
+  | 'twoThirds'
+  | 'threeQuarters'
+  | 'fourFifths'
+  | 'full'
+
+const contentTypes: Field[] = [
   {
-    name: 'size',
+    name: 'contentType',
     type: 'select',
-    defaultValue: 'oneThird',
+    required: true,
+    defaultValue: 'richText',
     options: [
       {
-        label: 'One Third',
-        value: 'oneThird',
+        label: 'Rich Text',
+        value: 'richText',
       },
       {
-        label: 'Half',
-        value: 'half',
-      },
-      {
-        label: 'Two Thirds',
-        value: 'twoThirds',
-      },
-      {
-        label: 'Full',
-        value: 'full',
+        label: 'Link',
+        value: 'link',
       },
     ],
   },
@@ -46,19 +51,74 @@ const columnFields: Field[] = [
         ]
       },
     }),
-    label: false,
-  },
-  {
-    name: 'enableLink',
-    type: 'checkbox',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'richText',
+    },
   },
   link({
     overrides: {
       admin: {
-        condition: (_, { enableLink }) => Boolean(enableLink),
+        condition: (_, { contentType }) => contentType === 'link',
       },
     },
   }),
+]
+
+const columnFields: Field[] = [
+  {
+    name: 'size',
+    type: 'select',
+    defaultValue: 'oneThird',
+    options: [
+      {
+        label: 'One Fifth',
+        value: 'oneFifth',
+      },
+      {
+        label: 'One Quarter',
+        value: 'oneQuarter',
+      },
+      {
+        label: 'One Third',
+        value: 'oneThird',
+      },
+      {
+        label: 'Two Fifths',
+        value: 'twoFifths',
+      },
+      {
+        label: 'Half',
+        value: 'half',
+      },
+      {
+        label: 'Three Fifths',
+        value: 'threeFifths',
+      },
+      {
+        label: 'Two Thirds',
+        value: 'twoThirds',
+      },
+      {
+        label: 'Three Quarters',
+        value: 'threeQuarters',
+      },
+      {
+        label: 'Four Fifths',
+        value: 'fourFifths',
+      },
+      {
+        label: 'Full',
+        value: 'full',
+      },
+    ],
+  },
+  {
+    name: 'content',
+    type: 'array',
+    label: 'Content Blocks',
+    minRows: 1,
+    fields: contentTypes,
+  },
 ]
 
 export const Content: Block = {
@@ -66,12 +126,21 @@ export const Content: Block = {
   interfaceName: 'ContentBlock',
   fields: [
     {
-      name: 'columns',
+      name: 'rows',
       type: 'array',
+      label: 'Content Rows',
       admin: {
         initCollapsed: true,
       },
-      fields: columnFields,
+      fields: [
+        {
+          name: 'columns',
+          type: 'array',
+          label: 'Columns',
+          minRows: 1,
+          fields: columnFields,
+        },
+      ],
     },
   ],
 }

@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/fields/linkGroup'
+import { gradientClasses } from '@/fields/gradientClasses'
 
 export const hero: Field = {
   name: 'hero',
@@ -67,6 +68,12 @@ export const hero: Field = {
       relationTo: 'media',
       required: true,
     },
+    gradientClasses({
+      overrides: {
+        name: 'heroBgGradient',
+        label: 'Hero Background Gradient',
+      },
+    }),
   ],
   label: false,
 }

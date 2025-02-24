@@ -1,5 +1,6 @@
 import tailwindcssAnimate from 'tailwindcss-animate'
 import typography from '@tailwindcss/typography'
+import { heroui } from '@heroui/react'
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -8,9 +9,10 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
-  darkMode: ['selector', '[data-theme="dark"]'],
-  plugins: [tailwindcssAnimate, typography],
+  darkMode: ['selector', '[data-theme="dark"]', 'class'],
+  plugins: [tailwindcssAnimate, typography, heroui()],
   prefix: '',
   safelist: [
     'lg:col-span-4',
