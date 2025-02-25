@@ -8,6 +8,9 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { link } from '@/fields/link'
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
+import { gradientClasses } from '@/fields/gradientClasses'
+import { textClasses } from '@/fields/textClasses'
 
 export type ContentColumnSize =
   | 'oneFifth'
@@ -55,6 +58,12 @@ const contentTypes: Field[] = [
       condition: (_, { contentType }) => contentType === 'richText',
     },
   },
+  textClasses({
+    overrides: {
+      name: 'richTextClasses',
+    },
+    condition: (_, { contentType }) => contentType === 'richText',
+  }),
   link({
     overrides: {
       admin: {
@@ -121,10 +130,89 @@ const columnFields: Field[] = [
   },
 ]
 
+const backgroundFields: Field[] = [
+  {
+    name: 'type',
+    type: 'select',
+    defaultValue: 'none',
+    options: [
+      {
+        label: 'None',
+        value: 'none',
+      },
+      {
+        label: 'Color',
+        value: 'color',
+      },
+      {
+        label: 'Gradient',
+        value: 'gradient',
+      },
+      {
+        label: 'Media',
+        value: 'media',
+      },
+    ],
+  },
+  gradientClasses({
+    condition: (_, { type }) => type === 'gradient',
+  }),
+  bgColorPickerAll({
+    overrides: {
+      name: 'backgroundColor',
+    },
+    condition: (_, { type }) => type === 'color',
+  }),
+  {
+    name: 'media',
+    type: 'upload',
+    relationTo: 'media',
+    required: false,
+    admin: {
+      condition: (_, { type }) => type === 'media',
+    },
+  },
+  {
+    name: 'overlay',
+    type: 'group',
+    admin: {
+      condition: (_, { type }) => type === 'media',
+    },
+    fields: [
+      {
+        name: 'enabled',
+        type: 'checkbox',
+        defaultValue: false,
+      },
+      gradientClasses({
+        overrides: {
+          name: 'gradientOverlay',
+        },
+        condition: (_, { enabled }) => enabled,
+      }),
+      {
+        name: 'opacity',
+        type: 'number',
+        min: 0,
+        max: 100,
+        defaultValue: 50,
+        admin: {
+          condition: (_, { enabled }) => enabled,
+        },
+      },
+    ],
+  },
+]
+
 export const Content: Block = {
   slug: 'content',
   interfaceName: 'ContentBlock',
   fields: [
+    {
+      name: 'background',
+      type: 'group',
+      fields: backgroundFields,
+    },
     {
       name: 'rows',
       type: 'array',

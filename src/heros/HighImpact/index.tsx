@@ -23,7 +23,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
   return (
     <div
       className={cn(
-        'relative flex items-center justify-center min-h-[60vh] py-16 overflow-hidden',
+        'relative flex items-center justify-center min-h-[60vh] pt-16 md:py-16 overflow-hidden',
         heroBgGradient?.type,
         heroBgGradient?.fromColor,
         heroBgGradient?.viaColor,
@@ -38,11 +38,14 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
             <RichText className={cn(richTextClasses)} data={richText} enableGutter={false} />
           )}
           {Array.isArray(links) && links.length > 0 && (
-            <ul className="flex md:justify-start gap-4">
+            <ul className="flex justify-center md:justify-start gap-4">
               {links.map(({ link }, i) => {
                 return (
                   <li key={i}>
-                    <CMSLink className="px-12 py-6 rounded-full text-lg" {...link} />
+                    <CMSLink
+                      className="px-8 py-4 md:px-12 md:py-6 rounded-full md:text-lg"
+                      {...link}
+                    />
                   </li>
                 )
               })}
