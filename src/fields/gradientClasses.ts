@@ -33,19 +33,19 @@ export const gradientClasses: gradientClassesType = ({
       gradientColorPicker({
         prefix: 'from',
         overrides: {
-          defaultValue: 'from-slate-950',
+          defaultValue: 'from-teal-500',
         },
       }),
       gradientColorPicker({
         prefix: 'via',
         overrides: {
-          defaultValue: 'via-slate-900',
+          defaultValue: 'via-teal-50',
         },
       }),
       gradientColorPicker({
         prefix: 'to',
         overrides: {
-          defaultValue: 'to-slate-800',
+          defaultValue: 'to-stone-50',
         },
       }),
     ],

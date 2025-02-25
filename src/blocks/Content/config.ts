@@ -68,22 +68,22 @@ const columnFields: Field[] = [
   {
     name: 'size',
     type: 'select',
-    defaultValue: 'oneThird',
+    defaultValue: 'full',
     options: [
       {
-        label: 'One Fifth',
+        label: '2 / 12',
         value: 'oneFifth',
       },
       {
-        label: 'One Quarter',
+        label: '3 / 13',
         value: 'oneQuarter',
       },
       {
-        label: 'One Third',
+        label: '4 / 12',
         value: 'oneThird',
       },
       {
-        label: 'Two Fifths',
+        label: '5 / 12',
         value: 'twoFifths',
       },
       {
@@ -91,19 +91,19 @@ const columnFields: Field[] = [
         value: 'half',
       },
       {
-        label: 'Three Fifths',
+        label: '7 / 12',
         value: 'threeFifths',
       },
       {
-        label: 'Two Thirds',
+        label: '8 / 12',
         value: 'twoThirds',
       },
       {
-        label: 'Three Quarters',
+        label: '9 / 12',
         value: 'threeQuarters',
       },
       {
-        label: 'Four Fifths',
+        label: '10 / 12',
         value: 'fourFifths',
       },
       {

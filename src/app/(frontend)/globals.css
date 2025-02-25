@@ -47,6 +47,8 @@
     --success: 196 52% 74%;
     --warning: 34 89% 85%;
     --error: 10 100% 86%;
+
+    --header-bg: 147 14% 40%; /* #597368 in HSL format */
   }
 
   [data-theme='dark'] {
@@ -81,6 +83,8 @@
     --success: 196 100% 14%;
     --warning: 34 51% 25%;
     --error: 10 39% 43%;
+
+    --header-bg: 147 14% 40%; /* Same color for dark mode, adjust if needed */
   }
 }
 
@@ -93,11 +97,13 @@
   }
 }
 
-/* html {
-  opacity: 0;
-}
 
-html[data-theme='dark'],
-html[data-theme='light'] {
-  opacity: initial;
-} */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -10,20 +10,88 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
-      name: 'navItems',
+      name: 'description',
+      type: 'textarea',
+      required: true,
+      defaultValue:
+        'Evergreen Psychiatry is an outpatient psychiatry practice focused on psychiatric treatment (including telemedicine) for children, adolescents, and young adults.',
+    },
+    {
+      name: 'columnOne',
+      type: 'group',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'links',
+          type: 'array',
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+        },
+      ],
+    },
+    {
+      name: 'columnTwo',
+      type: 'group',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'links',
+          type: 'array',
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+        },
+      ],
+    },
+    {
+      name: 'bottomLinks',
       type: 'array',
       fields: [
         link({
           appearances: false,
         }),
       ],
-      maxRows: 6,
-      admin: {
-        initCollapsed: true,
-        components: {
-          RowLabel: '@/Footer/RowLabel#RowLabel',
+    },
+    {
+      name: 'socialLinks',
+      type: 'array',
+      fields: [
+        {
+          name: 'platform',
+          type: 'select',
+          required: true,
+          options: [
+            { label: 'LinkedIn', value: 'linkedin' },
+            { label: 'Facebook', value: 'facebook' },
+            { label: 'Twitter', value: 'twitter' },
+            { label: 'Instagram', value: 'instagram' },
+          ],
         },
-      },
+        {
+          name: 'url',
+          type: 'text',
+          required: true,
+        },
+      ],
+    },
+    {
+      name: 'copyrightText',
+      type: 'text',
+      required: true,
+      defaultValue: ' © Evergreen Psychiatric Group ( 2024',
     },
   ],
   hooks: {

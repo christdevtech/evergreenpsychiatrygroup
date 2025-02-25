@@ -10,7 +10,9 @@ export const Providers: React.FC<{
 }> = ({ children }) => {
   return (
     <HeroUIProvider>
-      <NextThemesProvider>{children}</NextThemesProvider>
+      <NextThemesProvider attribute={'class'} defaultTheme={'light'}>
+        {children}
+      </NextThemesProvider>
     </HeroUIProvider>
   )
 }
