@@ -346,6 +346,19 @@ export const gradientColorPicker: gradientColorType = ({
       { label: 'Finlandia 800', value: `${prefix}-finlandia-800` },
       { label: 'Finlandia 900', value: `${prefix}-finlandia-900` },
       { label: 'Finlandia 950', value: `${prefix}-finlandia-950` },
+
+      // berylgreen
+      { label: 'Beryl Green 50', value: `${prefix}-berylgreen-50` },
+      { label: 'Beryl Green 100', value: `${prefix}-berylgreen-100` },
+      { label: 'Beryl Green 200', value: `${prefix}-berylgreen-200` },
+      { label: 'Beryl Green 300', value: `${prefix}-berylgreen-300` },
+      { label: 'Beryl Green 400', value: `${prefix}-berylgreen-400` },
+      { label: 'Beryl Green 500', value: `${prefix}-berylgreen-500` },
+      { label: 'Beryl Green 600', value: `${prefix}-berylgreen-600` },
+      { label: 'Beryl Green 700', value: `${prefix}-berylgreen-700` },
+      { label: 'Beryl Green 800', value: `${prefix}-berylgreen-800` },
+      { label: 'Beryl Green 900', value: `${prefix}-berylgreen-900` },
+      { label: 'Beryl Green 950', value: `${prefix}-berylgreen-950` },
     ],
     admin: {
       condition,

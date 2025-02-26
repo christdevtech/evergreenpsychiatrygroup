@@ -6,6 +6,8 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
   _status: 'published',
   hero: {
     type: 'lowImpact',
+    title: 'Evergreen Psychiatry Group',
+    subtitle: 'Comprehensive mental health services that nurture change and well-being',
     richText: {
       root: {
         type: 'root',

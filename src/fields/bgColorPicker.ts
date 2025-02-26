@@ -342,6 +342,19 @@ export const bgColorPickerAll: bgColorType = ({ condition = () => true, override
       { label: 'Finlandia 800', value: 'bg-finlandia-800' },
       { label: 'Finlandia 900', value: 'bg-finlandia-900' },
       { label: 'Finlandia 950', value: 'bg-finlandia-950' },
+
+      // Beryl Green
+      { label: 'Beryl Green 50', value: 'bg-berylgreen-50' },
+      { label: 'Beryl Green 100', value: 'bg-berylgreen-100' },
+      { label: 'Beryl Green 200', value: 'bg-berylgreen-200' },
+      { label: 'Beryl Green 300', value: 'bg-berylgreen-300' },
+      { label: 'Beryl Green 400', value: 'bg-berylgreen-400' },
+      { label: 'Beryl Green 500', value: 'bg-berylgreen-500' },
+      { label: 'Beryl Green 600', value: 'bg-berylgreen-600' },
+      { label: 'Beryl Green 700', value: 'bg-berylgreen-700' },
+      { label: 'Beryl Green 800', value: 'bg-berylgreen-800' },
+      { label: 'Beryl Green 900', value: 'bg-berylgreen-900' },
+      { label: 'Beryl Green 950', value: 'bg-berylgreen-950' },
     ],
     admin: {
       condition,

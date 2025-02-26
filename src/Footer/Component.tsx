@@ -7,8 +7,8 @@ import { getPayload } from 'payload'
 import type { Footer } from '@/payload-types'
 
 // import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
-import { CMSLink } from '@/components/Link'
-import { Logo } from '@/components/Logo/Logo'
+// import { CMSLink } from '@/components/Link'
+// import { Logo } from '@/components/Logo/Logo'
 
 export async function Footer() {
   const payload = await getPayload({ config: configPromise })

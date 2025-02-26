@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Lufga font is used as the primary sans-serif font */
 @layer base {
   h1,
   h2,
@@ -96,8 +97,6 @@
     @apply bg-background text-foreground min-h-[100vh] flex flex-col;
   }
 }
-
-
 
 @layer base {
   * {

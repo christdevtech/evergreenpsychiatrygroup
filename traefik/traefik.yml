@@ -1,0 +1,19 @@
+api:
+  dashboard: true
+  insecure: true # Only for development. REMOVE in production!
+
+entryPoints:
+  web:
+    address: ':80'
+
+providers:
+  docker:
+    exposedByDefault: false
+    network: evergreen
+
+http:
+  middlewares:
+    large-upload:
+      headers:
+        customRequestHeaders:
+          Content-Length: 524288000

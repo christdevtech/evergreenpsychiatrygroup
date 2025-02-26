@@ -11,6 +11,8 @@ import { link } from '@/fields/link'
 import { bgColorPickerAll } from '@/fields/bgColorPicker'
 import { gradientClasses } from '@/fields/gradientClasses'
 import { textClasses } from '@/fields/textClasses'
+import { spacingClasses } from '@/fields/spacingClasses'
+import { buttonClasses } from '@/fields/buttonClasses'
 
 export type ContentColumnSize =
   | 'oneFifth'
@@ -23,6 +25,9 @@ export type ContentColumnSize =
   | 'threeQuarters'
   | 'fourFifths'
   | 'full'
+
+export type VerticalAlignment = 'top' | 'center' | 'bottom'
+export type HorizontalAlignment = 'top' | 'center' | 'bottom'
 
 const contentTypes: Field[] = [
   {
@@ -38,6 +43,10 @@ const contentTypes: Field[] = [
       {
         label: 'Link',
         value: 'link',
+      },
+      {
+        label: 'Media',
+        value: 'media',
       },
     ],
   },
@@ -71,6 +80,17 @@ const contentTypes: Field[] = [
       },
     },
   }),
+  buttonClasses({
+    condition: (_, { contentType }) => contentType === 'link',
+  }),
+  {
+    name: 'media',
+    type: 'upload',
+    relationTo: 'media',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'media',
+    },
+  },
 ]
 
 const columnFields: Field[] = [
@@ -80,15 +100,15 @@ const columnFields: Field[] = [
     defaultValue: 'full',
     options: [
       {
-        label: '2 / 12',
+        label: 'One-Sixth',
         value: 'oneFifth',
       },
       {
-        label: '3 / 13',
+        label: 'One-Quarter',
         value: 'oneQuarter',
       },
       {
-        label: '4 / 12',
+        label: 'One-Third',
         value: 'oneThird',
       },
       {
@@ -104,20 +124,58 @@ const columnFields: Field[] = [
         value: 'threeFifths',
       },
       {
-        label: '8 / 12',
+        label: 'Two-Thirds',
         value: 'twoThirds',
       },
       {
-        label: '9 / 12',
+        label: 'Three-Quarters',
         value: 'threeQuarters',
       },
       {
-        label: '10 / 12',
+        label: 'Four-Fifths',
         value: 'fourFifths',
       },
       {
         label: 'Full',
         value: 'full',
+      },
+    ],
+  },
+  {
+    name: 'verticalAlignment',
+    type: 'select',
+    defaultValue: 'top',
+    options: [
+      {
+        label: 'Top',
+        value: 'top',
+      },
+      {
+        label: 'Center',
+        value: 'center',
+      },
+      {
+        label: 'Bottom',
+        value: 'bottom',
+      },
+    ],
+  },
+  {
+    name: 'horizontalAlignment',
+    type: 'select',
+    defaultValue: 'top',
+    options: [
+      {
+        label: 'Top',
+        value: 'top',
+      },
+      {
+        label: 'Center',
+        value: 'center',
+      },
+      {
+        label: 'Bottom',
+        value: 'bottom',
       },
     ],
   },
@@ -128,13 +186,14 @@ const columnFields: Field[] = [
     minRows: 1,
     fields: contentTypes,
   },
+  spacingClasses(),
 ]
 
 const backgroundFields: Field[] = [
   {
     name: 'type',
     type: 'select',
-    defaultValue: 'none',
+    defaultValue: 'color',
     options: [
       {
         label: 'None',
@@ -160,6 +219,7 @@ const backgroundFields: Field[] = [
   bgColorPickerAll({
     overrides: {
       name: 'backgroundColor',
+      defaultValue: 'bg-transparent',
     },
     condition: (_, { type }) => type === 'color',
   }),
@@ -228,6 +288,7 @@ export const Content: Block = {
           minRows: 1,
           fields: columnFields,
         },
+        spacingClasses(),
       ],
     },
   ],

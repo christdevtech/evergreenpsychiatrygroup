@@ -133,10 +133,23 @@ const config = {
           900: '#0E301A',
           950: '#061F0D',
         },
+        berylgreen: {
+          50: '#FCFCFA',
+          100: '#FCFCF7',
+          200: '#F5F7EB',
+          300: '#F1F5E1',
+          400: '#E4EBCC',
+          500: '#D8E3B8',
+          600: '#BCCC95',
+          700: '#94AB68',
+          800: '#6C8742',
+          900: '#496625',
+          950: '#28420F',
+        },
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        sans: ['var(--font-lufga)'],
       },
       keyframes: {
         'accordion-down': {

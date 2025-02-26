@@ -1,8 +1,6 @@
 import type { CollectionSlug, GlobalSlug, Payload, PayloadRequest, File } from 'payload'
 
 import { contactForm as contactFormData } from './contact-form'
-import { contact as contactPageData } from './contact-page'
-import { home } from './home'
 import { image1 } from './image-1'
 import { image2 } from './image-2'
 import { imageHero1 } from './image-hero-1'
@@ -41,20 +39,20 @@ export const seed = async ({
   payload.logger.info(`— Clearing collections and globals...`)
 
   // clear the database
-  await Promise.all(
-    globals.map((global) =>
-      payload.updateGlobal({
-        slug: global,
-        data: {
-          navItems: [],
-        },
-        depth: 0,
-        context: {
-          disableRevalidate: true,
-        },
-      }),
-    ),
-  )
+  // await Promise.all(
+  //   globals.map((global) =>
+  //     payload.updateGlobal({
+  //       slug: global,
+  //       data: {
+  //         navItems: [],
+  //       },
+  //       depth: 0,
+  //       context: {
+  //         disableRevalidate: true,
+  //       },
+  //     }),
+  //   ),
+  // )
 
   await Promise.all(
     collections.map((collection) => payload.db.deleteMany({ collection, req, where: {} })),
@@ -295,79 +293,79 @@ export const seed = async ({
     contactFormID = `"${contactFormID}"`
   }
 
-  payload.logger.info(`— Seeding pages...`)
+  // payload.logger.info(`— Seeding pages...`)
 
-  const [_, contactPage] = await Promise.all([
-    payload.create({
-      collection: 'pages',
-      depth: 0,
-      data: home({ heroImage: imageHomeDoc, metaImage: image2Doc }),
-    }),
-    payload.create({
-      collection: 'pages',
-      depth: 0,
-      data: contactPageData({ contactForm: contactForm }),
-    }),
-  ])
+  // const [_, contactPage] = await Promise.all([
+  //   payload.create({
+  //     collection: 'pages',
+  //     depth: 0,
+  //     data: home({ heroImage: imageHomeDoc, metaImage: image2Doc }),
+  //   }),
+  //   payload.create({
+  //     collection: 'pages',
+  //     depth: 0,
+  //     data: contactPageData({ contactForm: contactForm }),
+  //   }),
+  // ])
 
-  payload.logger.info(`— Seeding globals...`)
+  // payload.logger.info(`— Seeding globals...`)
 
-  await Promise.all([
-    payload.updateGlobal({
-      slug: 'header',
-      data: {
-        navItems: [
-          {
-            link: {
-              type: 'custom',
-              label: 'Posts',
-              url: '/posts',
-            },
-          },
-          {
-            link: {
-              type: 'reference',
-              label: 'Contact',
-              reference: {
-                relationTo: 'pages',
-                value: contactPage.id,
-              },
-            },
-          },
-        ],
-      },
-    }),
-    payload.updateGlobal({
-      slug: 'footer',
-      data: {
-        navItems: [
-          {
-            link: {
-              type: 'custom',
-              label: 'Admin',
-              url: '/admin',
-            },
-          },
-          {
-            link: {
-              type: 'custom',
-              label: 'Source Code',
-              newTab: true,
-              url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
-            },
-          },
-          {
-            link: {
-              type: 'custom',
-              label: 'Payload',
-              newTab: true,
-              url: 'https://payloadcms.com/',
-            },
-          },
-        ],
-      },
-    }),
-  ])
+  // await Promise.all([
+  //   payload.updateGlobal({
+  //     slug: 'header',
+  //     data: {
+  //       navItems: [
+  //         {
+  //           link: {
+  //             type: 'custom',
+  //             label: 'Posts',
+  //             url: '/posts',
+  //           },
+  //         },
+  //         {
+  //           link: {
+  //             type: 'reference',
+  //             label: 'Contact',
+  //             reference: {
+  //               relationTo: 'pages',
+  //               value: contactPage.id,
+  //             },
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   }),
+  //   payload.updateGlobal({
+  //     slug: 'footer',
+  //     data: {
+  //       navItems: [
+  //         {
+  //           link: {
+  //             type: 'custom',
+  //             label: 'Admin',
+  //             url: '/admin',
+  //           },
+  //         },
+  //         {
+  //           link: {
+  //             type: 'custom',
+  //             label: 'Source Code',
+  //             newTab: true,
+  //             url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
+  //           },
+  //         },
+  //         {
+  //           link: {
+  //             type: 'custom',
+  //             label: 'Payload',
+  //             newTab: true,
+  //             url: 'https://payloadcms.com/',
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   }),
+  // ])
 
   payload.logger.info('Seeded database successfully!')
 }

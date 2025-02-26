@@ -7,6 +7,10 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import { ImageTextBlock } from '@/blocks/ImageTextBlock/Component'
+import { FullWidthImageText } from '@/blocks/FullWidthImageText/Component'
+import { ConditionsBlock } from '@/blocks/ConditionsBlock/Component'
+import { FAQBlock } from '@/blocks/FAQBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -14,6 +18,10 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  imageTextBlock: ImageTextBlock,
+  fullWidthImageText: FullWidthImageText,
+  conditionsBlock: ConditionsBlock,
+  faqBlock: FAQBlock,
 }
 
 export const RenderBlocks: React.FC<{

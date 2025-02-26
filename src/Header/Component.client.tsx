@@ -15,7 +15,7 @@ interface HeaderClientProps {
 }
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
-  const pathname = usePathname()
+  // const pathname = usePathname()
 
   return (
     <header className="bg-[hsl(var(--header-bg))] relative z-20">
@@ -26,7 +26,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           </Link>
 
           <div className="bg-white rounded-lg md:rounded-full px-1.5 py-1.5 md:py-1 md:px-1 md:items-center md:flex md:p-1 gap-1">
-            <span className="px-2 text-sm align-middle text-cyan-600 md:text-slate-900">
+            <span className="px-2 text-sm align-middle text-slate-900 md:text-slate-900">
               Make appointment
             </span>
             <Button size="sm" radius="full" color="success" className="hidden md:block">

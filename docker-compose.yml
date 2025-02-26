@@ -1,39 +1,72 @@
-version: '3'
+# version: '3.9'
 
 services:
-  # payload:
-  #   image: node:18-alpine
-  #   ports:
-  #     - '3000:3000'
-  #   volumes:
-  #     - .:/home/node/app
-  #     - node_modules:/home/node/app/node_modules
-  #   working_dir: /home/node/app/
-  #   command: sh -c "npm install -g pnpm && pnpm dev"
-  #   depends_on:
-  #     - mongo
-  #   env_file:
-  #     - .env
-  #   networks:
-  #     - evergreen
-
-  mongo:
-    image: mongo:latest
-    ports:
-      - '27019:27017'
+  traefik:
+    image: traefik:v2.10
     command:
-      - --storageEngine=wiredTiger
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.file.watch=true
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.myresolver.acme.email=contact@christdev.com
+      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
+    ports:
+      - '81:80'
+      - '444:443'
+      - '8081:8080'
     volumes:
-      - data:/data/db
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml
+      - ./letsencrypt:/letsencrypt
+      - ./public/media:/media
+    networks: # Connect to the 'web' network
+      - evergreen
     logging:
-      driver: none
-    # networks:
-    #   - evergreen
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+    restart: always
+
+  payload:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    env_file:
+      - .env
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.payload.rule=Host(`evergreenpsychiatrygroup.com`)'
+      - 'traefik.http.routers.payload.entrypoints=websecure'
+      - 'traefik.http.routers.payload.tls=true'
+      - 'traefik.http.routers.payload.tls.certresolver=myresolver'
+      - 'traefik.http.routers.payload-media.rule=PathPrefix(`/media`)'
+      - 'traefik.http.routers.payload-media.entrypoints=websecure'
+      - 'traefik.http.routers.payload-media.tls=true'
+      - 'traefik.http.routers.payload-media.tls.certresolver=myresolver'
+      - 'traefik.http.services.payload.loadbalancer.server.port=3000'
+      - 'traefik.http.middlewares.large-upload.headers.customrequestheaders.Content-Length=524288000'
+      - 'traefik.http.routers.payload.middlewares=large-upload'
+    networks:
+      - evergreen
+    depends_on:
+      - traefik
+    volumes:
+      - ./public/media:/app/public/media
+    restart: always
+
+networks:
+  evergreen:
+    external: false
 
 volumes:
-  data:
-  node_modules:
-
-# networks:
-#   evergreen:
-#     driver: bridge
+  letsencrypt:

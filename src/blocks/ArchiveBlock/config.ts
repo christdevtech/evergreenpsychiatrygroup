@@ -12,6 +12,12 @@ export const Archive: Block = {
   interfaceName: 'ArchiveBlock',
   fields: [
     {
+      name: 'title',
+      type: 'text',
+      label: 'Title',
+      defaultValue: 'Explore some of our resources ',
+    },
+    {
       name: 'introContent',
       type: 'richText',
       editor: lexicalEditor({
@@ -25,6 +31,37 @@ export const Archive: Block = {
         },
       }),
       label: 'Intro Content',
+      defaultValue: {
+        root: {
+          children: [
+            {
+              children: [
+                {
+                  detail: 0,
+                  format: 0,
+                  mode: 'normal',
+                  style: '',
+                  text: 'Explore expert guidance, tips, and resources to support your mental health journey',
+                  type: 'text',
+                  version: 1,
+                },
+              ],
+              direction: 'ltr',
+              format: '',
+              indent: 0,
+              type: 'paragraph',
+              version: 1,
+              textFormat: 0,
+              textStyle: '',
+            },
+          ],
+          direction: 'ltr',
+          format: '',
+          indent: 0,
+          type: 'root',
+          version: 1,
+        },
+      },
     },
     {
       name: 'populateBy',
@@ -85,6 +122,20 @@ export const Archive: Block = {
       hasMany: true,
       label: 'Selection',
       relationTo: ['posts'],
+    },
+    {
+      name: 'seeMoreLink',
+      type: 'checkbox',
+      defaultValue: false,
+      label: 'Show See More Link',
+    },
+    {
+      name: 'seeMoreLinkText',
+      type: 'text',
+      admin: {
+        condition: (_, siblingData) => siblingData.seeMoreLink === true,
+      },
+      defaultValue: 'See More',
     },
   ],
   labels: {
