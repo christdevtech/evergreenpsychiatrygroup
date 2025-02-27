@@ -19,13 +19,6 @@ jobs:
           NEXT_PUBLIC_SERVER_URL: ${{ secrets.NEXT_PUBLIC_SERVER_URL }}
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
           PREVIEW_SECRET: ${{ secrets.PREVIEW_SECRET }}
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          SMTP_FROM: ${{ secrets.SMTP_FROM }}
-          SMTP_FROM_NAME: ${{ secrets.SMTP_FROM_NAME }}
-          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
           APP_PATH: ${{ secrets.APP_PATH }}
         run: |
           cat << 'EOL' > .env
@@ -35,13 +28,6 @@ jobs:
           NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL
           PAYLOAD_SECRET=$PAYLOAD_SECRET
           PREVIEW_SECRET=$PREVIEW_SECRET
-          SMTP_HOST=$SMTP_HOST
-          SMTP_PORT=$SMTP_PORT
-          SMTP_USER=$SMTP_USER
-          SMTP_PASSWORD=$SMTP_PASSWORD
-          SMTP_FROM=$SMTP_FROM
-          SMTP_FROM_NAME=$SMTP_FROM_NAME
-          ADMIN_EMAIL=$ADMIN_EMAIL
           APP_PATH=$APP_PATH
           EOL
 
