@@ -1,0 +1,60 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH into server and deploy
+        env:
+          SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          DATABASE_URI: ${{ secrets.DATABASE_URI }}
+          NEXT_PUBLIC_SERVER_URL: ${{ secrets.NEXT_PUBLIC_SERVER_URL }}
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          PREVIEW_SECRET: ${{ secrets.PREVIEW_SECRET }}
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_FROM_NAME: ${{ secrets.SMTP_FROM_NAME }}
+          ADMIN_EMAIL: ${{ secrets.SMTP_ADMIN_EMAIL }}
+          APP_PATH: ${{secrets.APP_PATH}}
+
+        run: |
+          sshpass -p $SERVER_PASSWORD ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} <<EOF
+            docker builder prune -f
+            cd $APP_PATH
+            cat > .env << 'EOL'
+            SERVER_PASSWORD=$SERVER_PASSWORD
+            CRON_SECRET=$CRON_SECRET
+            DATABASE_URI=$DATABASE_URI
+            NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL
+            PAYLOAD_SECRET=$PAYLOAD_SECRET
+            PREVIEW_SECRET=$PREVIEW_SECRET
+            SMTP_HOST=$SMTP_HOST
+            SMTP_PORT=$SMTP_PORT
+            SMTP_USER=$SMTP_USER
+            SMTP_PASSWORD=$SMTP_PASSWORD
+            SMTP_FROM=$SMTP_FROM
+            SMTP_FROM_NAME=$SMTP_FROM_NAME
+            ADMIN_EMAIL=$ADMIN_EMAIL
+            APP_PATH=$APP_PATH
+            EOL
+            git checkout -- package.json pnpm-lock.yaml
+            git pull origin
+            echo "Installing dependencies..."
+            pnpm install
+            docker compose build payload
+            docker compose up -d
+            docker builder prune -f
+          EOF
