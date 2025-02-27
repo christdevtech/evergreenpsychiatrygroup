@@ -27,13 +27,13 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
           SMTP_FROM_NAME: ${{ secrets.SMTP_FROM_NAME }}
-          ADMIN_EMAIL: ${{ secrets.SMTP_ADMIN_EMAIL }}
-          APP_PATH: ${{secrets.APP_PATH}}
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+          APP_PATH: ${{ secrets.APP_PATH }}
 
         run: |
-          sshpass -p $SERVER_PASSWORD ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} <<EOF
+          sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no -p "$SSH_PORT" "$SSH_USERNAME@$SERVER_IP" << 'EOF'
             docker builder prune -f
-            cd $APP_PATH
+            cd "$APP_PATH"
             cat > .env << 'EOL'
             SERVER_PASSWORD=$SERVER_PASSWORD
             CRON_SECRET=$CRON_SECRET
@@ -51,10 +51,9 @@ jobs:
             APP_PATH=$APP_PATH
             EOL
             git checkout -- package.json pnpm-lock.yaml
-            git pull origin
+            git pull origin master
             echo "Installing dependencies..."
             pnpm install
             docker compose build payload
             docker compose up -d
-            docker builder prune -f
           EOF
