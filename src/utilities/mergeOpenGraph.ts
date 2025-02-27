@@ -3,7 +3,7 @@ import { getServerSideURL } from './getURL'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
-  description: 'Comprehensive mental health services that nurture change and well-being',
+  description: 'Comprehensive mental health services that nurture change and well-being.',
   images: [
     {
       url: `${getServerSideURL()}/website-template-OG.webp`,
