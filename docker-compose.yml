@@ -28,11 +28,11 @@ services:
       - 'traefik.http.middlewares.large-upload.headers.customrequestheaders.Content-Length=524288000'
       - 'traefik.http.routers.payload.middlewares=large-upload'
     networks:
-      - web
+      - 316-group_web
     volumes:
       - ./public/media:/app/public/media
     restart: always
 
 networks:
-  web:
+  316-group_web:
     external: true
