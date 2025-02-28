@@ -29,8 +29,6 @@ services:
       - 'traefik.http.routers.payload.middlewares=large-upload'
     networks:
       - web
-    depends_on:
-      - traefik
     volumes:
       - ./public/media:/app/public/media
     restart: always
