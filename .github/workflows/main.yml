@@ -24,6 +24,6 @@ jobs:
             git pull origin master
             echo "Installing dependencies..."
             pnpm install
-            docker compose build payload
+            docker compose build payload_evergreen
             docker compose up -d
           EOF
