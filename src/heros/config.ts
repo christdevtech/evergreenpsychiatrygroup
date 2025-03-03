@@ -138,10 +138,14 @@ export const hero: Field = {
         label: 'Rich Text Styling',
         defaultValue: ['text-green-800', 'text-2xl', 'md:text-3xl', 'leading-relaxed', 'mb-12'],
       },
+      condition: (_, { type } = {}) => ['lowImpact', 'mediumImpact', 'highImpact'].includes(type),
     }),
     linkGroup({
       overrides: {
         maxRows: 2,
+        admin: {
+          condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        },
       },
     }),
     {
@@ -158,6 +162,7 @@ export const hero: Field = {
         name: 'heroBgGradient',
         label: 'Hero Background Gradient',
       },
+      condition: (_, { type } = {}) => ['highImpact'].includes(type),
     }),
   ],
   label: false,
