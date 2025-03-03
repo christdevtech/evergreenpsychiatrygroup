@@ -30,15 +30,19 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
         heroBgGradient?.toColor,
       )}
     >
-      <div className="container relative flex flex-col md:flex-row items-center justify-between gap-8">
-        <div className="w-full md:w-[55%]">
-          <h1 className={cn(titleClasses)}>{title}</h1>
-          <p className={cn(subtitleClasses)}>{subtitle}</p>
+      <div className="container relative flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="w-full lg:w-[55%]">
+          <h1 className={cn(titleClasses, 'text-center lg:text-left')}>{title}</h1>
+          <p className={cn(subtitleClasses, 'text-center lg:text-left')}>{subtitle}</p>
           {richText && (
-            <RichText className={cn(richTextClasses)} data={richText} enableGutter={false} />
+            <RichText
+              className={cn(richTextClasses, 'text-center lg:text-left')}
+              data={richText}
+              enableGutter={false}
+            />
           )}
           {Array.isArray(links) && links.length > 0 && (
-            <ul className="flex justify-center md:justify-start gap-4">
+            <ul className="flex justify-center lg:justify-start gap-4 flex-wrap">
               {links.map(({ link }, i) => {
                 return (
                   <li key={i}>
@@ -52,7 +56,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
             </ul>
           )}
         </div>
-        <div className="w-full md:w-[45%] flex items-end justify-center px-8 md:px-16">
+        <div className="w-full lg:w-[45%] flex items-end justify-center px-8 md:px-16">
           {media && typeof media === 'object' && (
             <Media
               imgClassName="rounded-2xl w-full h-full object-contain"
