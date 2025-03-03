@@ -36,7 +36,7 @@ export const HeaderNav: React.FC<{ data: HeaderType; classNames?: string }> = ({
       <div className="md:hidden">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="relative p-2 focus:outline-none group"
+          className="relative ml-2 p-0 focus:outline-none group flex justify-end items-center"
           aria-label="Toggle mobile menu"
         >
           <div className="relative z-10">

@@ -166,7 +166,7 @@ const columnFields: Field[] = [
     defaultValue: 'top',
     options: [
       {
-        label: 'Top',
+        label: 'Left',
         value: 'top',
       },
       {
@@ -174,7 +174,7 @@ const columnFields: Field[] = [
         value: 'center',
       },
       {
-        label: 'Bottom',
+        label: 'Right',
         value: 'bottom',
       },
     ],
