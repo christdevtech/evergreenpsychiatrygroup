@@ -95,7 +95,7 @@ export const HeaderNav: React.FC<{ data: HeaderType; classNames?: string }> = ({
                     <CMSLink
                       {...link?.link}
                       appearance="link"
-                      className="relative block px-4 py-2 text-white/90 hover:text-white transition-colors duration-300"
+                      className="relative block px-4 pt-2 pb-4 text-white/90 hover:text-white transition-colors duration-300 text-xl"
                     />
                   </div>
                 )
@@ -109,10 +109,10 @@ export const HeaderNav: React.FC<{ data: HeaderType; classNames?: string }> = ({
                       className="w-full px-4 py-2 flex items-center justify-between text-white/90 hover:text-white transition-colors duration-300 group rounded-lg relative overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 to-cyan-500/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
-                      <span className="relative">{dropdown?.label}</span>
+                      <span className="relative text-xl">{dropdown?.label}</span>
                       <ChevronDown
                         className={cn(
-                          'w-4 h-4 transition-transform duration-500',
+                          'w-6 h-6 transition-transform duration-500',
                           isOpen ? 'rotate-180' : '',
                         )}
                       />
@@ -134,7 +134,7 @@ export const HeaderNav: React.FC<{ data: HeaderType; classNames?: string }> = ({
                             <CMSLink
                               {...link}
                               appearance="link"
-                              className="relative block px-4 py-2 text-white/80 hover:text-white transition-colors duration-300"
+                              className="relative block px-4 py-2 text-white/80 hover:text-white transition-colors duration-300 text-lg"
                             />
                           </div>
                         ))}

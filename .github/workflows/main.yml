@@ -18,12 +18,27 @@ jobs:
           SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
         run: |
           sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no -p "$SSH_PORT" "$SSH_USERNAME@$SERVER_IP" << 'EOF'
-            docker builder prune -f
-            cd evergreen
-            git checkout -- package.json pnpm-lock.yaml
-            git pull origin master
-            echo "Installing dependencies..."
-            pnpm install
-            docker compose build payload_evergreen
-            docker compose up -d
+            LOG_FILE="/tmp/deploy_log_$(date +%s).log"
+
+            tmux new-session -d -s deploy_session "
+              {
+                docker builder prune -f
+                cd evergreen
+                git checkout -- package.json pnpm-lock.yaml
+                git pull origin master
+                echo 'Installing dependencies...'
+                pnpm install
+                docker compose build payload_evergreen
+                docker compose up -d
+              } > $LOG_FILE 2>&1
+              tmux kill-session -t deploy_session
+            "
+
+            while tmux has-session -t deploy_session 2>/dev/null; do
+              sleep 1
+            done
+
+            cat $LOG_FILE
+
+            rm -f $LOG_FILE
           EOF
