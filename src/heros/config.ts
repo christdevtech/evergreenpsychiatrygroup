@@ -10,6 +10,7 @@ import {
 import { linkGroup } from '@/fields/linkGroup'
 import { gradientClasses } from '@/fields/gradientClasses'
 import { textClasses } from '@/fields/textClasses'
+import { glassmorphismField } from '@/fields/glassmorphism'
 
 export const hero: Field = {
   name: 'hero',
@@ -36,6 +37,10 @@ export const hero: Field = {
         {
           label: 'Low Impact',
           value: 'lowImpact',
+        },
+        {
+          label: 'Glass Morph',
+          value: 'glassMorph',
         },
       ],
       required: true,
@@ -138,31 +143,51 @@ export const hero: Field = {
         label: 'Rich Text Styling',
         defaultValue: ['text-green-800', 'text-2xl', 'md:text-3xl', 'leading-relaxed', 'mb-12'],
       },
-      condition: (_, { type } = {}) => ['lowImpact', 'mediumImpact', 'highImpact'].includes(type),
+      condition: (_, { type } = {}) =>
+        ['lowImpact', 'mediumImpact', 'highImpact', 'glassMorph'].includes(type),
     }),
     linkGroup({
       overrides: {
         maxRows: 2,
         admin: {
-          condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+          condition: (_, { type } = {}) =>
+            ['highImpact', 'mediumImpact', 'glassMorph'].includes(type),
         },
       },
+    }),
+    glassmorphismField({
+      condition: (data: any, { type }: { type?: string } = {}) =>
+        ['glassMorph'].includes(type || ''),
     }),
     {
       name: 'media',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (data: any, { type }: { type?: string } = {}) =>
+          ['highImpact', 'mediumImpact', 'glassMorph'].includes(type || ''),
       },
       relationTo: 'media',
       required: true,
     },
+    textClasses({
+      condition: (data: any, { type }: { type?: string } = {}) =>
+        ['glassMorph'].includes(type || ''),
+      overrides: {
+        name: 'mobileSpacing',
+        label: 'Mobile Spacing',
+        defaultValue: ['mb-32', 'mt-40', 'md:mt-16', 'md:mb-16'],
+        admin: {
+          description: 'Configure spacing for mobile view',
+        },
+      },
+    }),
     gradientClasses({
       overrides: {
         name: 'heroBgGradient',
         label: 'Hero Background Gradient',
       },
-      condition: (_, { type } = {}) => ['highImpact'].includes(type),
+      condition: (data: any, { type }: { type?: string } = {}) =>
+        ['highImpact'].includes(type || ''),
     }),
   ],
   label: false,
