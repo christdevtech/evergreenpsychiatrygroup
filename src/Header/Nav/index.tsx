@@ -169,7 +169,7 @@ export const HeaderNav: React.FC<{ data: HeaderType; classNames?: string }> = ({
 
                 {/* Dropdown Content */}
                 <div className="absolute left-0 top-full pt-2 opacity-0 -translate-y-2 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out">
-                  <div className="bg-white rounded-xl p-2 w-56 shadow-lg backdrop-blur-sm bg-opacity-90 border border-white/20">
+                  <div className="bg-white rounded-xl p-2 min-w-56 shadow-lg backdrop-blur-sm bg-opacity-90 border border-white/20">
                     {/* Decorative Elements */}
                     <div className="absolute inset-0 rounded-xl bg-white/5 backdrop-blur-xl -z-10" />
                     <div className="absolute -inset-2 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 rounded-xl blur-xl -z-20 group-hover:animate-pulse" />

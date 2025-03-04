@@ -11,6 +11,8 @@ import { ImageTextBlock } from '@/blocks/ImageTextBlock/Component'
 import { FullWidthImageText } from '@/blocks/FullWidthImageText/Component'
 import { ConditionsBlock } from '@/blocks/ConditionsBlock/Component'
 import { FAQBlock } from '@/blocks/FAQBlock/Component'
+import { PillarsBlock } from '@/blocks/PillarsBlock/Component'
+import { CoreServicesBlock } from '@/blocks/CoreServicesBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -22,6 +24,8 @@ const blockComponents = {
   fullWidthImageText: FullWidthImageText,
   conditionsBlock: ConditionsBlock,
   faqBlock: FAQBlock,
+  pillarsBlock: PillarsBlock,
+  coreServicesBlock: CoreServicesBlock,
 }
 
 export const RenderBlocks: React.FC<{

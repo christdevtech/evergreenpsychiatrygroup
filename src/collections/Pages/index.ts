@@ -11,6 +11,8 @@ import { ImageTextBlock } from '../../blocks/ImageTextBlock/config'
 import { FullWidthImageText } from '../../blocks/FullWidthImageText/config'
 import { ConditionsBlock } from '../../blocks/ConditionsBlock/config'
 import { FAQBlock } from '../../blocks/FAQBlock/config'
+import { PillarsBlock } from '../../blocks/PillarsBlock/config'
+import { CoreServicesBlock } from '../../blocks/CoreServicesBlock/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -33,9 +35,6 @@ export const Pages: CollectionConfig<'pages'> = {
     read: authenticatedOrPublished,
     update: authenticated,
   },
-  // This config controls what's populated by default when a page is referenced
-  // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
-  // Type safe if the collection slug generic is passed to `CollectionConfig` - `CollectionConfig<'pages'>
   defaultPopulate: {
     title: true,
     slug: true,
@@ -89,6 +88,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 FullWidthImageText,
                 ConditionsBlock,
                 FAQBlock,
+                PillarsBlock,
+                CoreServicesBlock,
               ],
               required: true,
               admin: {
