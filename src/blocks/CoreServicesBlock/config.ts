@@ -2,6 +2,7 @@ import type { Block } from 'payload'
 import { textClasses } from '@/fields/textClasses'
 import { buttonClasses } from '@/fields/buttonClasses'
 import { link } from '@/fields/link'
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
 
 export const CoreServicesBlock: Block = {
   slug: 'coreServicesBlock',
@@ -18,6 +19,23 @@ export const CoreServicesBlock: Block = {
         { label: 'Large', value: 'py-24 md:py-32' },
       ],
     },
+    {
+      name: 'isConditions',
+      type: 'checkbox',
+      label: 'Is Conditions',
+      defaultValue: false,
+      admin: {
+        description: 'Select this if the block is for conditions we treat',
+      },
+    },
+    bgColorPickerAll({
+      overrides: {
+        name: 'conditionBGColor',
+        label: 'Conditions Background Color',
+        defaultValue: 'bg-berylgreen-500',
+      },
+      condition: (_, { isConditions }) => isConditions === true,
+    }),
     {
       name: 'title',
       type: 'text',
@@ -81,6 +99,7 @@ export const CoreServicesBlock: Block = {
       minRows: 1,
       admin: {
         description: 'Add core services to display in tabs',
+        condition: (_, { isConditions }) => isConditions !== true,
       },
       fields: [
         {
@@ -97,6 +116,44 @@ export const CoreServicesBlock: Block = {
           label: 'Service Description',
           defaultValue:
             'Evergreen Psychiatry Group brings you fast, confidential access to vital mental health care through convenient  in-person or video consultations with highly experienced and accredited mental health practitioners and therapists.',
+        },
+        {
+          name: 'media',
+          type: 'group',
+          fields: [
+            {
+              name: 'media',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+            },
+          ],
+        },
+        link({ appearances: false }),
+      ],
+    },
+    {
+      name: 'conditions',
+      type: 'array',
+      required: true,
+      minRows: 1,
+      admin: {
+        description: 'Add core services to display in tabs',
+        condition: (_, { isConditions }) => isConditions === true,
+      },
+      fields: [
+        {
+          name: 'heading',
+          type: 'text',
+          required: true,
+          label: 'Condition Heading',
+          defaultValue: 'ADHD',
+        },
+        {
+          name: 'description',
+          type: 'richText',
+          required: true,
+          label: 'Condition Description',
         },
         {
           name: 'media',
