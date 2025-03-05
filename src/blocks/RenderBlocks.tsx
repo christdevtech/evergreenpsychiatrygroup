@@ -13,6 +13,7 @@ import { ConditionsBlock } from '@/blocks/ConditionsBlock/Component'
 import { FAQBlock } from '@/blocks/FAQBlock/Component'
 import { PillarsBlock } from '@/blocks/PillarsBlock/Component'
 import { CoreServicesBlock } from '@/blocks/CoreServicesBlock/Component'
+import { EmergenciesBlock } from '@/blocks/EmergenciesBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -26,6 +27,7 @@ const blockComponents = {
   faqBlock: FAQBlock,
   pillarsBlock: PillarsBlock,
   coreServicesBlock: CoreServicesBlock,
+  emergenciesBlock: EmergenciesBlock,
 }
 
 export const RenderBlocks: React.FC<{

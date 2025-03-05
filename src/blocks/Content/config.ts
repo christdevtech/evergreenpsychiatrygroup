@@ -48,6 +48,10 @@ const contentTypes: Field[] = [
         label: 'Media',
         value: 'media',
       },
+      {
+        label: 'Location',
+        value: 'location',
+      },
     ],
   },
   {
@@ -91,6 +95,73 @@ const contentTypes: Field[] = [
       condition: (_, { contentType }) => contentType === 'media',
     },
   },
+  // Location fields
+  {
+    name: 'locationTitle',
+    type: 'text',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'location',
+    },
+  },
+  {
+    name: 'locationAddress',
+    type: 'text',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'location',
+    },
+  },
+  {
+    name: 'locationPhone',
+    type: 'text',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'location',
+    },
+  },
+  {
+    name: 'locationHours',
+    type: 'text',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'location',
+    },
+  },
+  {
+    name: 'locationAddressIcon',
+    type: 'upload',
+    relationTo: 'media',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'location',
+    },
+  },
+  {
+    name: 'locationPhoneIcon',
+    type: 'upload',
+    relationTo: 'media',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'location',
+    },
+  },
+  {
+    name: 'locationHoursIcon',
+    type: 'upload',
+    relationTo: 'media',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'location',
+    },
+  },
+  textClasses({
+    overrides: {
+      name: 'locationTextColor',
+      label: 'Text Color',
+    },
+    condition: (_, { contentType }) => contentType === 'location',
+  }),
+  bgColorPickerAll({
+    overrides: {
+      name: 'locationDividerColor',
+      label: 'Divider Color',
+    },
+    condition: (_, { contentType }) => contentType === 'location',
+  }),
 ]
 
 const columnFields: Field[] = [

@@ -26,6 +26,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { EmergenciesBlock } from '@/blocks/EmergenciesBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -90,6 +91,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 FAQBlock,
                 PillarsBlock,
                 CoreServicesBlock,
+                EmergenciesBlock,
               ],
               required: true,
               admin: {

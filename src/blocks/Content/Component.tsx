@@ -9,6 +9,32 @@ import type { ContentColumnSize, VerticalAlignment } from './config'
 import { CMSLink } from '../../components/Link'
 import { extractSpacingClasses } from '@/fields/spacingClasses'
 
+// Define extended content item type to include location fields
+interface LocationContentItem {
+  contentType: 'location'
+  locationTitle?: string
+  locationAddress?: string
+  locationPhone?: string
+  locationHours?: string
+  locationAddressIcon?: any
+  locationPhoneIcon?: any
+  locationHoursIcon?: any
+  locationTextColor?: string[]
+  locationDividerColor?: string
+}
+
+// Extend the existing content item types
+type ExtendedContentItem =
+  | {
+      contentType: 'richText' | 'link' | 'media'
+      richText?: any
+      link?: any
+      media?: any
+      richTextClasses?: string
+      buttonClasses?: string
+    }
+  | LocationContentItem
+
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { rows, background } = props
   function getBackgroundClasses(background?: ContentBlockProps['background']): string {
@@ -128,17 +154,12 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                       )}
                     >
                       {column.content?.map((contentItem, contentIndex: number) => {
-                        const ContentItem = (contentItemdata: typeof contentItem) => {
-                          const {
-                            contentType,
-                            richText,
-                            link,
-                            media,
-                            richTextClasses,
-                            buttonClasses,
-                          } = contentItemdata
+                        const ContentItem = (contentItemdata: ExtendedContentItem) => {
+                          const { contentType } = contentItemdata
+
                           switch (contentType) {
                             case 'richText':
+                              const { richText, richTextClasses } = contentItemdata
                               return richText ? (
                                 <RichText
                                   data={richText}
@@ -148,11 +169,109 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                                 />
                               ) : null
                             case 'link':
+                              const { link, buttonClasses } = contentItemdata
                               return link ? (
                                 <CMSLink {...link} className={cn(buttonClasses)} />
                               ) : null
                             case 'media':
+                              const { media } = contentItemdata
                               return media ? <Media resource={media} /> : null
+                            case 'location':
+                              const {
+                                locationTitle,
+                                locationAddress,
+                                locationPhone,
+                                locationHours,
+                                locationAddressIcon,
+                                locationPhoneIcon,
+                                locationHoursIcon,
+                                locationTextColor,
+                                locationDividerColor,
+                              } = contentItemdata
+
+                              return (
+                                <div className="flex flex-col w-full">
+                                  {locationTitle && (
+                                    <h2
+                                      className={cn(
+                                        'text-3xl md:text-4xl lg:text-5xl font-semibold mb-4',
+                                        locationTextColor,
+                                      )}
+                                    >
+                                      {locationTitle}
+                                    </h2>
+                                  )}
+                                  <hr
+                                    className={cn(
+                                      'w-full h-0.5 mb-6',
+                                      locationDividerColor || 'bg-slate-200',
+                                    )}
+                                  />
+
+                                  {locationAddress && (
+                                    <div className="flex items-start mb-4">
+                                      {locationAddressIcon && (
+                                        <div className="mr-3 mt-1">
+                                          <Media
+                                            resource={locationAddressIcon}
+                                            className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
+                                          />
+                                        </div>
+                                      )}
+                                      <p
+                                        className={cn(
+                                          'text-lg md:text-xl lg:text-2xl',
+                                          locationTextColor,
+                                        )}
+                                      >
+                                        {locationAddress}
+                                      </p>
+                                    </div>
+                                  )}
+
+                                  {locationPhone && (
+                                    <div className="flex items-center mb-4">
+                                      {locationPhoneIcon && (
+                                        <div className="mr-3 mt-1">
+                                          <Media
+                                            resource={locationPhoneIcon}
+                                            className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
+                                          />
+                                        </div>
+                                      )}
+                                      <p
+                                        className={cn(
+                                          'text-lg md:text-xl lg:text-2xl',
+                                          locationTextColor,
+                                        )}
+                                      >
+                                        {locationPhone}
+                                      </p>
+                                    </div>
+                                  )}
+
+                                  {locationHours && (
+                                    <div className="flex items-center">
+                                      {locationHoursIcon && (
+                                        <div className="mr-3 mt-1">
+                                          <Media
+                                            resource={locationHoursIcon}
+                                            className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
+                                          />
+                                        </div>
+                                      )}
+                                      <p
+                                        className={cn(
+                                          'text-lg md:text-xl lg:text-2xl',
+                                          locationTextColor,
+                                        )}
+                                      >
+                                        {locationHours}
+                                      </p>
+                                    </div>
+                                  )}
+                                </div>
+                              )
                             default:
                               return null
                           }
@@ -160,7 +279,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
 
                         return (
                           <div key={`content-${contentIndex}`} className="contentItem">
-                            <ContentItem {...contentItem} />
+                            <ContentItem {...(contentItem as ExtendedContentItem)} />
                           </div>
                         )
                       })}
