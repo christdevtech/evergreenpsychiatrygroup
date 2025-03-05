@@ -19,6 +19,13 @@ export const CoreServicesBlock: Block = {
         { label: 'Large', value: 'py-24 md:py-32' },
       ],
     },
+    bgColorPickerAll({
+      overrides: {
+        name: 'blockBGColor',
+        label: 'Block Background Color',
+        defaultValue: 'bg-slate-50',
+      },
+    }),
     {
       name: 'isConditions',
       type: 'checkbox',

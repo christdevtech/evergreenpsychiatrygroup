@@ -13,10 +13,10 @@ type Props = CoreServicesBlockType & {
 }
 
 export const CoreServicesBlock: React.FC<Props> = (props) => {
-  const { isConditions, className, padding } = props
+  const { isConditions, className, padding, blockBGColor } = props
 
   return (
-    <div className={cn(padding, className)}>
+    <div className={cn(padding, className, blockBGColor)}>
       {isConditions ? <CoreConditions {...props} /> : <CoreServices {...props} />}
     </div>
   )
