@@ -192,7 +192,7 @@ export const CoreConditions: React.FC<Props> = (props) => {
                                 <div className="flex flex-col space-y-6">
                                   <div
                                     className={cn(
-                                      'space-y-6 p-8 rounded-tr-4xl',
+                                      'space-y-6 p-8 rounded-tr-[3em]',
                                       conditionBGColor,
                                       'bg-opacity-95',
                                     )}
