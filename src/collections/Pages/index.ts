@@ -13,6 +13,9 @@ import { ConditionsBlock } from '../../blocks/ConditionsBlock/config'
 import { FAQBlock } from '../../blocks/FAQBlock/config'
 import { PillarsBlock } from '../../blocks/PillarsBlock/config'
 import { CoreServicesBlock } from '../../blocks/CoreServicesBlock/config'
+import { EmergenciesBlock } from '@/blocks/EmergenciesBlock/config'
+import { StaffBlock } from '@/blocks/StaffBlock/config'
+
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -26,7 +29,6 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { EmergenciesBlock } from '@/blocks/EmergenciesBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -92,6 +94,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 PillarsBlock,
                 CoreServicesBlock,
                 EmergenciesBlock,
+                StaffBlock,
               ],
               required: true,
               admin: {
