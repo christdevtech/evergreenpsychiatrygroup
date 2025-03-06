@@ -52,35 +52,42 @@ export const FAQBlock: Block = {
       }),
     },
     {
-      name: 'faqs',
-      type: 'array',
-      label: 'FAQs',
-      minRows: 3,
-      fields: [
-        {
-          name: 'question',
-          type: 'text',
-          required: true,
-          label: 'Question',
-          defaultValue: 'How do I book a mental health therapist?',
-        },
-        {
-          name: 'answer',
-          type: 'richText',
-          required: true,
-          label: 'Answer',
-          editor: lexicalEditor({
-            features: ({ rootFeatures }) => {
-              return [
-                ...rootFeatures,
-                HeadingFeature({ enabledHeadingSizes: ['h4'] }),
-                FixedToolbarFeature(),
-                InlineToolbarFeature(),
-              ]
-            },
-          }),
-        },
+      name: 'populateBy',
+      type: 'select',
+      defaultValue: 'categories',
+      options: [
+        { label: 'Categories', value: 'categories' },
+        { label: 'Individual Selection', value: 'selection' },
       ],
+    },
+    {
+      name: 'categories',
+      type: 'relationship',
+      relationTo: 'categories',
+      hasMany: true,
+      admin: {
+        condition: (_, siblingData) => siblingData.populateBy === 'categories',
+      },
+      label: 'Categories To Show',
+    },
+    {
+      name: 'faqs',
+      type: 'relationship',
+      relationTo: 'faqs',
+      hasMany: true,
+      admin: {
+        condition: (_, siblingData) => siblingData.populateBy === 'selection',
+      },
+      label: 'Selected FAQs',
+    },
+    {
+      name: 'limit',
+      type: 'number',
+      label: 'Limit',
+      defaultValue: 6,
+      admin: {
+        condition: (_, siblingData) => siblingData.populateBy === 'categories',
+      },
     },
     link({
       appearances: ['default', 'outline'],

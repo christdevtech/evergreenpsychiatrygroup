@@ -74,6 +74,7 @@ export interface Config {
     locations: Location;
     categories: Category;
     users: User;
+    faqs: Faq;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -93,6 +94,7 @@ export interface Config {
     locations: LocationsSelect<false> | LocationsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    faqs: FaqsSelect<false> | FaqsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -21958,27 +21960,10 @@ export interface FAQBlock {
     };
     [k: string]: unknown;
   } | null;
-  faqs?:
-    | {
-        question: string;
-        answer: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        };
-        id?: string | null;
-      }[]
-    | null;
+  populateBy?: ('categories' | 'selection') | null;
+  categories?: (string | Category)[] | null;
+  faqs?: (string | Faq)[] | null;
+  limit?: number | null;
   link: {
     type?: ('reference' | 'custom') | null;
     newTab?: boolean | null;
@@ -22826,6 +22811,32 @@ export interface FAQBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'faqBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs".
+ */
+export interface Faq {
+  id: string;
+  question: string;
+  answer: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  category?: (string | null) | Category;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -35663,6 +35674,10 @@ export interface PayloadLockedDocument {
         value: string | User;
       } | null)
     | ({
+        relationTo: 'faqs';
+        value: string | Faq;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: string | Redirect;
       } | null)
@@ -36383,13 +36398,10 @@ export interface FAQBlockSelect<T extends boolean = true> {
   backgroundColor?: T;
   title?: T;
   description?: T;
-  faqs?:
-    | T
-    | {
-        question?: T;
-        answer?: T;
-        id?: T;
-      };
+  populateBy?: T;
+  categories?: T;
+  faqs?: T;
+  limit?: T;
   link?:
     | T
     | {
@@ -36757,6 +36769,17 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs_select".
+ */
+export interface FaqsSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
+  category?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

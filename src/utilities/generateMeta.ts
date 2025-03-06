@@ -27,7 +27,9 @@ export const generateMeta = async (args: {
   const ogImage = getImageURL(doc?.meta?.image)
 
   const title = doc?.meta?.title
-    ? doc?.meta?.title + ' | Evergreen Psychiatry Group'
+    ? doc?.meta?.title.includes('| Evergreen Psychiatry Group')
+      ? doc.meta.title
+      : doc.meta.title + ' | Evergreen Psychiatry Group'
     : 'Evergreen Psychiatry Group'
 
   return {

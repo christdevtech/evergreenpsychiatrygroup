@@ -14,6 +14,7 @@ export const Locations: CollectionConfig<'locations'> = {
   },
   admin: {
     useAsTitle: 'title',
+    group: 'Content',
   },
   fields: [
     {

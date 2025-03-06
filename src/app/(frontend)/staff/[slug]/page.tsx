@@ -34,7 +34,7 @@ export default async function StaffPage({ params: paramsPromise }: Args) {
                 About
               </h4>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">{name}</h1>
-              <p className="text-xl md:text-2xl lg:text-3xl font-medium mb-4 md:mb-8">{position}</p>
+              <p className="text-xl md:text-2xl lg:text-3xl font-light mb-4 md:mb-8">{position}</p>
             </div>
 
             <div className="flex flex-col gap-4 md:gap-8">

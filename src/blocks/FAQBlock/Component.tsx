@@ -8,24 +8,44 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { FAQBlock as FAQBlockType } from '@/payload-types'
+import { Faq, FAQBlock as FAQBlockType } from '@/payload-types'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 
 type Props = FAQBlockType & {
   className?: string
-  disableInnerContainer?: boolean
 }
 
-export const FAQBlock: React.FC<Props> = (props) => {
+export const FAQBlock: React.FC<Props> = async (props) => {
   const {
     backgroundColor,
     title,
     description,
-    faqs,
+    faqs: faqsFromProps,
     link,
     linkClasses,
     className,
-    disableInnerContainer = false,
+    populateBy,
+    categories,
+    faqs: selectedFaqs,
+    limit,
   } = props
+  let faqs: Faq[] = []
+  if (populateBy === 'categories') {
+    const payload = await getPayload({ config: configPromise })
+    const faqsToShow = await payload.find({
+      collection: 'faqs',
+      where: {
+        category: {
+          in: categories,
+        },
+      },
+      limit: limit || 6,
+    })
+    faqs = faqsToShow.docs
+  } else {
+    faqs = selectedFaqs?.map((faq) => faq as Faq) || []
+  }
 
   return (
     <div className={cn('py-16 md:py-24', backgroundColor || 'bg-white', className)}>

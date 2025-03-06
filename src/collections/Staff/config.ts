@@ -36,6 +36,7 @@ export const Staff: CollectionConfig<'staff'> = {
     position: true,
   },
   admin: {
+    group: 'Content',
     useAsTitle: 'name',
     defaultColumns: ['name', 'role', 'updatedAt'],
     livePreview: {
