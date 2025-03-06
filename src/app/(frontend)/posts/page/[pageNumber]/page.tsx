@@ -8,6 +8,7 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 
 export const revalidate = 600
 
@@ -34,11 +35,22 @@ export default async function Page({ params: paramsPromise }: Args) {
   })
 
   return (
-    <div className="pt-24 pb-24">
-      <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+    <div>
+      <div className="min-h-[70dvh] bg-teal-600 py-16">
+        <div className="container">
+          <div className=" flex justify-between align-center">
+            <h1>
+              Insights for Your <br className="hidden md:block" /> Mental Wellness
+            </h1>
+            <div className="relative md:w-7/12">
+              <Image
+                src="/assets/resources.png"
+                alt="Resources Images"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
