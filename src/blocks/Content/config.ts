@@ -97,29 +97,9 @@ const contentTypes: Field[] = [
   },
   // Location fields
   {
-    name: 'locationTitle',
-    type: 'text',
-    admin: {
-      condition: (_, { contentType }) => contentType === 'location',
-    },
-  },
-  {
-    name: 'locationAddress',
-    type: 'text',
-    admin: {
-      condition: (_, { contentType }) => contentType === 'location',
-    },
-  },
-  {
-    name: 'locationPhone',
-    type: 'text',
-    admin: {
-      condition: (_, { contentType }) => contentType === 'location',
-    },
-  },
-  {
-    name: 'locationHours',
-    type: 'text',
+    name: 'location',
+    type: 'relationship',
+    relationTo: 'locations',
     admin: {
       condition: (_, { contentType }) => contentType === 'location',
     },

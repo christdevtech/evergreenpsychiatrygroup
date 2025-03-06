@@ -15,6 +15,7 @@ import { PillarsBlock } from '../../blocks/PillarsBlock/config'
 import { CoreServicesBlock } from '../../blocks/CoreServicesBlock/config'
 import { EmergenciesBlock } from '@/blocks/EmergenciesBlock/config'
 import { StaffBlock } from '@/blocks/StaffBlock/config'
+import { BookingBlock } from '@/blocks/BookingBlock/config'
 
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
@@ -96,6 +97,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 CoreServicesBlock,
                 EmergenciesBlock,
                 StaffBlock,
+                BookingBlock,
               ],
               required: true,
               admin: {

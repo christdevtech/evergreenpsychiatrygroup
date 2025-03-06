@@ -15,6 +15,7 @@ import { PillarsBlock } from '@/blocks/PillarsBlock/Component'
 import { CoreServicesBlock } from '@/blocks/CoreServicesBlock/Component'
 import { EmergenciesBlock } from '@/blocks/EmergenciesBlock/Component'
 import { StaffBlock } from './StaffBlock/Component'
+import { BookingBlock } from './BookingBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -31,6 +32,7 @@ const blockComponents = {
   emergenciesBlock: EmergenciesBlock,
   staff: StaffBlock,
   staffBlock: StaffBlock,
+  bookingBlock: BookingBlock,
 }
 
 export const RenderBlocks: React.FC<{

@@ -15,6 +15,7 @@ export const glassmorphismField = (options?: GlassmorphismOptions): Field => {
     label: 'Glassmorphism Effect',
     admin: {
       description: 'Configure the glassmorphism effect for the content',
+      condition,
     },
     fields: [
       {

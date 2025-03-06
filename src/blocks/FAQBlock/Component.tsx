@@ -12,6 +12,9 @@ import { Faq, FAQBlock as FAQBlockType } from '@/payload-types'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 
+// force dynamic
+export const dynamic = 'force-dynamic'
+
 type Props = FAQBlockType & {
   className?: string
 }

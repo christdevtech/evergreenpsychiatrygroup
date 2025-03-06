@@ -42,6 +42,10 @@ export const hero: Field = {
           label: 'Glass Morph',
           value: 'glassMorph',
         },
+        {
+          label: 'Simple Hero',
+          value: 'simpleHero',
+        },
       ],
       required: true,
     },
@@ -52,9 +56,12 @@ export const hero: Field = {
       defaultValue: 'Healing, Growth, Transformation',
       admin: {
         description: 'The main title of the hero section',
+        condition: (_, { type }) => ['simpleHero'].includes(type),
       },
     },
     textClasses({
+      condition: (_, { type }) =>
+        ['glassMorph', 'highImpact', 'mediumImpact', 'lowImpact', 'simpleHero'].includes(type),
       overrides: {
         name: 'titleClasses',
         label: 'Title Styling',
@@ -75,6 +82,8 @@ export const hero: Field = {
       defaultValue: 'Comprehensive mental health services that nurture change and well-being',
       admin: {
         description: 'The subtitle text below the main title',
+        condition: (_, { type }) =>
+          ['glassMorph', 'highImpact', 'mediumImpact', 'lowImpact'].includes(type),
       },
     },
     textClasses({
@@ -90,6 +99,8 @@ export const hero: Field = {
           'mb-12',
         ],
       },
+      condition: (_, { type }) =>
+        ['glassMorph', 'highImpact', 'mediumImpact', 'lowImpact'].includes(type),
     }),
     {
       name: 'richText',
@@ -136,6 +147,10 @@ export const hero: Field = {
           version: 1,
         },
       },
+      admin: {
+        condition: (_, { type }) =>
+          ['glassMorph', 'highImpact', 'mediumImpact', 'lowImpact'].includes(type),
+      },
     },
     textClasses({
       overrides: {
@@ -146,32 +161,30 @@ export const hero: Field = {
       condition: (_, { type } = {}) =>
         ['lowImpact', 'mediumImpact', 'highImpact', 'glassMorph'].includes(type),
     }),
-    linkGroup({
-      overrides: {
-        maxRows: 2,
-        admin: {
-          condition: (_, { type } = {}) =>
-            ['highImpact', 'mediumImpact', 'glassMorph'].includes(type),
-        },
-      },
-    }),
-    glassmorphismField({
-      condition: (data: any, { type }: { type?: string } = {}) =>
-        ['glassMorph'].includes(type || ''),
-    }),
     {
       name: 'media',
       type: 'upload',
       admin: {
         condition: (data: any, { type }: { type?: string } = {}) =>
-          ['highImpact', 'mediumImpact', 'glassMorph'].includes(type || ''),
+          ['highImpact', 'mediumImpact', 'glassMorph', 'simpleHero'].includes(type || ''),
       },
       relationTo: 'media',
       required: true,
     },
+    linkGroup({
+      overrides: {
+        maxRows: 2,
+        admin: {
+          condition: (_, { type } = {}) =>
+            ['highImpact', 'mediumImpact', 'glassMorph', 'simpleHero'].includes(type),
+        },
+      },
+    }),
+    glassmorphismField({
+      condition: (_, { type }) => ['glassMorph'].includes(type),
+    }),
     textClasses({
-      condition: (data: any, { type }: { type?: string } = {}) =>
-        ['glassMorph'].includes(type || ''),
+      condition: (_, { type }) => ['glassMorph'].includes(type),
       overrides: {
         name: 'mobileSpacing',
         label: 'Mobile Spacing',

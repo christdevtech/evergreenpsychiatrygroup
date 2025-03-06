@@ -12,10 +12,12 @@ import { extractSpacingClasses } from '@/fields/spacingClasses'
 // Define extended content item type to include location fields
 interface LocationContentItem {
   contentType: 'location'
-  locationTitle?: string
-  locationAddress?: string
-  locationPhone?: string
-  locationHours?: string
+  location: {
+    title: string
+    address: string
+    phone: string
+    hours: string
+  }
   locationAddressIcon?: any
   locationPhoneIcon?: any
   locationHoursIcon?: any
@@ -178,10 +180,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                               return media ? <Media resource={media} /> : null
                             case 'location':
                               const {
-                                locationTitle,
-                                locationAddress,
-                                locationPhone,
-                                locationHours,
+                                location,
                                 locationAddressIcon,
                                 locationPhoneIcon,
                                 locationHoursIcon,
@@ -191,14 +190,14 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
 
                               return (
                                 <div className="flex flex-col w-full">
-                                  {locationTitle && (
+                                  {location.title && (
                                     <h2
                                       className={cn(
                                         'text-3xl md:text-4xl lg:text-5xl font-semibold mb-4',
                                         locationTextColor,
                                       )}
                                     >
-                                      {locationTitle}
+                                      In {location.title}
                                     </h2>
                                   )}
                                   <hr
@@ -208,7 +207,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                                     )}
                                   />
 
-                                  {locationAddress && (
+                                  {location.address && (
                                     <div className="flex items-start mb-4">
                                       {locationAddressIcon && (
                                         <div className="mr-3 mt-1">
@@ -224,12 +223,12 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                                           locationTextColor,
                                         )}
                                       >
-                                        {locationAddress}
+                                        {location.address}
                                       </p>
                                     </div>
                                   )}
 
-                                  {locationPhone && (
+                                  {location.phone && (
                                     <div className="flex items-center mb-4">
                                       {locationPhoneIcon && (
                                         <div className="mr-3 mt-1">
@@ -245,12 +244,12 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                                           locationTextColor,
                                         )}
                                       >
-                                        {locationPhone}
+                                        {location.phone}
                                       </p>
                                     </div>
                                   )}
 
-                                  {locationHours && (
+                                  {location.hours && (
                                     <div className="flex items-center">
                                       {locationHoursIcon && (
                                         <div className="mr-3 mt-1">
@@ -266,7 +265,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                                           locationTextColor,
                                         )}
                                       >
-                                        {locationHours}
+                                        {location.hours}
                                       </p>
                                     </div>
                                   )}

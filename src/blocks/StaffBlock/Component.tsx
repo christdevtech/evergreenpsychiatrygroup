@@ -9,6 +9,9 @@ import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import { cn } from '@/utilities/ui'
 
+// force dynamic
+export const dynamic = 'force-dynamic'
+
 export const StaffBlock: React.FC<StaffBlockProps & { id?: string }> = async (props) => {
   const {
     id,

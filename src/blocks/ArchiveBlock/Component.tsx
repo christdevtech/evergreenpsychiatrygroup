@@ -10,6 +10,9 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
+// force dynamic
+export const dynamic = 'force-dynamic'
+
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
     id?: string
