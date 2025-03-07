@@ -56,7 +56,8 @@ export const hero: Field = {
       defaultValue: 'Healing, Growth, Transformation',
       admin: {
         description: 'The main title of the hero section',
-        condition: (_, { type }) => ['simpleHero'].includes(type),
+        condition: (_, { type }) =>
+          ['simpleHero', 'highImpact', 'mediumImpact', 'lowImpact', 'glassMorph'].includes(type),
       },
     },
     textClasses({
