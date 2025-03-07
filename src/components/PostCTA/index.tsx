@@ -25,7 +25,7 @@ const index = () => {
               New patients are currently being accepted for both in-person and telepsychiatry
               visits.
             </p>
-            <Link href="/about">
+            <Link href="/contact">
               <Button className="bg-teal-600 text-white py-4 px-12 rounded-full  hover:bg-slate-700 transition-colors">
                 Make an appointment
               </Button>

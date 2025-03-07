@@ -18,6 +18,7 @@ export async function generateStaticParams() {
     collection: 'pages',
     draft: false,
     limit: 1000,
+    depth: 3,
     overrideAccess: false,
     pagination: false,
     select: {
