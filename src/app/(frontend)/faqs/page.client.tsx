@@ -12,6 +12,7 @@ import RichText from '@/components/RichText'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/utilities/ui'
+import { X } from 'lucide-react'
 
 interface FaqClientProps {
   faqs: Faq[]
@@ -83,11 +84,13 @@ const FaqClient: React.FC<FaqClientProps> = ({ faqs }) => {
   }, [faqs, selectedCategory, searchQuery])
 
   return (
-    <div className="pt-12">
+    <div className="pt-16 lg:pt-24">
       <div className="container">
-        <h2 className="text-3xl font-bold text-teal-600 mb-8">Frequently Asked Questions</h2>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-teal-600 mb-8">
+          Frequently Asked Questions
+        </h2>
         <div className="mb-8">
-          <div className="flex flex-col sm:flex-row gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row gap-4 mb-6 items-stretch">
             <Input
               type="text"
               placeholder="Search FAQs..."
@@ -95,11 +98,17 @@ const FaqClient: React.FC<FaqClientProps> = ({ faqs }) => {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-1"
             />
+            <div
+              onClick={() => setSearchQuery('')}
+              className="flex items-center justify-center border border-gray-300 rounded-lg p-1 aspect-square"
+            >
+              <X className="w-6 h-6" />
+            </div>
           </div>
         </div>
 
         {categories.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2 mb-8 lg:mb-12">
             <Button
               variant={'default'}
               onClick={() => setSelectedCategory(null)}

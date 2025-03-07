@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic'
 
 export async function Header() {
   const payload = await getPayload({ config: configPromise })
-  const headerData: Header = await payload.findGlobal({ slug: 'header', depth: 1 })
+  const headerData: Header = await payload.findGlobal({ slug: 'header', depth: 3 })
 
   return <HeaderClient data={headerData} />
 }
