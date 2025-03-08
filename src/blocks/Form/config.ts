@@ -6,6 +6,7 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
 
 export const FormBlock: Block = {
   slug: 'formBlock',
@@ -17,6 +18,12 @@ export const FormBlock: Block = {
       relationTo: 'forms',
       required: true,
     },
+    bgColorPickerAll({
+      overrides: {
+        defaultValue: 'bg-slate-200',
+        required: false,
+      },
+    }),
     {
       name: 'enableIntro',
       type: 'checkbox',

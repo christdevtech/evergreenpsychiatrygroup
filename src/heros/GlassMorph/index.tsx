@@ -59,7 +59,7 @@ export const GlassMorphHero: React.FC<Page['hero']> = ({
         <div className="absolute inset-0 w-full h-full">
           <Media
             imgClassName="w-full h-full object-cover"
-            className="w-full h-full"
+            className="w-full h-full object-cover"
             priority
             resource={media}
           />

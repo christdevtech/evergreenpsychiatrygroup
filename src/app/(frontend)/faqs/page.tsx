@@ -22,6 +22,7 @@ export default async function Faqs() {
 
   const faqDocs = await payload.find({
     collection: 'faqs',
+    limit: 300,
     depth: 2,
   })
 

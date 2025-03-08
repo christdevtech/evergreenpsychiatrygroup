@@ -34,15 +34,22 @@ export const FAQBlock: React.FC<Props> = async (props) => {
     limit,
   } = props
   let faqs: Faq[] = []
+  const categoriesToShow = categories?.map((category) => {
+    if (typeof category === 'object') {
+      return category.id
+    }
+    return category
+  })
   if (populateBy === 'categories') {
     const payload = await getPayload({ config: configPromise })
     const faqsToShow = await payload.find({
       collection: 'faqs',
       where: {
         category: {
-          in: categories,
+          in: categoriesToShow,
         },
       },
+      depth: 2,
       limit: limit || 6,
     })
     faqs = faqsToShow.docs
@@ -57,7 +64,7 @@ export const FAQBlock: React.FC<Props> = async (props) => {
           {title && <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">{title}</h2>}
 
           {description && (
-            <div className="mb-10 text-center">
+            <div className="mb-10 text-center text-lg md:text-xl">
               <RichText data={description} enableGutter={false} />
             </div>
           )}
