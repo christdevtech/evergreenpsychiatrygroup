@@ -38,6 +38,13 @@ export const Header: GlobalConfig = {
           fields: [
             link({
               appearances: false,
+              overrides: {
+                defaultValue: {
+                  type: 'custom',
+                  url: '#',
+                  label: 'Custom Link',
+                },
+              },
             }),
           ],
         },
@@ -48,24 +55,35 @@ export const Header: GlobalConfig = {
             condition: (data, siblingData) => siblingData?.type === 'dropdown',
           },
           fields: [
-            {
-              name: 'label',
-              type: 'text',
-              required: true,
-            },
+            link({
+              appearances: false,
+              overrides: {
+                defaultValue: {
+                  type: 'custom',
+                  url: '#',
+                  label: 'Custom Link',
+                },
+              },
+            }),
             {
               name: 'links',
               type: 'array',
               fields: [
                 link({
                   appearances: false,
+                  overrides: {
+                    defaultValue: {
+                      type: 'custom',
+                      url: '#',
+                      label: 'Custom Link',
+                    },
+                  },
                 }),
               ],
             },
           ],
         },
       ],
-      maxRows: 6,
       admin: {
         initCollapsed: true,
         components: {

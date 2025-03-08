@@ -42018,7 +42018,21 @@ export interface Header {
           };
         };
         dropdown?: {
-          label: string;
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: string | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+          };
           links?:
             | {
                 link: {
@@ -42155,7 +42169,15 @@ export interface HeaderSelect<T extends boolean = true> {
         dropdown?:
           | T
           | {
-              label?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
               links?:
                 | T
                 | {
