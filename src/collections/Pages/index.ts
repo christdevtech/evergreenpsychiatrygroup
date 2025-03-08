@@ -16,6 +16,7 @@ import { CoreServicesBlock } from '../../blocks/CoreServicesBlock/config'
 import { EmergenciesBlock } from '@/blocks/EmergenciesBlock/config'
 import { StaffBlock } from '@/blocks/StaffBlock/config'
 import { BookingBlock } from '@/blocks/BookingBlock/config'
+import { AnchorBlock } from '@/blocks/AnchorBlock/config'
 
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
@@ -98,6 +99,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 EmergenciesBlock,
                 StaffBlock,
                 BookingBlock,
+                AnchorBlock,
               ],
               required: true,
               admin: {

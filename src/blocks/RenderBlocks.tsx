@@ -16,6 +16,7 @@ import { CoreServicesBlock } from '@/blocks/CoreServicesBlock/Component'
 import { EmergenciesBlock } from '@/blocks/EmergenciesBlock/Component'
 import { StaffBlock } from './StaffBlock/Component'
 import { BookingBlock } from './BookingBlock/Component'
+import { AnchorBlock } from './AnchorBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -33,6 +34,7 @@ const blockComponents = {
   staff: StaffBlock,
   staffBlock: StaffBlock,
   bookingBlock: BookingBlock,
+  anchorBlock: AnchorBlock,
 }
 
 export const RenderBlocks: React.FC<{

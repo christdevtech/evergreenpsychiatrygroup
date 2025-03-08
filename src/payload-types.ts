@@ -5202,6 +5202,7 @@ export interface Page {
     | EmergenciesBlock
     | StaffBlock
     | BookingBlock
+    | AnchorBlock
   )[];
   meta?: {
     title?: string | null;
@@ -40329,6 +40330,19 @@ export interface BookingBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AnchorBlock".
+ */
+export interface AnchorBlock {
+  id: string | null;
+  /**
+   * Optional label for admin reference only
+   */
+  label?: string | null;
+  blockName?: string | null;
+  blockType: 'anchorBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -40668,6 +40682,7 @@ export interface PagesSelect<T extends boolean = true> {
         emergenciesBlock?: T | EmergenciesBlockSelect<T>;
         staff?: T | StaffBlockSelect<T>;
         bookingBlock?: T | BookingBlockSelect<T>;
+        anchorBlock?: T | AnchorBlockSelect<T>;
       };
   meta?:
     | T
@@ -41499,6 +41514,15 @@ export interface BookingBlockSelect<T extends boolean = true> {
         phone?: T;
       };
   id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AnchorBlock_select".
+ */
+export interface AnchorBlockSelect<T extends boolean = true> {
+  id?: T;
+  label?: T;
   blockName?: T;
 }
 /**
