@@ -26,13 +26,7 @@ export default async function Faqs() {
     depth: 2,
   })
 
-  const locationDocs = await payload.find({
-    collection: 'locations',
-    depth: 2,
-  })
-
   const faqs: Faq[] = faqDocs.docs
-  const locations: Location[] = locationDocs.docs
   const emergenciesData: EmergenciesBlockType = {
     blockType: 'emergenciesBlock',
     padding: 'py-16 md:py-24',
