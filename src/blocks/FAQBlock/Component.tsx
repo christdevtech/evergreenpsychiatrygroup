@@ -61,11 +61,11 @@ export const FAQBlock: React.FC<Props> = async (props) => {
     <div className={cn('py-16 md:py-24', backgroundColor || 'bg-white', className)}>
       <div className={cn('container')}>
         <div>
-          {title && <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">{title}</h2>}
+          {title && <h2 className="text-3xl md:text-4xl font-bold md:text-center mb-6">{title}</h2>}
 
           {description && (
-            <div className="mb-10 text-center text-lg md:text-xl">
-              <RichText data={description} enableGutter={false} />
+            <div className="mb-10 md:text-center text-lg md:text-xl">
+              <RichText data={description} enableGutter={false} enableProse={false} />
             </div>
           )}
 
@@ -73,13 +73,18 @@ export const FAQBlock: React.FC<Props> = async (props) => {
             <Accordion type="single" collapsible className="mb-10 divide-y-2 divide-white/90">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="py-6 ">
-                  <AccordionTrigger className="text-lg font-medium py-4 hover:no-underline">
+                  <AccordionTrigger className="text-left md:text-xl lg:text-2xl font-semibold px-4">
                     <span className="text-left font-medium text-xl md:text-2xl lg:text-3xl text-slate-900">
                       {faq.question}
                     </span>
                   </AccordionTrigger>
                   <AccordionContent className="pt-2 pb-2">
-                    <RichText data={faq.answer} enableGutter={false} className="md:text-xl" />
+                    <RichText
+                      data={faq.answer}
+                      enableGutter={false}
+                      enableProse={false}
+                      className="text-base md:text-lg lg:text-xl"
+                    />
                   </AccordionContent>
                 </AccordionItem>
               ))}

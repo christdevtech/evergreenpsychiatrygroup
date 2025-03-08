@@ -90,7 +90,7 @@ const FaqClient: React.FC<FaqClientProps> = ({ faqs }) => {
           Frequently Asked Questions
         </h2>
         <div className="mb-8">
-          <div className="flex flex-col sm:flex-row gap-4 mb-6 items-stretch">
+          <div className="flex flex-row gap-4 mb-6 items-stretch">
             <Input
               type="text"
               placeholder="Search FAQs..."
@@ -146,12 +146,17 @@ const FaqClient: React.FC<FaqClientProps> = ({ faqs }) => {
                   value={faq.id}
                   className="border border-gray-200 rounded-lg p-2"
                 >
-                  <AccordionTrigger className="text-left font-medium px-4">
+                  <AccordionTrigger className="text-left md:text-xl lg:text-2xl font-semibold px-4">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="px-4">
                     {typeof faq.answer === 'object' && (
-                      <RichText data={faq.answer} enableGutter={false} />
+                      <RichText
+                        data={faq.answer}
+                        enableGutter={false}
+                        enableProse={false}
+                        className="text-base md:text-lg lg:text-xl"
+                      />
                     )}
                   </AccordionContent>
                 </AccordionItem>

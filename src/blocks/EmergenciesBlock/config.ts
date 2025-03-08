@@ -34,7 +34,7 @@ export const EmergenciesBlock: Block = {
     textClasses({
       overrides: {
         name: 'titleClasses',
-        defaultValue: ['text-4xl', 'font-semibold', 'text-white', 'text-center', 'mb-12'],
+        defaultValue: ['text-4xl', 'font-semibold', 'text-white', 'md:text-center', 'mb-12'],
       },
     }),
     {
@@ -50,7 +50,7 @@ export const EmergenciesBlock: Block = {
           'text-xl',
           'md:text-2xl',
           'text-white',
-          'text-center',
+          'md:text-center',
           'mb-16',
           'lg:w-7/10',
           'w-4/5',

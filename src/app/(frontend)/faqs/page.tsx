@@ -39,7 +39,15 @@ export default async function Faqs() {
     backgroundColor: 'bg-teal-600',
     title: 'Emergencies',
 
-    titleClasses: ['text-4xl', 'font-semibold', 'text-white', 'text-center', 'mb-12'],
+    titleClasses: [
+      'text-4xl',
+      'font-semibold',
+      'text-white',
+      'md:text-center',
+      'mb-8',
+      'md:mb-12',
+      'mt-8',
+    ],
 
     mainText: {
       root: {
@@ -92,7 +100,7 @@ export default async function Faqs() {
       'text-xl',
       'md:text-2xl',
       'text-white',
-      'text-center',
+      'md:text-center',
       'mb-16',
       'lg:w-7/10',
       'w-4/5',
@@ -101,7 +109,7 @@ export default async function Faqs() {
     emergencyCases: {
       title: 'Sample Emergency Cases',
 
-      titleClasses: ['text-2xl', 'md:text-3xl', 'text-white', 'mb-6'],
+      titleClasses: ['text-xl', 'md:text-2xl', 'text-white', 'mb-6'],
 
       cases: [
         {
@@ -124,7 +132,7 @@ export default async function Faqs() {
     suicideHotline: {
       title: 'National Suicide Prevention Lifeline',
 
-      titleClasses: ['text-2xl', 'md:text-3xl', 'text-white', 'mb-6'],
+      titleClasses: ['text-xl', 'md:text-2xl', 'text-white', 'mb-6'],
 
       phoneNumbers: [
         {

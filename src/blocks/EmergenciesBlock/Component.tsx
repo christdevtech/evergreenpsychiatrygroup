@@ -27,11 +27,14 @@ export const EmergenciesBlock: React.FC<Props> = (props) => {
 
   return (
     <section className={cn(backgroundColor, padding, className)}>
-      <div className="container mx-auto px-4">
+      <div className="container">
         <h2 className={cn(titleClasses)}>{title}</h2>
-
-        <RichText data={mainText} enableProse={false} className={cn(mainTextClasses)} />
-
+        <RichText
+          data={mainText}
+          enableProse={false}
+          enableGutter={false}
+          className={cn(mainTextClasses)}
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
           {/* Emergency Cases */}
           <div>
