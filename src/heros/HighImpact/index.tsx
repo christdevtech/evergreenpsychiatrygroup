@@ -23,15 +23,15 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
   return (
     <div
       className={cn(
-        'relative flex items-center justify-center min-h-[60vh] pt-16 md:py-16 overflow-hidden',
+        'relative flex items-end justify-center min-h-[60vh] overflow-hidden',
         heroBgGradient?.type,
         heroBgGradient?.fromColor,
         heroBgGradient?.viaColor,
         heroBgGradient?.toColor,
       )}
     >
-      <div className="container relative flex flex-col lg:flex-row items-center justify-between gap-8">
-        <div className="w-full lg:w-[55%]">
+      <div className="container relative flex flex-col lg:flex-row justify-between gap-8">
+        <div className="w-full lg:w-[55%] pt-16 md:py-16 lg:py-24 xl:py-32">
           <h1 className={cn(titleClasses, 'text-center lg:text-left')}>{title}</h1>
           <p className={cn(subtitleClasses, 'text-center lg:text-left')}>{subtitle}</p>
           {richText && (
@@ -56,7 +56,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
             </ul>
           )}
         </div>
-        <div className="w-full lg:w-[45%] flex items-end justify-center px-8 md:px-16">
+        <div className="w-full lg:w-[45%] flex items-end justify-center px-8 md:px-16 self-end">
           {media && typeof media === 'object' && (
             <Media
               imgClassName="rounded-2xl w-full h-full object-contain"
