@@ -156,7 +156,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   <div
                     key={`column-${columnIndex}`}
                     className={cn(
-                      'flex-grow p-6 md:p-8 mb-16',
+                      'flex-grow',
                       getResponsiveWidthClasses(size),
                       columnSpacingClasses,
                     )}
