@@ -56,11 +56,11 @@ export const HighImpactHero: React.FC<Page['hero']> = ({
             </ul>
           )}
         </div>
-        <div className="w-full lg:w-[45%] flex items-end justify-center px-8 md:px-16 self-end">
+        <div className="w-full lg:w-[45%] flex items-end justify-center px-8 self-end">
           {media && typeof media === 'object' && (
             <Media
               imgClassName="rounded-2xl w-full h-full object-contain"
-              className="w-full max-h-[500px]"
+              className="w-full max-h-[700px]"
               priority
               resource={media}
             />
