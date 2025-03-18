@@ -58,16 +58,16 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   }
 
   const colsSpanClasses: Record<ContentColumnSize, string> = {
-    full: '12',
-    fourFifths: '10',
-    threeQuarters: '9',
-    twoThirds: '8',
-    threeFifths: '7',
-    half: '6',
-    twoFifths: '5',
-    oneThird: '4',
-    oneQuarter: '3',
-    oneFifth: '2',
+    full: '100%',
+    fourFifths: '80%',
+    threeQuarters: '75%',
+    twoThirds: '66.67%',
+    threeFifths: '60%',
+    half: '50%',
+    twoFifths: '40%',
+    oneThird: '33.33%',
+    oneQuarter: '25%',
+    oneFifth: '20%',
   }
 
   const verticalAlignmentClasses: Record<VerticalAlignment, string> = {
@@ -117,10 +117,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
           return (
             <div
               key={`row-${rowIndex}`}
-              className={cn(
-                'grid grid-cols-12 gap-y-8 gap-x-8 lg:gap-x-16 mb-16 last:mb-0',
-                rowSpacingClasses,
-              )}
+              className={cn('flex flex-wrap last:mb-0', rowSpacingClasses)}
             >
               {row.columns?.map((column, columnIndex: number) => {
                 const size = column.size || 'full'
@@ -128,29 +125,45 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                 const horizontalAlignment = column.horizontalAlignment || 'top'
                 const columnSpacingClasses = extractSpacingClasses(column.spacingClasses)
 
+                // Get the responsive width classes based on column size
+                const getResponsiveWidthClasses = (size: ContentColumnSize) => {
+                  switch (size) {
+                    case 'oneFifth':
+                      return 'max-w-[50%] md:max-w-[33.3%] lg:max-w-[20%]'
+                    case 'oneQuarter':
+                      return 'w-full md:max-w-[50%] lg:max-w-[25%]'
+                    case 'oneThird':
+                      return 'w-full md:max-w-[50%] lg:max-w-[33.3%]'
+                    case 'twoFifths':
+                      return 'w-full md:max-w-[50%] lg:max-w-[40%]'
+                    case 'half':
+                      return 'w-full md:max-w-[50%]'
+                    case 'threeFifths':
+                      return 'w-full md:max-w-[50%] lg:max-w-[60%]'
+                    case 'twoThirds':
+                      return 'w-full md:max-w-[50%] lg:max-w-[66.6%]'
+                    case 'threeQuarters':
+                      return 'w-full md:max-w-[50%] lg:max-w-[75%]'
+                    case 'fourFifths':
+                      return 'w-full md:max-w-[50%] lg:max-w-[80%]'
+                    case 'full':
+                    default:
+                      return 'w-full'
+                  }
+                }
+
                 return (
                   <div
                     key={`column-${columnIndex}`}
                     className={cn(
-                      `lg:col-span-${colsSpanClasses[size]}`,
-                      {
-                        'col-span-6 md:col-span-4 xl:col-span-2': size === 'oneFifth',
-                        'col-span-6 md:col-span-3 xl:col-span-3': size === 'oneQuarter',
-                        'col-span-12 md:col-span-6 xl:col-span-4': size === 'oneThird',
-                        'col-span-12 md:col-span-6 xl:col-span-5': size === 'twoFifths',
-                        'col-span-12 md:col-span-6 xl:col-span-6': size === 'half',
-                        'col-span-12 md:col-span-6 xl:col-span-7': size === 'threeFifths',
-                        'col-span-12 md:col-span-6 xl:col-span-8': size === 'twoThirds',
-                        'col-span-12 md:col-span-9 xl:col-span-9': size === 'threeQuarters',
-                        'col-span-12 md:col-span-8 xl:col-span-10': size === 'fourFifths',
-                        'col-span-12': size === 'full',
-                      },
+                      'flex-grow p-6 md:p-8 mb-16',
+                      getResponsiveWidthClasses(size),
                       columnSpacingClasses,
                     )}
                   >
                     <div
                       className={cn(
-                        'space-y-6 h-full flex flex-col',
+                        'space-y-6 h-full w-full flex flex-col',
                         verticalAlignmentClasses[verticalAlignment],
                         horizontalAlignmentClasses[horizontalAlignment],
                       )}
