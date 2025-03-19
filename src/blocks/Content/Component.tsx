@@ -84,7 +84,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const backgroundClasses = getBackgroundClasses(background)
 
   return (
-    <div className={cn('relative overflow-hidden', backgroundClasses)}>
+    <div className={cn('relative overflow-hidden lg:py-12', backgroundClasses)}>
       {background?.type === 'media' && background.media && (
         <>
           <div className="absolute inset-0 z-0">
@@ -117,7 +117,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
           return (
             <div
               key={`row-${rowIndex}`}
-              className={cn('flex flex-wrap last:mb-0 space-y-16', rowSpacingClasses)}
+              className={cn('flex flex-wrap gap-y-12 last:mb-0', rowSpacingClasses)}
             >
               {row.columns?.map((column, columnIndex: number) => {
                 const size = column.size || 'full'
