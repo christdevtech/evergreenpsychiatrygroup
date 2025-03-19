@@ -110,7 +110,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
           )}
         </>
       )}
-      <div className="container my-16 relative z-10">
+      <div className="container my-16 lg:my-0 relative z-10">
         {rows?.map((row, rowIndex) => {
           const rowSpacingClasses = extractSpacingClasses(row.spacingClasses)
 
