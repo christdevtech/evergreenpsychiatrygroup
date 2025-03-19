@@ -131,7 +131,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                     case 'oneFifth':
                       return 'max-w-[50%] md:max-w-[33.3%] lg:max-w-[20%]'
                     case 'oneQuarter':
-                      return 'w-full md:max-w-[50%] lg:max-w-[25%]'
+                      return 'max-w-[50%] lg:max-w-[25%]'
                     case 'oneThird':
                       return 'w-full md:max-w-[50%] lg:max-w-[33.3%]'
                     case 'twoFifths':
