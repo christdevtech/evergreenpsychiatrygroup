@@ -117,7 +117,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
           return (
             <div
               key={`row-${rowIndex}`}
-              className={cn('flex flex-wrap last:mb-0', rowSpacingClasses)}
+              className={cn('flex flex-wrap last:mb-0 space-y-16', rowSpacingClasses)}
             >
               {row.columns?.map((column, columnIndex: number) => {
                 const size = column.size || 'full'
