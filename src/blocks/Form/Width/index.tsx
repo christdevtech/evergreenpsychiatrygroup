@@ -10,11 +10,11 @@ export const Width: React.FC<{
     const percentage = Number(width)
 
     if (isNaN(percentage)) {
-      return ''
+      return 'col-span-12'
     }
 
     if (percentage < 0 || percentage > 100) {
-      return ''
+      return 'col-span-12'
     }
 
     // Calculate the number of columns based on the percentage

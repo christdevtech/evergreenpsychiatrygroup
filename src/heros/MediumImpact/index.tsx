@@ -28,9 +28,9 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({
             />
           )}
         </div>
-        <div className="lg:min-w-1/3">
+        <div className="lg:min-w-[30%] lg:max-w-[30%]">
           {media && typeof media === 'object' && (
-            <div>
+            <div className="w-full">
               <Media
                 className="rounded-full"
                 imgClassName="rounded-full"
