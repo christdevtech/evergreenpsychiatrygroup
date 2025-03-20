@@ -83,8 +83,7 @@ export const hero: Field = {
       defaultValue: 'Comprehensive mental health services that nurture change and well-being',
       admin: {
         description: 'The subtitle text below the main title',
-        condition: (_, { type }) =>
-          ['glassMorph', 'highImpact', 'mediumImpact', 'lowImpact'].includes(type),
+        condition: (_, { type }) => ['glassMorph', 'highImpact', 'lowImpact'].includes(type),
       },
     },
     textClasses({
@@ -100,8 +99,7 @@ export const hero: Field = {
           'mb-12',
         ],
       },
-      condition: (_, { type }) =>
-        ['glassMorph', 'highImpact', 'mediumImpact', 'lowImpact'].includes(type),
+      condition: (_, { type }) => ['glassMorph', 'highImpact', 'lowImpact'].includes(type),
     }),
     {
       name: 'richText',

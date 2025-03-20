@@ -12,42 +12,44 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({
   media,
   richText,
   richTextClasses,
+  title,
+  titleClasses,
 }) => {
   return (
-    <div className="">
-      <div className="container mb-8">
-        {richText && (
-          <RichText className={cn(richTextClasses, 'mb-6')} data={richText} enableGutter={false} />
-        )}
-
-        {Array.isArray(links) && links.length > 0 && (
-          <ul className="flex gap-4 flex-wrap">
-            {links.map(({ link }, i) => {
-              return (
-                <li key={i}>
-                  <CMSLink {...link} />
-                </li>
-              )
-            })}
-          </ul>
-        )}
-      </div>
-      <div className="container ">
-        {media && typeof media === 'object' && (
-          <div>
-            <Media
-              className="-mx-4 md:-mx-8 2xl:-mx-16"
-              imgClassName=""
-              priority
-              resource={media}
+    <div className="bg-teal-700 relative pb-24">
+      <div className="flex flex-col lg:flex-row gap-16 container py-16">
+        <div className="flex-grow mb-8 flex flex-col gap-4 justify-center">
+          {title && <h2 className={cn(titleClasses, 'mb-6')}>{title}</h2>}
+          {richText && (
+            <RichText
+              className={cn(richTextClasses, 'mb-6')}
+              data={richText}
+              enableGutter={false}
             />
-            {media?.caption && (
-              <div className="mt-3">
-                <RichText data={media.caption} enableGutter={false} />
-              </div>
-            )}
-          </div>
-        )}
+          )}
+        </div>
+        <div className="lg:min-w-1/3">
+          {media && typeof media === 'object' && (
+            <div>
+              <Media
+                className="rounded-full"
+                imgClassName="rounded-full"
+                priority
+                resource={media}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="container flex flex-col lg:flex-row lg:justify-between gap-4 md:rounded-2xl lg:rounded-3xl bg-vistablue-50 py-8 px-4 md:px-16 lg:px-24 items-center absolute left-1/2 transform -translate-x-1/2 bottom-0 translate-y-1/2">
+        <h3 className="text-teal-700 text-center lg:text-left text-2xl md:text-3xl lg:text-4xl font-medium">
+          Ready to see <br className="hidden lg:block" /> one of our providers?
+        </h3>
+        {Array.isArray(links) &&
+          links.length > 0 &&
+          links.map(({ link, buttonClasses }, i) => {
+            return <CMSLink key={i} {...link} className={cn(buttonClasses)} />
+          })}
       </div>
     </div>
   )
