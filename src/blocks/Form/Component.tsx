@@ -130,7 +130,7 @@ export const FormBlock: React.FC<
           {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
           {!hasSubmitted && (
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-              <div className="mb-4 last:mb-0 grid grid-cols-12 gap-4">
+              <div className="mb-4 last:mb-0 grid grid-cols-12 gap-6 md:gap-8 lg:gap-10">
                 {formFromProps &&
                   formFromProps.fields &&
                   formFromProps.fields?.map((field, index) => {
