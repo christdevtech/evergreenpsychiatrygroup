@@ -52,6 +52,10 @@ const contentTypes: Field[] = [
         label: 'Location',
         value: 'location',
       },
+      {
+        label: 'Social',
+        value: 'social',
+      },
     ],
   },
   {
@@ -142,8 +146,71 @@ const contentTypes: Field[] = [
     },
     condition: (_, { contentType }) => contentType === 'location',
   }),
-]
+  {
+    label: 'Social Links',
+    type: 'collapsible',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'social',
+    },
 
+    fields: [
+      {
+        name: 'socialTitle',
+        type: 'text',
+        defaultValue: 'Social Links',
+        required: true,
+      },
+      textClasses({
+        overrides: {
+          name: 'socialTitleClasses',
+          admin: {
+            defaultValue: ['text-2xl', 'font-bold'],
+          },
+        },
+      }),
+      {
+        name: 'socialLinks',
+        type: 'relationship',
+        relationTo: 'socials',
+        hasMany: true,
+      },
+      {
+        name: 'displayLabels',
+        type: 'checkbox',
+        defaultValue: false,
+      },
+      {
+        name: 'orientation',
+        type: 'select',
+        defaultValue: 'horizontal',
+        options: [
+          { label: 'Horizontal', value: 'horizontal' },
+          { label: 'Vertical', value: 'vertical' },
+        ],
+      },
+      {
+        name: 'iconSize',
+        type: 'select',
+        defaultValue: 'small',
+        options: [
+          { label: 'Small', value: 'small' },
+          { label: 'Medium', value: 'medium' },
+          { label: 'Large', value: 'large' },
+        ],
+      },
+      {
+        name: 'gap',
+        type: 'select',
+        defaultValue: 'small',
+        options: [
+          { label: 'Small', value: 'small' },
+          { label: 'Medium', value: 'medium' },
+          { label: 'Large', value: 'large' },
+        ],
+      },
+    ],
+  },
+]
 const columnFields: Field[] = [
   {
     name: 'size',

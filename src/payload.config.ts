@@ -21,6 +21,7 @@ import { getServerSideURL } from './utilities/getURL'
 import { Staff } from './collections/Staff/config'
 import { Specialties } from './collections/Specialties'
 import Faqs from './collections/Faqs'
+import { Socials } from './collections/Socials'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -81,7 +82,18 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [Pages, Posts, Media, Staff, Specialties, Locations, Categories, Users, Faqs],
+  collections: [
+    Pages,
+    Posts,
+    Media,
+    Staff,
+    Specialties,
+    Locations,
+    Categories,
+    Users,
+    Faqs,
+    Socials,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [...plugins],

@@ -3,7 +3,7 @@ import React from 'react'
 import RichText from '@/components/RichText'
 import { Media } from '@/components/Media'
 
-import type { ContentBlock as ContentBlockProps } from '@/payload-types'
+import type { ContentBlock as ContentBlockProps, Social } from '@/payload-types'
 import type { ContentColumnSize, VerticalAlignment } from './config'
 
 import { CMSLink } from '../../components/Link'
@@ -36,6 +36,16 @@ type ExtendedContentItem =
       buttonClasses?: string
     }
   | LocationContentItem
+  | {
+      contentType: 'social'
+      socialTitle?: string
+      socialTitleClasses?: string[]
+      socialLinks?: Social[]
+      displayLabels?: boolean
+      orientation?: 'horizontal' | 'vertical'
+      iconSize?: 'small' | 'medium' | 'large'
+      gap?: 'small' | 'medium' | 'large'
+    }
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { rows, background } = props
@@ -284,6 +294,87 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                                   )}
                                 </div>
                               )
+
+                            case 'social':
+                              const {
+                                socialTitle,
+                                socialTitleClasses,
+                                socialLinks,
+                                displayLabels = false,
+                                orientation = 'horizontal',
+                                iconSize = 'medium',
+                                gap = 'medium',
+                              } = contentItemdata
+
+                              const getSocialIconSize = (size: string) => {
+                                switch (size) {
+                                  case 'small':
+                                    return 'w-6 h-6'
+                                  case 'large':
+                                    return 'w-12 h-12'
+                                  default:
+                                    return 'w-8 h-8'
+                                }
+                              }
+
+                              const getSocialGap = (gap: string) => {
+                                switch (gap) {
+                                  case 'small':
+                                    return 'gap-2'
+                                  case 'large':
+                                    return 'gap-6'
+                                  default:
+                                    return 'gap-4'
+                                }
+                              }
+
+                              return (
+                                <div className="w-full">
+                                  {socialTitle && (
+                                    <h3
+                                      className={cn(
+                                        'text-xl md:text-2xl font-semibold mb-4',
+                                        socialTitleClasses,
+                                      )}
+                                    >
+                                      {socialTitle}
+                                    </h3>
+                                  )}
+                                  <div
+                                    className={cn(
+                                      'flex',
+                                      orientation === 'vertical'
+                                        ? 'flex-col'
+                                        : 'flex-row flex-wrap',
+                                      getSocialGap(gap),
+                                    )}
+                                  >
+                                    {socialLinks?.map((social, index: number) => (
+                                      <a
+                                        key={`social-${index}`}
+                                        href={social.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center hover:opacity-80 transition-opacity text-white"
+                                      >
+                                        {social.icon && (
+                                          <Media
+                                            resource={social.icon}
+                                            className={cn(
+                                              getSocialIconSize(iconSize),
+                                              'object-contain',
+                                            )}
+                                          />
+                                        )}
+                                        {displayLabels && social.platform && (
+                                          <span className="ml-2 text-lg">{social.platform}</span>
+                                        )}
+                                      </a>
+                                    ))}
+                                  </div>
+                                </div>
+                              )
+
                             default:
                               return null
                           }
