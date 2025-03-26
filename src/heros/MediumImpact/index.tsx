@@ -41,7 +41,7 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({
           )}
         </div>
       </div>
-      <div className="container flex flex-col lg:flex-row lg:justify-between gap-4 md:rounded-2xl lg:rounded-3xl bg-vistablue-50 py-8 px-4 md:px-16 lg:px-24 items-center absolute left-1/2 transform -translate-x-1/2 bottom-0 translate-y-1/2">
+      <div className="container flex flex-col lg:flex-row lg:justify-between gap-4 md:rounded-2xl lg:rounded-3xl bg-vistablue-50 py-8 px-4 md:px-16 lg:px-24 items-center absolute left-1/2 transform -translate-x-1/2 bottom-0 translate-y-1/2 shadow-md hover:shadow-lg transition-shadow duration-600">
         <h3 className="text-teal-700 text-center lg:text-left text-2xl md:text-3xl lg:text-4xl font-medium">
           Ready to see <br className="hidden lg:block" /> one of our providers?
         </h3>
