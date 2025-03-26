@@ -22,8 +22,6 @@ jobs:
             cd evergreen
             git checkout -- package.json pnpm-lock.yaml
             git pull origin master
-            echo 'Installing dependencies...'
-            pnpm install
             docker compose build payload_evergreen
             docker compose up -d  
           EOF
