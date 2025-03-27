@@ -399,6 +399,9 @@ const contentTypes: Field[] = [
       },
       bgColorPickerAll({
         condition: (_, { contentType }) => contentType === 'insurances',
+        overrides: {
+          defaultValue: 'bg-cyan-50',
+        },
       }),
     ],
   },
