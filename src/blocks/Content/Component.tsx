@@ -2,9 +2,9 @@ import { cn } from '@/utilities/ui'
 import React from 'react'
 import RichText from '@/components/RichText'
 import { Media } from '@/components/Media'
-
-import type { ContentBlock as ContentBlockProps, Social } from '@/payload-types'
+import type { ContentBlock as ContentBlockProps, Media as MediaType, Social } from '@/payload-types'
 import type { ContentColumnSize, VerticalAlignment } from './config'
+import { InsurancesClient } from './InsurancesClient'
 
 import { CMSLink } from '../../components/Link'
 import { extractSpacingClasses } from '@/fields/spacingClasses'
@@ -49,6 +49,29 @@ type ExtendedContentItem =
   | {
       contentType: 'spacer'
       spacingValue: string
+    }
+  | {
+      contentType: 'insurances'
+      insuranceTitle?: string
+      insuranceTitleClasses?: string[]
+      insuranceImages?: Array<{
+        image?: string | MediaType
+        name?: string
+        url?: string
+      }>
+      gridColumns?: {
+        sm: string
+        md: string
+        lg: string
+        xl: string
+      }
+      infoText?: any
+      showAllButtonText?: string
+      hideAllButtonText?: string
+      allInsurancesList?: Array<{
+        name: string
+      }>
+      bgColor?: string
     }
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
@@ -382,6 +405,33 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                             case 'spacer':
                               const { spacingValue } = contentItemdata
                               return <div className={`h-${spacingValue}`} />
+
+                            case 'insurances':
+                              const {
+                                insuranceTitle,
+                                insuranceTitleClasses,
+                                insuranceImages,
+                                gridColumns,
+                                infoText,
+                                showAllButtonText,
+                                hideAllButtonText,
+                                allInsurancesList,
+                                bgColor,
+                              } = contentItemdata
+
+                              return (
+                                <InsurancesClient
+                                  insuranceTitle={insuranceTitle}
+                                  insuranceTitleClasses={insuranceTitleClasses}
+                                  insuranceImages={insuranceImages}
+                                  gridColumns={gridColumns}
+                                  infoText={infoText}
+                                  showAllButtonText={showAllButtonText}
+                                  hideAllButtonText={hideAllButtonText}
+                                  allInsurancesList={allInsurancesList}
+                                  bgColor={bgColor}
+                                />
+                              )
 
                             default:
                               return null

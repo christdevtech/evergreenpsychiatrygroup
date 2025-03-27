@@ -60,6 +60,10 @@ const contentTypes: Field[] = [
         label: 'Spacer',
         value: 'spacer',
       },
+      {
+        label: 'Insurances',
+        value: 'insurances',
+      },
     ],
   },
   {
@@ -233,6 +237,169 @@ const contentTypes: Field[] = [
           { label: 'Large', value: 'large' },
         ],
       },
+    ],
+  },
+  // Insurance Fields
+  {
+    label: 'Insurance Settings',
+    type: 'collapsible',
+    admin: {
+      condition: (_, { contentType }) => contentType === 'insurances',
+    },
+    fields: [
+      {
+        name: 'insuranceTitle',
+        type: 'text',
+        defaultValue: 'Insurances Accepted',
+        required: true,
+      },
+      textClasses({
+        overrides: {
+          name: 'insuranceTitleClasses',
+          admin: {
+            defaultValue: ['text-4xl', 'font-bold', 'text-center', 'mb-12'],
+          },
+        },
+        condition: (_, { contentType }) => contentType === 'insurances',
+      }),
+      {
+        name: 'insuranceImages',
+        type: 'array',
+        required: true,
+        admin: {
+          description: 'Add insurance logos here. These will be displayed in a grid.',
+        },
+        fields: [
+          {
+            name: 'image',
+            type: 'upload',
+            relationTo: 'media',
+            required: true,
+          },
+          {
+            name: 'name',
+            type: 'text',
+            defaultValue: 'Aetna',
+            required: true,
+          },
+          {
+            name: 'url',
+            type: 'text',
+            defaultValue: '#',
+            admin: {
+              description: 'Optional URL to the insurance website',
+            },
+          },
+        ],
+      },
+      {
+        name: 'gridColumns',
+        type: 'group',
+        admin: {
+          description: 'Configure the number of columns in the grid for different screen sizes',
+        },
+        fields: [
+          {
+            name: 'sm',
+            label: 'Mobile',
+            type: 'select',
+            defaultValue: '2',
+            options: [
+              { label: '1', value: '1' },
+              { label: '2', value: '2' },
+              { label: '3', value: '3' },
+              { label: '4', value: '4' },
+            ],
+          },
+          {
+            name: 'md',
+            label: 'Tablet',
+            type: 'select',
+            defaultValue: '3',
+            options: [
+              { label: '2', value: '2' },
+              { label: '3', value: '3' },
+              { label: '4', value: '4' },
+              { label: '5', value: '5' },
+              { label: '6', value: '6' },
+            ],
+          },
+          {
+            name: 'lg',
+            label: 'Desktop',
+            type: 'select',
+            defaultValue: '4',
+            options: [
+              { label: '3', value: '3' },
+              { label: '4', value: '4' },
+              { label: '5', value: '5' },
+              { label: '6', value: '6' },
+              { label: '7', value: '7' },
+              { label: '8', value: '8' },
+            ],
+          },
+          {
+            name: 'xl',
+            label: 'Large Desktop',
+            type: 'select',
+            defaultValue: '4',
+            options: [
+              { label: '4', value: '4' },
+              { label: '5', value: '5' },
+              { label: '6', value: '6' },
+              { label: '7', value: '7' },
+              { label: '8', value: '8' },
+            ],
+          },
+        ],
+      },
+      {
+        name: 'infoText',
+        type: 'richText',
+        editor: lexicalEditor({
+          features: ({ rootFeatures }) => {
+            return [
+              ...rootFeatures,
+              HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+              FixedToolbarFeature(),
+              InlineToolbarFeature(),
+            ]
+          },
+        }),
+        admin: {
+          description: 'Text that appears below the insurance logos',
+        },
+      },
+      {
+        name: 'showAllButtonText',
+        type: 'text',
+        defaultValue: 'See all accepted insurances',
+        required: true,
+      },
+      {
+        name: 'hideAllButtonText',
+        type: 'text',
+        defaultValue: 'Back to top',
+        required: true,
+      },
+      {
+        name: 'allInsurancesList',
+        type: 'array',
+        admin: {
+          description: 'List of all insurances that will be shown when toggled',
+        },
+        fields: [
+          {
+            name: 'name',
+            type: 'text',
+            defaultValue: 'Aetna',
+            required: true,
+          },
+        ],
+      },
+      bgColorPickerAll({
+        condition: (_, { contentType }) => contentType === 'insurances',
+      }),
     ],
   },
 ]
