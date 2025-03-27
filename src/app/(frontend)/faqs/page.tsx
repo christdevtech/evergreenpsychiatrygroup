@@ -209,8 +209,8 @@ export default async function Faqs() {
         resources: [
           {
             icon: {
-              id: '67e472e4bafe049ffacd1222',
-              alt: 'location',
+              id: '67e4dfa3cfeef98b11172cb0',
+              alt: 'location Icon',
               filename: 'locationCyan.svg',
               mimeType: 'image/svg+xml',
               filesize: 624,
@@ -246,8 +246,8 @@ export default async function Faqs() {
                   url: null,
                 },
               },
-              createdAt: '2025-03-26T21:34:28.739Z',
-              updatedAt: '2025-03-26T21:34:28.739Z',
+              createdAt: '2025-03-27T05:18:27.304Z',
+              updatedAt: '2025-03-27T05:18:27.304Z',
               url: '/api/media/file/locationCyan.svg',
               thumbnailURL: null,
             },
@@ -258,8 +258,8 @@ export default async function Faqs() {
 
           {
             icon: {
-              id: '67e4732ebafe049ffacd12bf',
-              alt: 'phone',
+              id: '67e4dfa2cfeef98b11172cac',
+              alt: 'Phone Icon',
               filename: 'phoneCyan.svg',
               mimeType: 'image/svg+xml',
               filesize: 753,
@@ -295,8 +295,8 @@ export default async function Faqs() {
                   url: null,
                 },
               },
-              createdAt: '2025-03-26T21:35:42.117Z',
-              updatedAt: '2025-03-26T21:35:42.117Z',
+              createdAt: '2025-03-27T05:18:26.987Z',
+              updatedAt: '2025-03-27T05:18:26.987Z',
               url: '/api/media/file/phoneCyan.svg',
               thumbnailURL: null,
             },
@@ -350,8 +350,8 @@ export default async function Faqs() {
         resources: [
           {
             icon: {
-              id: '67e4732ebafe049ffacd12bf',
-              alt: 'phone',
+              id: '67e4dfa2cfeef98b11172cac',
+              alt: 'Phone Icon',
               filename: 'phoneCyan.svg',
               mimeType: 'image/svg+xml',
               filesize: 753,
@@ -387,8 +387,8 @@ export default async function Faqs() {
                   url: null,
                 },
               },
-              createdAt: '2025-03-26T21:35:42.117Z',
-              updatedAt: '2025-03-26T21:35:42.117Z',
+              createdAt: '2025-03-27T05:18:26.987Z',
+              updatedAt: '2025-03-27T05:18:26.987Z',
               url: '/api/media/file/phoneCyan.svg',
               thumbnailURL: null,
             },
@@ -399,7 +399,8 @@ export default async function Faqs() {
 
           {
             icon: {
-              id: '67e473bfbafe049ffacd14f2',
+              id: '67e4dfa2cfeef98b11172ca8',
+              alt: 'Web Link',
               filename: 'Cursor Square.svg',
               mimeType: 'image/svg+xml',
               filesize: 1251,
@@ -435,8 +436,8 @@ export default async function Faqs() {
                   url: null,
                 },
               },
-              createdAt: '2025-03-26T21:38:07.083Z',
-              updatedAt: '2025-03-26T21:38:07.083Z',
+              createdAt: '2025-03-27T05:18:26.648Z',
+              updatedAt: '2025-03-27T05:18:26.648Z',
               url: '/api/media/file/Cursor%20Square.svg',
               thumbnailURL: null,
             },
