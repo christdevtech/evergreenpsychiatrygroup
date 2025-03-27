@@ -186,9 +186,9 @@ export const PatientRegistration: React.FC<Props> = (props) => {
                             forceMount
                           >
                             <div className={cn('flex flex-col gap-8 p-6 lg:p-12')}>
-                              <div className="w-24 lg:w-32 xl:w-40">
+                              <div className="w-32 xl:w-40">
                                 {option.media?.media && (
-                                  <div className="h-full mb-6">
+                                  <div className="h-full">
                                     <Media
                                       resource={option.media.media}
                                       imgClassName="w-full h-full object-cover rounded-md"
