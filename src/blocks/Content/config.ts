@@ -56,6 +56,31 @@ const contentTypes: Field[] = [
         label: 'Social',
         value: 'social',
       },
+      {
+        label: 'Spacer',
+        value: 'spacer',
+      },
+    ],
+  },
+  {
+    name: 'spacingValue',
+    type: 'select',
+    required: true,
+    admin: {
+      condition: (_, { contentType }) => contentType === 'spacer',
+    },
+    options: [
+      { label: '4 (1rem)', value: '4' },
+      { label: '6 (1.5rem)', value: '6' },
+      { label: '8 (2rem)', value: '8' },
+      { label: '10 (2.5rem)', value: '10' },
+      { label: '12 (3rem)', value: '12' },
+      { label: '16 (4rem)', value: '16' },
+      { label: '20 (5rem)', value: '20' },
+      { label: '24 (6rem)', value: '24' },
+      { label: '32 (8rem)', value: '32' },
+      { label: '40 (10rem)', value: '40' },
+      { label: '48 (12rem)', value: '48' },
     ],
   },
   {

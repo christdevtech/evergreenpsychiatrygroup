@@ -56,23 +56,26 @@ export const GlassMorphHero: React.FC<Page['hero']> = ({
     <div className="relative min-h-[60vh] w-full overflow-hidden">
       {/* Background Image */}
       {media && typeof media === 'object' && (
-        <div className="absolute inset-0 w-full h-full">
-          <Media
-            imgClassName="w-full h-full object-cover"
-            className="w-full h-full object-cover"
-            priority
-            resource={media}
-          />
-        </div>
+        <Media
+          imgClassName="w-full h-full object-cover absolute inset-0"
+          className="object-cover"
+          priority
+          resource={media}
+        />
       )}
 
       {/* Content Container */}
       <div className={cn('container relative py-16', mobileSpacingClasses)}>
-        <div className={cn('w-full md:w-[45%]', glassClasses)}>
+        <div className={cn('w-full md:w-[70%] lg:w-[50%] xl:w-[45%]', glassClasses)}>
           <h1 className={cn(titleClasses)}>{title}</h1>
           <p className={cn(subtitleClasses)}>{subtitle}</p>
           {richText && (
-            <RichText className={cn(richTextClasses)} data={richText} enableGutter={false} />
+            <RichText
+              className={cn(richTextClasses)}
+              data={richText}
+              enableProse={false}
+              enableGutter={false}
+            />
           )}
           {Array.isArray(links) && links.length > 0 && (
             <ul className="flex flex-wrap gap-4 mt-6">

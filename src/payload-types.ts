@@ -8400,7 +8400,8 @@ export interface ContentBlock {
               horizontalAlignment?: ('top' | 'center' | 'bottom') | null;
               content?:
                 | {
-                    contentType: 'richText' | 'link' | 'media' | 'location' | 'social';
+                    contentType: 'richText' | 'link' | 'media' | 'location' | 'social' | 'spacer';
+                    spacingValue?: ('4' | '6' | '8' | '10' | '12' | '16' | '20' | '24' | '32' | '40' | '48') | null;
                     richText?: {
                       root: {
                         type: string;
@@ -44772,6 +44773,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
                 | T
                 | {
                     contentType?: T;
+                    spacingValue?: T;
                     richText?: T;
                     richTextClasses?: T;
                     link?:

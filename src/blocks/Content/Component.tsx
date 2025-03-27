@@ -46,6 +46,10 @@ type ExtendedContentItem =
       iconSize?: 'small' | 'medium' | 'large'
       gap?: 'small' | 'medium' | 'large'
     }
+  | {
+      contentType: 'spacer'
+      spacingValue: string
+    }
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { rows, background } = props
@@ -374,6 +378,10 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                                   </div>
                                 </div>
                               )
+
+                            case 'spacer':
+                              const { spacingValue } = contentItemdata
+                              return <div className={`h-${spacingValue}`} />
 
                             default:
                               return null
