@@ -31,19 +31,57 @@ export default async function Faqs() {
     blockType: 'emergenciesBlock',
     padding: 'py-16 md:py-24',
     backgroundColor: 'bg-teal-600',
-    title: 'Emergencies',
+    title: 'Emergency and Support <br />Resources',
 
-    titleClasses: [
-      'text-4xl',
-      'font-semibold',
-      'text-white',
-      'md:text-center',
-      'mb-8',
-      'md:mb-12',
-      'mt-8',
-    ],
+    titleClasses: ['text-4xl', 'font-semibold', 'text-white', 'md:text-center', 'mb-12'],
 
     mainText: {
+      root: {
+        children: [
+          {
+            children: [
+              {
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Evergreen Psychiatry Group offers outpatient clinic services only with limited office hours. Patients are seen on an appointment basis only. In case of an emergency, please browse our emergency resources to find a service that suits your needs. ',
+                type: 'text',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            type: 'paragraph',
+            version: 1,
+            textFormat: 0,
+            textStyle: '',
+          },
+        ],
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        type: 'root',
+        version: 1,
+      },
+    },
+
+    mainTextClasses: [
+      'text-xl',
+      'text-white',
+      'md:text-center',
+      'mb-16',
+      'lg:w-7/10',
+      'w-4/5',
+      'font-medium',
+      'mx-auto',
+    ],
+    subtitle: 'Emergencies',
+
+    subtitleClasses: ['text-2xl', 'md:text-3xl', 'font-semibold', 'text-white', 'mb-12'],
+
+    subText: {
       root: {
         children: [
           {
@@ -67,11 +105,6 @@ export default async function Faqs() {
                 type: 'text',
                 version: 1,
               },
-
-              {
-                type: 'linebreak',
-                version: 1,
-              },
             ],
             direction: 'ltr',
             format: '',
@@ -90,35 +123,27 @@ export default async function Faqs() {
       },
     },
 
-    mainTextClasses: [
-      'text-xl',
-      'md:text-2xl',
-      'text-white',
-      'md:text-center',
-      'mb-16',
-      'lg:w-7/10',
-      'w-4/5',
-    ],
+    subTextClasses: ['text-xl', 'md:text-2xl', 'text-white', 'mb-12'],
 
     emergencyCases: {
       title: 'Sample Emergency Cases',
 
-      titleClasses: ['text-xl', 'md:text-2xl', 'text-white', 'mb-6'],
+      titleClasses: ['text-xl', 'md:text-2xl', 'lg:text-3xl', 'font-semibold', 'text-white'],
 
       cases: [
         {
           text: 'Thinking of harming yourself or dying',
-          id: '67c74bb381564529d20c6ea1',
+          id: '67e46c993b1b99004bf3e8ad',
         },
 
         {
           text: 'Thinking of hurting others',
-          id: '67c74bc981564529d20c6ea3',
+          id: '67e46ca03b1b99004bf3e8af',
         },
 
         {
           text: 'Sudden or different reactions to prescribed medications',
-          id: '67c74bd081564529d20c6ea5',
+          id: '67e46ca73b1b99004bf3e8b1',
         },
       ],
     },
@@ -126,20 +151,304 @@ export default async function Faqs() {
     suicideHotline: {
       title: 'National Suicide Prevention Lifeline',
 
-      titleClasses: ['text-xl', 'md:text-2xl', 'text-white', 'mb-6'],
+      titleClasses: ['text-xl', 'md:text-2xl', 'lg:text-3xl', 'font-semibold', 'text-white'],
 
       phoneNumbers: [
         {
           number: '1-800-TALK (8255) / 1-800-273-8255',
-          id: '67c74bd981564529d20c6ea7',
+          id: '67e46cb33b1b99004bf3e8b3',
         },
 
         {
           number: '1-800-SUICIDE / 1-800-784-2433',
-          id: '67c74be281564529d20c6ea9',
+          id: '67e46cbd3b1b99004bf3e8b5',
         },
       ],
     },
+
+    localizedResources: [
+      {
+        title: 'Guilford County Human Resources',
+
+        titleClasses: ['text-2xl', 'md:text-3xl', 'font-semibold', 'text-white', 'mb-8'],
+
+        description: {
+          root: {
+            children: [
+              {
+                children: [
+                  {
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'For 24/7 walk-up access to mental health services for Guilford County children (4+), adolescents, and adults, please visit the new Guilford County Behavioural Health Center for immediate assistance with mental health and substance abuse issues.',
+                    type: 'text',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                type: 'paragraph',
+                version: 1,
+                textFormat: 0,
+                textStyle: '',
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            type: 'root',
+            version: 1,
+          },
+        },
+
+        descriptionClasses: ['text-xl', 'md:text-2xl', 'text-white', 'font-light', 'mb-4'],
+
+        resources: [
+          {
+            icon: {
+              id: '67e472e4bafe049ffacd1222',
+              alt: 'location',
+              filename: 'locationCyan.svg',
+              mimeType: 'image/svg+xml',
+              filesize: 624,
+              width: 84,
+              height: 108,
+
+              sizes: {
+                thumbnail: {
+                  url: null,
+                },
+
+                square: {
+                  url: null,
+                },
+
+                small: {
+                  url: null,
+                },
+
+                medium: {
+                  url: null,
+                },
+
+                large: {
+                  url: null,
+                },
+
+                xlarge: {
+                  url: null,
+                },
+
+                og: {
+                  url: null,
+                },
+              },
+              createdAt: '2025-03-26T21:34:28.739Z',
+              updatedAt: '2025-03-26T21:34:28.739Z',
+              url: '/api/media/file/locationCyan.svg',
+              thumbnailURL: null,
+            },
+            link: '#',
+            text: '931 Third Street in Greensboro, NC.',
+            id: '67e474932e9f3cd63ae56985',
+          },
+
+          {
+            icon: {
+              id: '67e4732ebafe049ffacd12bf',
+              alt: 'phone',
+              filename: 'phoneCyan.svg',
+              mimeType: 'image/svg+xml',
+              filesize: 753,
+              width: 79,
+              height: 80,
+
+              sizes: {
+                thumbnail: {
+                  url: null,
+                },
+
+                square: {
+                  url: null,
+                },
+
+                small: {
+                  url: null,
+                },
+
+                medium: {
+                  url: null,
+                },
+
+                large: {
+                  url: null,
+                },
+
+                xlarge: {
+                  url: null,
+                },
+
+                og: {
+                  url: null,
+                },
+              },
+              createdAt: '2025-03-26T21:35:42.117Z',
+              updatedAt: '2025-03-26T21:35:42.117Z',
+              url: '/api/media/file/phoneCyan.svg',
+              thumbnailURL: null,
+            },
+            link: 'tel:(336) 890-2700',
+            text: '24-hour Helpline at (336) 890-2700',
+            id: '67e474ae2e9f3cd63ae5698a',
+          },
+        ],
+        id: '67e472532e9f3cd63ae56975',
+      },
+
+      {
+        title: 'Wake County Human Services',
+
+        titleClasses: ['text-2xl', 'md:text-3xl', 'font-semibold', 'text-white', 'mb-8'],
+
+        description: {
+          root: {
+            children: [
+              {
+                children: [
+                  {
+                    detail: 0,
+                    format: 0,
+                    mode: 'normal',
+                    style: '',
+                    text: 'Wake County Human Services consolidates programs including social services, public health, mental health, job training, child support, housing, and transportation. They can provide information and assistance regarding county mental health programs.',
+                    type: 'text',
+                    version: 1,
+                  },
+                ],
+                direction: 'ltr',
+                format: '',
+                indent: 0,
+                type: 'paragraph',
+                version: 1,
+                textFormat: 0,
+                textStyle: '',
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            type: 'root',
+            version: 1,
+          },
+        },
+
+        descriptionClasses: ['text-xl', 'md:text-2xl', 'text-white', 'font-light', 'mb-4'],
+
+        resources: [
+          {
+            icon: {
+              id: '67e4732ebafe049ffacd12bf',
+              alt: 'phone',
+              filename: 'phoneCyan.svg',
+              mimeType: 'image/svg+xml',
+              filesize: 753,
+              width: 79,
+              height: 80,
+
+              sizes: {
+                thumbnail: {
+                  url: null,
+                },
+
+                square: {
+                  url: null,
+                },
+
+                small: {
+                  url: null,
+                },
+
+                medium: {
+                  url: null,
+                },
+
+                large: {
+                  url: null,
+                },
+
+                xlarge: {
+                  url: null,
+                },
+
+                og: {
+                  url: null,
+                },
+              },
+              createdAt: '2025-03-26T21:35:42.117Z',
+              updatedAt: '2025-03-26T21:35:42.117Z',
+              url: '/api/media/file/phoneCyan.svg',
+              thumbnailURL: null,
+            },
+            link: 'tel:919-212-7000',
+            text: ' Helpline : 919-212-7000',
+            id: '67e474ee2e9f3cd63ae5698d',
+          },
+
+          {
+            icon: {
+              id: '67e473bfbafe049ffacd14f2',
+              filename: 'Cursor Square.svg',
+              mimeType: 'image/svg+xml',
+              filesize: 1251,
+              width: 142,
+              height: 142,
+
+              sizes: {
+                thumbnail: {
+                  url: null,
+                },
+
+                square: {
+                  url: null,
+                },
+
+                small: {
+                  url: null,
+                },
+
+                medium: {
+                  url: null,
+                },
+
+                large: {
+                  url: null,
+                },
+
+                xlarge: {
+                  url: null,
+                },
+
+                og: {
+                  url: null,
+                },
+              },
+              createdAt: '2025-03-26T21:38:07.083Z',
+              updatedAt: '2025-03-26T21:38:07.083Z',
+              url: '/api/media/file/Cursor%20Square.svg',
+              thumbnailURL: null,
+            },
+            link: 'https://www.wake.gov',
+            text: 'www.wake.gov',
+            id: '67e475082e9f3cd63ae56992',
+          },
+        ],
+        id: '67e4734e2e9f3cd63ae5697f',
+      },
+    ],
+    id: '67e46c593b1b99004bf3e8ab',
   }
   return (
     <div>
