@@ -58,6 +58,19 @@ export const PatientRegistrationBlock: Block = {
         defaultValue: ['text-lg', 'md:text-xl', 'lg:text-2xl', 'mb-10', 'text-center', 'mx-auto'],
       },
     }),
+    {
+      name: 'optionImageSize',
+      type: 'select',
+      label: 'Option Image Size',
+      options: [
+        { label: 'Small', value: 'small' },
+        { label: 'Medium', value: 'medium' },
+        { label: 'Large', value: 'large' },
+        { label: 'Extra Large', value: 'xlarge' },
+        { label: 'Full', value: 'full' },
+      ],
+      defaultValue: 'large',
+    },
     textClasses({
       overrides: {
         name: 'optionTitleClasses',

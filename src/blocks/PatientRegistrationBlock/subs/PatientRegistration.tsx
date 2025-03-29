@@ -27,6 +27,7 @@ export const PatientRegistration: React.FC<Props> = (props) => {
     optionTitleClasses,
     optionContentClasses,
     optionLinkClasses,
+    optionImageSize,
     className,
     disableInnerContainer = false,
     padding,
@@ -186,7 +187,19 @@ export const PatientRegistration: React.FC<Props> = (props) => {
                             forceMount
                           >
                             <div className={cn('flex flex-col gap-8 p-6 lg:p-12')}>
-                              <div className="w-32 xl:w-40">
+                              <div
+                                className={cn(
+                                  optionImageSize === 'small'
+                                    ? 'w-32 xl:w-40'
+                                    : optionImageSize === 'medium'
+                                      ? 'w-48 xl:w-60'
+                                      : optionImageSize === 'large'
+                                        ? 'w-64 xl:w-80'
+                                        : optionImageSize === 'xlarge'
+                                          ? 'w-80 xl:w-100'
+                                          : 'w-full',
+                                )}
+                              >
                                 {option.media?.media && (
                                   <div className="h-full">
                                     <Media

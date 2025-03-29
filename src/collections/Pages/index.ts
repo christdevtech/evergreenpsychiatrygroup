@@ -18,6 +18,7 @@ import { StaffBlock } from '@/blocks/StaffBlock/config'
 import { BookingBlock } from '@/blocks/BookingBlock/config'
 import { AnchorBlock } from '@/blocks/AnchorBlock/config'
 import { PatientRegistrationBlock } from '@/blocks/PatientRegistrationBlock/config'
+import { ServiceTabsBlock } from '@/blocks/ServiceTabsBlock/config'
 
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
@@ -102,6 +103,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 BookingBlock,
                 AnchorBlock,
                 PatientRegistrationBlock,
+                ServiceTabsBlock,
               ],
               required: true,
               admin: {
