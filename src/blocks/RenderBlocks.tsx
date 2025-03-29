@@ -19,6 +19,7 @@ import { BookingBlock } from './BookingBlock/Component'
 import { AnchorBlock } from './AnchorBlock/Component'
 import { PatientRegistrationBlock } from './PatientRegistrationBlock/Component'
 import { ServiceTabsBlock } from './ServiceTabsBlock/Component'
+import { ConditionsTreatedBlock } from './ConditionsTreatedBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -39,6 +40,7 @@ const blockComponents = {
   anchorBlock: AnchorBlock,
   patientRegistrationBlock: PatientRegistrationBlock,
   serviceTabsBlock: ServiceTabsBlock,
+  conditionsTreatedBlock: ConditionsTreatedBlock,
 }
 
 export const RenderBlocks: React.FC<{

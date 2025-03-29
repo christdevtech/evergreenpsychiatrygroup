@@ -19,6 +19,7 @@ import { BookingBlock } from '@/blocks/BookingBlock/config'
 import { AnchorBlock } from '@/blocks/AnchorBlock/config'
 import { PatientRegistrationBlock } from '@/blocks/PatientRegistrationBlock/config'
 import { ServiceTabsBlock } from '@/blocks/ServiceTabsBlock/config'
+import { ConditionsTreatedBlock } from '@/blocks/ConditionsTreatedBlock/config'
 
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
@@ -104,6 +105,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 AnchorBlock,
                 PatientRegistrationBlock,
                 ServiceTabsBlock,
+                ConditionsTreatedBlock,
               ],
               required: true,
               admin: {
