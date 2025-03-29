@@ -11,6 +11,7 @@ import { linkGroup } from '@/fields/linkGroup'
 import { gradientClasses } from '@/fields/gradientClasses'
 import { textClasses } from '@/fields/textClasses'
 import { glassmorphismField } from '@/fields/glassmorphism'
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
 
 export const hero: Field = {
   name: 'hero',
@@ -46,9 +47,21 @@ export const hero: Field = {
           label: 'Simple Hero',
           value: 'simpleHero',
         },
+        {
+          label: 'Service Hero',
+          value: 'serviceHero',
+        },
       ],
       required: true,
     },
+    bgColorPickerAll({
+      condition: (_, { type }) => ['serviceHero'].includes(type),
+      overrides: {
+        name: 'bgColor',
+        label: 'Background Color',
+        defaultValue: 'bg-cyan-50',
+      },
+    }),
     {
       name: 'title',
       type: 'text',
@@ -57,12 +70,26 @@ export const hero: Field = {
       admin: {
         description: 'The main title of the hero section',
         condition: (_, { type }) =>
-          ['simpleHero', 'highImpact', 'mediumImpact', 'lowImpact', 'glassMorph'].includes(type),
+          [
+            'simpleHero',
+            'highImpact',
+            'mediumImpact',
+            'lowImpact',
+            'glassMorph',
+            'serviceHero',
+          ].includes(type),
       },
     },
     textClasses({
       condition: (_, { type }) =>
-        ['glassMorph', 'highImpact', 'mediumImpact', 'lowImpact', 'simpleHero'].includes(type),
+        [
+          'glassMorph',
+          'highImpact',
+          'mediumImpact',
+          'lowImpact',
+          'simpleHero',
+          'serviceHero',
+        ].includes(type),
       overrides: {
         name: 'titleClasses',
         label: 'Title Styling',
@@ -83,7 +110,8 @@ export const hero: Field = {
       defaultValue: 'Comprehensive mental health services that nurture change and well-being',
       admin: {
         description: 'The subtitle text below the main title',
-        condition: (_, { type }) => ['glassMorph', 'highImpact', 'lowImpact'].includes(type),
+        condition: (_, { type }) =>
+          ['glassMorph', 'highImpact', 'lowImpact', 'serviceHero'].includes(type),
       },
     },
     textClasses({
@@ -99,7 +127,8 @@ export const hero: Field = {
           'mb-12',
         ],
       },
-      condition: (_, { type }) => ['glassMorph', 'highImpact', 'lowImpact'].includes(type),
+      condition: (_, { type }) =>
+        ['glassMorph', 'highImpact', 'lowImpact', 'serviceHero'].includes(type),
     }),
     {
       name: 'richText',
@@ -148,7 +177,7 @@ export const hero: Field = {
       },
       admin: {
         condition: (_, { type }) =>
-          ['glassMorph', 'highImpact', 'mediumImpact', 'lowImpact'].includes(type),
+          ['glassMorph', 'highImpact', 'mediumImpact', 'lowImpact', 'serviceHero'].includes(type),
       },
     },
     textClasses({
@@ -158,14 +187,16 @@ export const hero: Field = {
         defaultValue: ['text-green-800', 'text-2xl', 'md:text-3xl', 'leading-relaxed', 'mb-12'],
       },
       condition: (_, { type } = {}) =>
-        ['lowImpact', 'mediumImpact', 'highImpact', 'glassMorph'].includes(type),
+        ['lowImpact', 'mediumImpact', 'highImpact', 'glassMorph', 'serviceHero'].includes(type),
     }),
     {
       name: 'media',
       type: 'upload',
       admin: {
         condition: (data: any, { type }: { type?: string } = {}) =>
-          ['highImpact', 'mediumImpact', 'glassMorph', 'simpleHero'].includes(type || ''),
+          ['highImpact', 'mediumImpact', 'glassMorph', 'simpleHero', 'serviceHero'].includes(
+            type || '',
+          ),
       },
       relationTo: 'media',
       required: true,
@@ -175,12 +206,14 @@ export const hero: Field = {
         maxRows: 2,
         admin: {
           condition: (_, { type } = {}) =>
-            ['highImpact', 'mediumImpact', 'glassMorph', 'simpleHero'].includes(type),
+            ['highImpact', 'mediumImpact', 'glassMorph', 'simpleHero', 'serviceHero'].includes(
+              type,
+            ),
         },
       },
     }),
     glassmorphismField({
-      condition: (_, { type }) => ['glassMorph'].includes(type),
+      condition: (_, { type }) => ['glassMorph', 'serviceHero'].includes(type),
     }),
     textClasses({
       condition: (_, { type }) => ['glassMorph'].includes(type),

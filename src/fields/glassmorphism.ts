@@ -66,6 +66,17 @@ export const glassmorphismField = (options?: GlassmorphismOptions): Field => {
           { label: 'Green 200 20%', value: 'bg-green-200/20' },
           { label: 'Green 200 50%', value: 'bg-green-200/50' },
           { label: 'Green 200 75%', value: 'bg-green-200/75' },
+          //teal 700 options
+          { label: 'Teal 700 10%', value: 'bg-teal-700/10' },
+          { label: 'Teal 700 20%', value: 'bg-teal-700/20' },
+          { label: 'Teal 700 30%', value: 'bg-teal-700/30' },
+          { label: 'Teal 700 40%', value: 'bg-teal-700/40' },
+          { label: 'Teal 700 50%', value: 'bg-teal-700/50' },
+          { label: 'Teal 700 60%', value: 'bg-teal-700/60' },
+          { label: 'Teal 700 70%', value: 'bg-teal-700/70' },
+          { label: 'Teal 700 80%', value: 'bg-teal-700/80' },
+          { label: 'Teal 700 90%', value: 'bg-teal-700/90' },
+          { label: 'Teal 700 100%', value: 'bg-teal-700/100' },
         ],
       },
       {
