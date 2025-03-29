@@ -1,7 +1,6 @@
 import type { Block } from 'payload'
 import { textClasses } from '@/fields/textClasses'
 import { buttonClasses } from '@/fields/buttonClasses'
-import { link } from '@/fields/link'
 import { bgColorPickerAll } from '@/fields/bgColorPicker'
 import { linkGroup } from '@/fields/linkGroup'
 
@@ -24,14 +23,14 @@ export const ServiceTabsBlock: Block = {
       overrides: {
         name: 'blockBGColor',
         label: 'Block Background Color',
-        defaultValue: 'bg-slate-50',
+        defaultValue: 'bg-cyan-50',
       },
     }),
     bgColorPickerAll({
       overrides: {
         name: 'buttonBGColor',
         label: 'Active Button Background Color',
-        defaultValue: 'bg-finlandia-500',
+        defaultValue: 'bg-white',
       },
     }),
     {
@@ -47,18 +46,26 @@ export const ServiceTabsBlock: Block = {
         defaultValue: ['text-3xl', 'md:text-4xl', 'font-semibold', 'mb-8'],
       },
     }),
-    // {
-    //   name: 'description',
-    //   type: 'textarea',
-    //   label: 'Block Description',
-    //   defaultValue: 'Book an appointment with one of our providers',
-    // },
-    // textClasses({
-    //   overrides: {
-    //     name: 'descriptionClasses',
-    //     defaultValue: ['text-lg', 'mb-10'],
-    //   },
-    // }),
+    {
+      name: 'description',
+      type: 'textarea',
+      label: 'Block Description',
+      defaultValue: 'Book an appointment with one of our providers',
+    },
+    textClasses({
+      overrides: {
+        name: 'descriptionClasses',
+        defaultValue: [
+          'text-white',
+          'mb-10',
+          'text-lg',
+          'md:text-xl',
+          'lg:text-2xl',
+          'xl:text-3xl',
+          'font-bold',
+        ],
+      },
+    }),
     textClasses({
       overrides: {
         name: 'serviceHeadingClasses',
@@ -96,7 +103,7 @@ export const ServiceTabsBlock: Block = {
         admin: {
           description: 'These classes will be applied to service tab buttons',
         },
-        defaultValue: ['text-left', 'py-4', 'px-6', 'rounded-full', 'text-xl'],
+        defaultValue: ['py-4', 'px-6', 'rounded-full', 'text-xl'],
       },
     }),
     {

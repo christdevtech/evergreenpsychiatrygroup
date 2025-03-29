@@ -12,10 +12,10 @@ type Props = ServiceTabsBlockType & {
 }
 
 export const ServiceTabsBlock: React.FC<Props> = (props) => {
-  const { className, padding, blockBGColor } = props
+  const { className, blockBGColor } = props
 
   return (
-    <div className={cn(padding, className, blockBGColor)}>
+    <div className={cn(className, blockBGColor)}>
       <ServiceTabs {...props} />
     </div>
   )

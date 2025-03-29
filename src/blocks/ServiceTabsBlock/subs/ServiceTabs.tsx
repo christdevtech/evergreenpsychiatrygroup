@@ -20,6 +20,8 @@ export const ServiceTabs: React.FC<Props> = (props) => {
   const {
     title,
     titleClasses,
+    description,
+    descriptionClasses,
     services,
     serviceHeadingClasses,
     serviceTextClasses,
@@ -92,12 +94,12 @@ export const ServiceTabs: React.FC<Props> = (props) => {
 
   return (
     <div className={cn(className)}>
-      <div className={cn('container mx-auto', { 'px-4 md:px-6': !disableInnerContainer })}>
+      <div className={cn('w-full', { 'px-4 md:px-6': !disableInnerContainer })}>
         <Tabs defaultValue="0" value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-16 xl:gap-24">
             {/* Left Side: Service Tabs */}
             <div className="md:col-span-1 md:bg-teal-700">
-              <div className="flex flex-col items-center md:items-start p-4 lg:p-8 md:bg-cyan-300">
+              <div className="flex flex-col items-center md:items-start px-4 lg:px-8 py-4 lg:py-16 md:bg-cyan-300">
                 {title && (
                   <h2
                     className={cn(
@@ -109,7 +111,17 @@ export const ServiceTabs: React.FC<Props> = (props) => {
                   </h2>
                 )}
               </div>
-              <TabsList className="hidden md:flex flex-col items-start w-full h-auto bg-teal-700 p-4 lg:p-8 space-y-6">
+              {description && (
+                <p
+                  className={cn(
+                    'px-4 lg:px-8 pt-16',
+                    descriptionClasses ? [...descriptionClasses] : [],
+                  )}
+                >
+                  {description}
+                </p>
+              )}
+              <TabsList className="hidden md:flex flex-col items-start w-full h-auto bg-teal-700 p-4 lg:p-8 mb-16 space-y-10">
                 {services &&
                   services.length > 0 &&
                   services.map((service, index) => (
@@ -176,7 +188,7 @@ export const ServiceTabs: React.FC<Props> = (props) => {
                             className="mt-0 data-[state=active]:block"
                             forceMount
                           >
-                            <div className="flex flex-col items-center md:items-start space-y-8 py-8">
+                            <div className="flex flex-col items-center md:items-start space-y-8 md:space-y-16  py-8 mt-16 justify-center">
                               {/* Media/Image */}
                               <div className="w-1/2 md:w-2/3 lg:w-1/2">
                                 {service.media?.media && (
