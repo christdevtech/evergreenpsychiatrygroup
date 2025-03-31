@@ -74,7 +74,7 @@ export const ConditionsTreatedBlock: React.FC<Props> = (props) => {
           <div className={cn('grid gap-6 lg:gap-12 gap-y-8', gridColsClass)}>
             {conditions.map((condition, index) => (
               <div key={index} className={cn(conditionItemClasses, 'flex items-start gap-4')}>
-                <Circle size={16} fill="currentColor" className="mt-1" />
+                <Circle fill="currentColor" className="mt-1 min-w-4 min-h-4 w-4 h-4" />
                 <span>{condition.name}</span>
               </div>
             ))}
