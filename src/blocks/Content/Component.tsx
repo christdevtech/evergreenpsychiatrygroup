@@ -34,6 +34,8 @@ type ExtendedContentItem =
       media?: any
       richTextClasses?: string
       buttonClasses?: string
+      enableProse?: boolean
+      enableGutter?: boolean
     }
   | LocationContentItem
   | {
@@ -211,12 +213,13 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
 
                           switch (contentType) {
                             case 'richText':
-                              const { richText, richTextClasses } = contentItemdata
+                              const { richText, richTextClasses, enableProse, enableGutter } =
+                                contentItemdata
                               return richText ? (
                                 <RichText
                                   data={richText}
-                                  enableGutter={false}
-                                  enableProse={false}
+                                  enableGutter={enableGutter}
+                                  enableProse={enableProse}
                                   className={cn(richTextClasses)}
                                 />
                               ) : null

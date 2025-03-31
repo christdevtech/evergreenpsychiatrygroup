@@ -1,11 +1,20 @@
 import type { Block, Field } from 'payload'
 
 import {
+  AlignFeature,
+  BlocksFeature,
+  ChecklistFeature,
   FixedToolbarFeature,
   HeadingFeature,
+  HorizontalRuleFeature,
   InlineToolbarFeature,
   lexicalEditor,
+  OrderedListFeature,
+  UnorderedListFeature,
 } from '@payloadcms/richtext-lexical'
+import { Banner } from '../../blocks/Banner/config'
+import { Code } from '../../blocks/Code/config'
+import { MediaBlock } from '../../blocks/MediaBlock/config'
 
 import { link } from '@/fields/link'
 import { bgColorPickerAll } from '@/fields/bgColorPicker'
@@ -13,6 +22,8 @@ import { gradientClasses } from '@/fields/gradientClasses'
 import { textClasses } from '@/fields/textClasses'
 import { spacingClasses } from '@/fields/spacingClasses'
 import { buttonClasses } from '@/fields/buttonClasses'
+import { ImageTextBlock } from '../ImageTextBlock/config'
+import { FormBlock } from '../Form/config'
 
 export type ContentColumnSize =
   | 'oneFifth'
@@ -95,8 +106,14 @@ const contentTypes: Field[] = [
         return [
           ...rootFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+          BlocksFeature({ blocks: [Banner, Code, MediaBlock, ImageTextBlock, FormBlock] }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
+          HorizontalRuleFeature(),
+          ChecklistFeature(),
+          OrderedListFeature(),
+          UnorderedListFeature(),
+          AlignFeature(),
         ]
       },
     }),
@@ -110,6 +127,22 @@ const contentTypes: Field[] = [
     },
     condition: (_, { contentType }) => contentType === 'richText',
   }),
+  {
+    name: 'enableProse',
+    type: 'checkbox',
+    defaultValue: false,
+    admin: {
+      condition: (_, { contentType }) => contentType === 'richText',
+    },
+  },
+  {
+    name: 'enableGutter',
+    type: 'checkbox',
+    defaultValue: false,
+    admin: {
+      condition: (_, { contentType }) => contentType === 'richText',
+    },
+  },
   link({
     overrides: {
       admin: {

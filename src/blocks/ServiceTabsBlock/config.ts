@@ -43,7 +43,7 @@ export const ServiceTabsBlock: Block = {
     textClasses({
       overrides: {
         name: 'titleClasses',
-        defaultValue: ['text-3xl', 'md:text-4xl', 'font-semibold', 'mb-8'],
+        defaultValue: ['text-3xl', 'md:text-4xl', 'font-semibold'],
       },
     }),
     {

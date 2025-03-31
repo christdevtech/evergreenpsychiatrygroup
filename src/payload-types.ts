@@ -9512,6 +9512,8 @@ export interface ContentBlock {
                           | 'lg:tracking-widest'
                         )[]
                       | null;
+                    enableProse?: boolean | null;
+                    enableGutter?: boolean | null;
                     link?: {
                       type?: ('reference' | 'custom') | null;
                       newTab?: boolean | null;
@@ -59501,6 +59503,8 @@ export interface ContentBlockSelect<T extends boolean = true> {
                     spacingValue?: T;
                     richText?: T;
                     richTextClasses?: T;
+                    enableProse?: T;
+                    enableGutter?: T;
                     link?:
                       | T
                       | {
