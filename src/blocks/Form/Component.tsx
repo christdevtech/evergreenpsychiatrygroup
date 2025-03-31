@@ -7,6 +7,8 @@ import { useForm, FormProvider } from 'react-hook-form'
 import RichText from '@/components/RichText'
 import { Button } from '@/components/ui/button'
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
+import { toast } from '@/components/ui/toast'
+import { Loader2, X } from 'lucide-react'
 
 import { fields } from './fields'
 import { getClientSideURL } from '@/utilities/getURL'
@@ -34,14 +36,31 @@ export const FormBlock: React.FC<
     bgColor,
   } = props
 
+  // Create an empty default values object based on the form fields
+  const getDefaultValues = () => {
+    const defaultValues: Record<string, any> = {}
+
+    if (formFromProps.fields) {
+      formFromProps.fields.forEach((field) => {
+        // Use field.blockName as the key for each form field
+        if (field.blockName) {
+          defaultValues[field.blockName] = ''
+        }
+      })
+    }
+
+    return defaultValues
+  }
+
   const formMethods = useForm({
-    defaultValues: formFromProps.fields as any,
+    defaultValues: getDefaultValues(),
   })
   const {
     control,
     formState: { errors },
     handleSubmit,
     register,
+    reset,
   } = formMethods
 
   const [isLoading, setIsLoading] = useState(false)
@@ -50,7 +69,7 @@ export const FormBlock: React.FC<
   const router = useRouter()
 
   const onSubmit = useCallback(
-    (data: FormFieldBlock[]) => {
+    (data: Record<string, any>) => {
       let loadingTimerID: ReturnType<typeof setTimeout>
       const submitForm = async () => {
         setError(undefined)
@@ -84,9 +103,21 @@ export const FormBlock: React.FC<
           if (req.status >= 400) {
             setIsLoading(false)
 
+            const errorMessage = res.errors?.[0]?.message || 'Internal Server Error'
+
             setError({
-              message: res.errors?.[0]?.message || 'Internal Server Error',
+              message: errorMessage,
               status: res.status,
+            })
+
+            // Show error toast
+            toast.error(errorMessage, {
+              description: `Error ${res.status || 500}`,
+              duration: Infinity,
+              action: {
+                label: 'Close',
+                onClick: () => {},
+              },
             })
 
             return
@@ -94,6 +125,22 @@ export const FormBlock: React.FC<
 
           setIsLoading(false)
           setHasSubmitted(true)
+
+          // Reset the form after successful submission with empty values
+          reset(getDefaultValues())
+
+          // Show success toast
+          if (confirmationMessage) {
+            toast.success('Form submitted successfully', {
+              description: 'Thank you for your submission',
+              duration: Infinity,
+              action: {
+                label: 'Close',
+                onClick: () => {},
+              },
+              position: 'top-center',
+            })
+          }
 
           if (confirmationType === 'redirect' && redirect) {
             const { url } = redirect
@@ -105,15 +152,28 @@ export const FormBlock: React.FC<
         } catch (err) {
           console.warn(err)
           setIsLoading(false)
+
+          const errorMessage = 'Something went wrong.'
+
           setError({
-            message: 'Something went wrong.',
+            message: errorMessage,
+          })
+
+          // Show error toast
+          toast.error(errorMessage, {
+            description: 'Please try again later',
+            duration: Infinity,
+            action: {
+              label: 'Close',
+              onClick: () => {},
+            },
           })
         }
       }
 
       void submitForm()
     },
-    [router, formID, redirect, confirmationType],
+    [router, formID, redirect, confirmationType, confirmationMessage, reset],
   )
 
   return (
@@ -123,12 +183,8 @@ export const FormBlock: React.FC<
       )}
       <div className={cn(bgColor)}>
         <FormProvider {...formMethods}>
-          {!isLoading && hasSubmitted && confirmationType === 'message' && (
-            <RichText data={confirmationMessage} />
-          )}
-          {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
           {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
-          {!hasSubmitted && (
+          {
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-4 last:mb-0 grid grid-cols-12 gap-6 md:gap-8 lg:gap-10">
                 {formFromProps &&
@@ -158,12 +214,19 @@ export const FormBlock: React.FC<
                 form={formID}
                 type="submit"
                 variant="default"
-                className="bg-green-600 text-white text-lg px-12 py-6 rounded-lg"
+                disabled={isLoading}
+                className="bg-green-600 text-white text-lg px-12 py-6 rounded-lg mt-8"
               >
-                {submitButtonLabel}
+                {isLoading ? (
+                  <div className="flex items-center gap-2">
+                    Submitting <Loader2 className="animate-spin" />
+                  </div>
+                ) : (
+                  submitButtonLabel
+                )}
               </Button>
             </form>
-          )}
+          }
         </FormProvider>
       </div>
     </div>
