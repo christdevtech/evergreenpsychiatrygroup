@@ -24,6 +24,7 @@ import { spacingClasses } from '@/fields/spacingClasses'
 import { buttonClasses } from '@/fields/buttonClasses'
 import { ImageTextBlock } from '../ImageTextBlock/config'
 import { FormBlock } from '../Form/config'
+import { colorSelector } from '@/fields/colorSelector'
 
 export type ContentColumnSize =
   | 'oneFifth'
@@ -615,11 +616,6 @@ export const Content: Block = {
   interfaceName: 'ContentBlock',
   fields: [
     {
-      name: 'background',
-      type: 'group',
-      fields: backgroundFields,
-    },
-    {
       name: 'rows',
       type: 'array',
       label: 'Content Rows',
@@ -634,7 +630,151 @@ export const Content: Block = {
           minRows: 1,
           fields: columnFields,
         },
+        {
+          name: 'flexDirection',
+          type: 'group',
+          label: 'Flex Direction',
+          fields: [
+            {
+              name: 'mobile',
+              type: 'select',
+              defaultValue: 'row',
+              options: [
+                {
+                  label: 'Row (Left to Right)',
+                  value: 'row',
+                },
+                {
+                  label: 'Row Reverse (Right to Left)',
+                  value: 'row-reverse',
+                },
+                {
+                  label: 'Column (Top to Bottom)',
+                  value: 'column',
+                },
+                {
+                  label: 'Column Reverse (Bottom to Top)',
+                  value: 'column-reverse',
+                },
+              ],
+            },
+            {
+              name: 'desktop',
+              type: 'select',
+              defaultValue: 'row',
+              options: [
+                {
+                  label: 'Row (Left to Right)',
+                  value: 'row',
+                },
+                {
+                  label: 'Row Reverse (Right to Left)',
+                  value: 'row-reverse',
+                },
+                {
+                  label: 'Column (Top to Bottom)',
+                  value: 'column',
+                },
+                {
+                  label: 'Column Reverse (Bottom to Top)',
+                  value: 'column-reverse',
+                },
+              ],
+            },
+          ],
+        },
         spacingClasses(),
+      ],
+    },
+    {
+      name: 'background',
+      type: 'group',
+      fields: backgroundFields,
+    },
+    {
+      name: 'separator',
+      type: 'group',
+      label: 'Content Separator',
+      fields: [
+        {
+          name: 'enabled',
+          type: 'checkbox',
+          label: 'Enable Separator',
+          defaultValue: false,
+        },
+        colorSelector({
+          overrides: {
+            name: 'color',
+            label: 'Separator Color',
+            defaultValue: 'teal-600',
+          },
+          admin: {
+            condition: (_, { enabled }) => enabled,
+          },
+        }),
+        {
+          name: 'thickness',
+          type: 'select',
+          label: 'Separator Thickness',
+          defaultValue: '2',
+          options: [
+            { label: 'Thin (0.5px)', value: '0.5' },
+            { label: 'Normal (1px)', value: '1' },
+            { label: 'Medium (2px)', value: '2' },
+            { label: 'Thick (3px)', value: '3' },
+            { label: 'Extra Thick (4px)', value: '4' },
+            { label: 'Huge (5px)', value: '5' },
+          ],
+          admin: {
+            condition: (_, { enabled }) => enabled,
+          },
+        },
+        {
+          name: 'opacity',
+          type: 'select',
+          label: 'Separator Opacity',
+          defaultValue: '100',
+          options: [
+            { label: '100%', value: '100' },
+            { label: '90%', value: '90' },
+            { label: '80%', value: '80' },
+            { label: '70%', value: '70' },
+            { label: '60%', value: '60' },
+            { label: '50%', value: '50' },
+            { label: '40%', value: '40' },
+            { label: '30%', value: '30' },
+            { label: '20%', value: '20' },
+            { label: '10%', value: '10' },
+          ],
+          admin: {
+            condition: (_, { enabled }) => enabled,
+          },
+        },
+        {
+          name: 'margin',
+          type: 'select',
+          label: 'Separator Margin',
+          defaultValue: '8',
+          options: [
+            { label: 'None', value: '0' },
+            { label: 'Small (1rem)', value: '4' },
+            { label: 'Medium (2rem)', value: '8' },
+            { label: 'Large (3rem)', value: '12' },
+            { label: 'Extra Large (4rem)', value: '16' },
+            { label: 'Huge (5rem)', value: '20' },
+            { label: 'Gigantic (6rem)', value: '24' },
+            { label: 'Massive (8rem)', value: '32' },
+            { label: 'Colossal (10rem)', value: '40' },
+            { label: 'Enormous (12rem)', value: '48' },
+            { label: 'Titanic (16rem)', value: '64' },
+            { label: 'Cosmic (20rem)', value: '80' },
+            { label: 'Galactic (24rem)', value: '96' },
+            { label: 'Universal (32rem)', value: '128' },
+          ],
+          admin: {
+            condition: (_, { enabled }) => enabled,
+          },
+        },
       ],
     },
   ],
