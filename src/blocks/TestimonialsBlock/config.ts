@@ -16,21 +16,29 @@ export const TestimonialsBlock: Block = {
     textClasses({
       overrides: {
         name: 'titleClasses',
-        defaultValue: ['text-3xl', 'md:text-4xl', 'lg:text-5xl', 'font-bold', 'mb-8'],
+        defaultValue: [
+          'text-3xl',
+          'md:text-4xl',
+          'lg:text-5xl',
+          'font-bold',
+          'mb-8',
+          'text-center',
+          'text-white',
+        ],
       },
     }),
     bgColorPickerAll({
       overrides: {
         name: 'blockBGColor',
         label: 'Block Background Color',
-        defaultValue: 'bg-white',
+        defaultValue: 'bg-teal-900',
       },
     }),
     bgColorPickerAll({
       overrides: {
         name: 'testimonialBGColor',
         label: 'Testimonial Background Color',
-        defaultValue: 'bg-white',
+        defaultValue: 'bg-slate-50',
       },
     }),
     {

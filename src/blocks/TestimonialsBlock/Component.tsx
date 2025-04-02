@@ -20,18 +20,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockType> = (props) => {
     <div className={cn('w-full relative py-16 md:py-24', blockBGColor)}>
       <div className="container relative z-10">
         {/* Header Section */}
-        <div className="text-center">
-          {title && (
-            <h2
-              className={cn(
-                'text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-center text-white',
-                titleClasses,
-              )}
-            >
-              {title}
-            </h2>
-          )}
-        </div>
+        <div className="text-center">{title && <h2 className={cn(titleClasses)}>{title}</h2>}</div>
 
         {/* Two-column layout for image and testimonials */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-stretch rounded-2xl mt-0 md:mt-16 lg:mt-24">
