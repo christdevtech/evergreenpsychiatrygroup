@@ -22,6 +22,7 @@ import { Staff } from './collections/Staff/config'
 import { Specialties } from './collections/Specialties'
 import Faqs from './collections/Faqs'
 import { Socials } from './collections/Socials'
+import { Testimonials } from './collections/Testimonials'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -93,6 +94,7 @@ export default buildConfig({
     Users,
     Faqs,
     Socials,
+    Testimonials,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],

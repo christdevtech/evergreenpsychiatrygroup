@@ -20,6 +20,7 @@ import { AnchorBlock } from './AnchorBlock/Component'
 import { PatientRegistrationBlock } from './PatientRegistrationBlock/Component'
 import { ServiceTabsBlock } from './ServiceTabsBlock/Component'
 import { ConditionsTreatedBlock } from './ConditionsTreatedBlock/Component'
+import { TestimonialsBlock } from './TestimonialsBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -41,6 +42,7 @@ const blockComponents = {
   patientRegistrationBlock: PatientRegistrationBlock,
   serviceTabsBlock: ServiceTabsBlock,
   conditionsTreatedBlock: ConditionsTreatedBlock,
+  testimonialsBlock: TestimonialsBlock,
 }
 
 export const RenderBlocks: React.FC<{
