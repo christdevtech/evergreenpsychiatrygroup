@@ -26,7 +26,7 @@ export const SimpleHero: React.FC<Page['hero']> = ({ links, media, title, titleC
       {/* Content Container with aspect ratio */}
       <div className="container relative w-full min-h-[65dvh] lg:min-h-[70dvh]">
         {/* Centered content */}
-        <div className="absolute inset-0 flex flex-col justify-center p-4 md:p-8">
+        <div className="absolute inset-0 flex flex-col justify-end md:justify-center px-4 md:px-8 py-16">
           <div className="text-left">
             {title && (
               <h1 className={cn(titleClasses)} dangerouslySetInnerHTML={{ __html: title }} />
