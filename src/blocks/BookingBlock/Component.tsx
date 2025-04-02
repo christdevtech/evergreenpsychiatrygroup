@@ -177,7 +177,7 @@ export const BookingBlock: React.FC<Props> = (props) => {
         </div>
 
         {ending && (
-          <div className="flex flex-col md:flex-row gap-4 md:gap-8 lg:gap-12 md:justify-between md:items-stretch pt-16">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-8 lg:gap-12 md:justify-between md:items-center lg:items-stretch pt-16">
             <div className="flex-1">
               {ending.title && (
                 <h3 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-slate-900">
@@ -185,7 +185,7 @@ export const BookingBlock: React.FC<Props> = (props) => {
                 </h3>
               )}
             </div>
-            <div className="flex gap-2 items-stretch flex-wrap ">
+            <div className="flex gap-2 items-stretch flex-col lg:flex-row ">
               {ending.email && (
                 <Link
                   href={`mailto:${ending.email}`}
