@@ -210,6 +210,17 @@ export const EmergenciesBlock: Block = {
                   label: 'Case Text',
                 },
               ],
+              defaultValue: [
+                {
+                  text: 'Thinking of harming yourself or dying',
+                },
+                {
+                  text: 'Thinking of hurting others',
+                },
+                {
+                  text: 'Sudden or different reactions to prescribed medications',
+                },
+              ],
             },
           ],
         },
@@ -249,6 +260,14 @@ export const EmergenciesBlock: Block = {
                   type: 'text',
                   required: true,
                   label: 'Phone Number',
+                },
+              ],
+              defaultValue: [
+                {
+                  number: '1-800-TALK (8255) / 1-800-273-8255',
+                },
+                {
+                  number: '1-800-SUICIDE / 1-800-784-2433',
                 },
               ],
             },

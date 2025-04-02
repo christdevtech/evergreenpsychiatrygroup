@@ -533,7 +533,14 @@ const columnFields: Field[] = [
     minRows: 1,
     fields: contentTypes,
   },
-  spacingClasses(),
+  {
+    type: 'collapsible',
+    label: 'Spacing and Background',
+    admin: {
+      initCollapsed: true,
+    },
+    fields: [spacingClasses()],
+  },
 ]
 
 const backgroundFields: Field[] = [
@@ -631,59 +638,72 @@ export const Content: Block = {
           fields: columnFields,
         },
         {
-          name: 'flexDirection',
-          type: 'group',
+          type: 'collapsible',
           label: 'Flex Direction',
           fields: [
             {
-              name: 'mobile',
-              type: 'select',
-              defaultValue: 'row',
-              options: [
+              name: 'flexDirection',
+              type: 'group',
+              label: 'Flex Direction',
+              fields: [
                 {
-                  label: 'Row (Left to Right)',
-                  value: 'row',
+                  name: 'mobile',
+                  type: 'select',
+                  defaultValue: 'row',
+                  options: [
+                    {
+                      label: 'Row (Left to Right)',
+                      value: 'row',
+                    },
+                    {
+                      label: 'Row Reverse (Right to Left)',
+                      value: 'row-reverse',
+                    },
+                    {
+                      label: 'Column (Top to Bottom)',
+                      value: 'column',
+                    },
+                    {
+                      label: 'Column Reverse (Bottom to Top)',
+                      value: 'column-reverse',
+                    },
+                  ],
                 },
                 {
-                  label: 'Row Reverse (Right to Left)',
-                  value: 'row-reverse',
-                },
-                {
-                  label: 'Column (Top to Bottom)',
-                  value: 'column',
-                },
-                {
-                  label: 'Column Reverse (Bottom to Top)',
-                  value: 'column-reverse',
-                },
-              ],
-            },
-            {
-              name: 'desktop',
-              type: 'select',
-              defaultValue: 'row',
-              options: [
-                {
-                  label: 'Row (Left to Right)',
-                  value: 'row',
-                },
-                {
-                  label: 'Row Reverse (Right to Left)',
-                  value: 'row-reverse',
-                },
-                {
-                  label: 'Column (Top to Bottom)',
-                  value: 'column',
-                },
-                {
-                  label: 'Column Reverse (Bottom to Top)',
-                  value: 'column-reverse',
+                  name: 'desktop',
+                  type: 'select',
+                  defaultValue: 'row',
+                  options: [
+                    {
+                      label: 'Row (Left to Right)',
+                      value: 'row',
+                    },
+                    {
+                      label: 'Row Reverse (Right to Left)',
+                      value: 'row-reverse',
+                    },
+                    {
+                      label: 'Column (Top to Bottom)',
+                      value: 'column',
+                    },
+                    {
+                      label: 'Column Reverse (Bottom to Top)',
+                      value: 'column-reverse',
+                    },
+                  ],
                 },
               ],
             },
           ],
         },
-        spacingClasses(),
+        {
+          type: 'collapsible',
+          label: 'Spacing',
+          admin: {
+            initCollapsed: true,
+          },
+          fields: [spacingClasses()],
+        },
       ],
     },
     {

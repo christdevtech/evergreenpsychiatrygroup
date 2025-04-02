@@ -99,7 +99,7 @@ export const ServiceTabs: React.FC<Props> = (props) => {
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 lg:gap-16 xl:gap-24">
             {/* Left Side: Service Tabs */}
             <div className="md:col-span-1 lg:col-span-2 md:bg-teal-700">
-              <div className="flex flex-col items-center md:items-start px-4 lg:px-8 xl:px-16 py-4 lg:py-16 md:bg-cyan-300">
+              <div className="flex flex-col items-center md:items-start px-4 lg:px-8 xl:px-16 py-4 lg:py-16 md:bg-cyan-300 mt-16 md:mt-0">
                 {title && (
                   <h2
                     className={cn(
@@ -114,8 +114,8 @@ export const ServiceTabs: React.FC<Props> = (props) => {
               {description && (
                 <p
                   className={cn(
-                    'px-4 lg:px-8 xl:px-16 pt-16',
                     descriptionClasses ? [...descriptionClasses] : [],
+                    'px-4 lg:px-8 xl:px-16 md:pt-16 text-slate-900 md:text-white text-center md:text-left',
                   )}
                 >
                   {description}
@@ -188,7 +188,7 @@ export const ServiceTabs: React.FC<Props> = (props) => {
                             className="mt-0 data-[state=active]:block"
                             forceMount
                           >
-                            <div className="flex flex-col items-center md:items-start space-y-8 md:space-y-16  py-8 mt-16 justify-center">
+                            <div className="flex flex-col items-center md:items-start space-y-8 md:space-y-16  py-8 mt-16 justify-center px-8 md:px-0">
                               {/* Media/Image */}
                               <div className="w-1/2 md:w-2/3 lg:w-1/2">
                                 {service.media?.media && (
