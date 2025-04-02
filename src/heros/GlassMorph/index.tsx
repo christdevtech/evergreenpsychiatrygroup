@@ -8,6 +8,7 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { cn } from '@/utilities/ui'
+import { buttonClasses } from '@/fields/buttonClasses'
 
 interface GlassmorphismConfig {
   enabled?: boolean
@@ -78,18 +79,20 @@ export const GlassMorphHero: React.FC<Page['hero']> = ({
             />
           )}
           {Array.isArray(links) && links.length > 0 && (
-            <ul className="flex flex-wrap gap-4 mt-6">
-              {links.map(({ link }, i) => {
+            <div className="flex flex-wrap justify-center items-center md:justify-start gap-4 mt-6">
+              {links.map(({ link, buttonClasses }, i) => {
                 return (
-                  <li key={i}>
-                    <CMSLink
-                      className="px-6 py-3 md:px-8 md:py-4 rounded-full md:text-lg"
-                      {...link}
-                    />
-                  </li>
+                  <CMSLink
+                    className={cn(
+                      'px-6 py-3 md:px-8 md:py-4 rounded-full md:text-lg',
+                      buttonClasses,
+                    )}
+                    {...link}
+                    key={i}
+                  />
                 )
               })}
-            </ul>
+            </div>
           )}
         </div>
       </div>
