@@ -21,6 +21,7 @@ import { PatientRegistrationBlock } from './PatientRegistrationBlock/Component'
 import { ServiceTabsBlock } from './ServiceTabsBlock/Component'
 import { ConditionsTreatedBlock } from './ConditionsTreatedBlock/Component'
 import { TestimonialsBlock } from './TestimonialsBlock/Component'
+import { SpacingBlock } from './SpacingBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -43,6 +44,8 @@ const blockComponents = {
   serviceTabsBlock: ServiceTabsBlock,
   conditionsTreatedBlock: ConditionsTreatedBlock,
   testimonialsBlock: TestimonialsBlock,
+  spacingBlock: SpacingBlock,
+  spacing: SpacingBlock,
 }
 
 export const RenderBlocks: React.FC<{

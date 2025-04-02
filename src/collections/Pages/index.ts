@@ -35,6 +35,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { SpacingBlock } from '@/blocks/SpacingBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -108,6 +109,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ServiceTabsBlock,
                 ConditionsTreatedBlock,
                 TestimonialsBlock,
+                SpacingBlock,
               ],
               required: true,
               admin: {
