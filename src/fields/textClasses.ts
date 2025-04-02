@@ -964,6 +964,38 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'LG: Tracking - Wide', value: 'lg:tracking-wide' },
       { label: 'LG: Tracking - Wider', value: 'lg:tracking-wider' },
       { label: 'LG: Tracking - Widest', value: 'lg:tracking-widest' },
+
+      // Drop Shadows
+      { label: 'Drop Shadow - None', value: 'drop-shadow-none' },
+      { label: 'Drop Shadow - Sm', value: 'drop-shadow-sm' },
+      { label: 'Drop Shadow - Md', value: 'drop-shadow-md' },
+      { label: 'Drop Shadow - Lg', value: 'drop-shadow-lg' },
+      { label: 'Drop Shadow - Xl', value: 'drop-shadow-xl' },
+      { label: 'Drop Shadow - 2xl', value: 'drop-shadow-2xl' },
+
+      // MD Drop Shadow
+      { label: 'MD: Drop Shadow - None', value: 'md:drop-shadow-none' },
+      { label: 'MD: Drop Shadow - Sm', value: 'md:drop-shadow-sm' },
+      { label: 'MD: Drop Shadow - Md', value: 'md:drop-shadow-md' },
+      { label: 'MD: Drop Shadow - Lg', value: 'md:drop-shadow-lg' },
+      { label: 'MD: Drop Shadow - Xl', value: 'md:drop-shadow-xl' },
+      { label: 'MD: Drop Shadow - 2xl', value: 'md:drop-shadow-2xl' },
+
+      // LG Drop Shadow
+      { label: 'LG: Drop Shadow - None', value: 'lg:drop-shadow-none' },
+      { label: 'LG: Drop Shadow - Sm', value: 'lg:drop-shadow-sm' },
+      { label: 'LG: Drop Shadow - Md', value: 'lg:drop-shadow-md' },
+      { label: 'LG: Drop Shadow - Lg', value: 'lg:drop-shadow-lg' },
+      { label: 'LG: Drop Shadow - Xl', value: 'lg:drop-shadow-xl' },
+      { label: 'LG: Drop Shadow - 2xl', value: 'lg:drop-shadow-2xl' },
+
+      // 2xl Drop Shadow
+      { label: '2xl: Drop Shadow - None', value: '2xl:drop-shadow-none' },
+      { label: '2xl: Drop Shadow - Sm', value: '2xl:drop-shadow-sm' },
+      { label: '2xl: Drop Shadow - Md', value: '2xl:drop-shadow-md' },
+      { label: '2xl: Drop Shadow - Lg', value: '2xl:drop-shadow-lg' },
+      { label: '2xl: Drop Shadow - Xl', value: '2xl:drop-shadow-xl' },
+      { label: '2xl: Drop Shadow - 2xl', value: '2xl:drop-shadow-2xl' },
     ],
   }
 
