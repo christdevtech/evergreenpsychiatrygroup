@@ -188,7 +188,7 @@ export const ServiceTabs: React.FC<Props> = (props) => {
                             className="mt-0 data-[state=active]:block"
                             forceMount
                           >
-                            <div className="flex flex-col items-center md:items-start space-y-8 md:space-y-16  py-8 mt-16 justify-center px-8 md:px-0">
+                            <div className="flex flex-col items-start md:items-start space-y-8 md:space-y-16  py-8 mt-16 justify-center px-8 md:px-0">
                               {/* Media/Image */}
                               <div className="w-1/2 md:w-2/3 lg:w-1/2">
                                 {service.media?.media && (
@@ -222,7 +222,7 @@ export const ServiceTabs: React.FC<Props> = (props) => {
                                 </p>
 
                                 {service.links && (
-                                  <div className="mt-6 flex justify-center md:justify-start flex-wrap gap-4">
+                                  <div className="mt-6 flex justify-start md:justify-start flex-wrap gap-4">
                                     {service.links.map((link, i) => (
                                       <CMSLink
                                         key={i}

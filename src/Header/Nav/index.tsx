@@ -61,7 +61,7 @@ export const HeaderNav: React.FC<{ data: HeaderType; classNames?: string }> = ({
         {/* Mobile Menu Content */}
         <div
           className={cn(
-            'fixed top-0 left-0 h-full w-[300px] sm:w-[400px] bg-gradient-to-b from-teal-950 to-emerald-950 z-50 transform transition-all duration-500 ease-out shadow-2xl',
+            'fixed top-0 left-0 h-full w-[300px] sm:w-[400px] bg-gradient-to-b from-teal-950 to-emerald-950 z-50 transform transition-all duration-500 ease-out shadow-2xl overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent',
             isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
           )}
         >
