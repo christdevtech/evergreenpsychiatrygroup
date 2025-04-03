@@ -26,7 +26,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
     imgClassName,
     media,
     staticImage,
-    disableInnerContainer,
+    disableInnerContainer = false,
   } = props
 
   let caption
@@ -59,7 +59,12 @@ export const MediaBlock: React.FC<Props> = (props) => {
             captionClassName,
           )}
         >
-          <RichText data={caption} enableGutter={false} />
+          <RichText
+            data={caption}
+            enableGutter={false}
+            enableProse={false}
+            className="max-w-none prose md:prose-md dark:prose-invert"
+          />
         </div>
       )}
     </div>

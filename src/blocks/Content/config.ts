@@ -179,6 +179,7 @@ const contentTypes: Field[] = [
     type: 'select',
     required: true,
     hasMany: true,
+    defaultValue: ['w-full'],
     admin: {
       condition: (_, { contentType }) => contentType === 'spacer',
     },

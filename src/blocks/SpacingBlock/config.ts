@@ -121,6 +121,7 @@ export const SpacingBlock: Block = {
       name: 'width',
       type: 'select',
       required: true,
+      defaultValue: ['w-full'],
       hasMany: true,
       options: [
         { label: 'Full', value: 'w-full' },

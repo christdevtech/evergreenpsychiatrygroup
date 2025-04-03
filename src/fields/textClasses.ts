@@ -780,6 +780,12 @@ export const textClasses: textClassesType = ({ condition = () => true, overrides
       { label: 'XL: Width - 90%', value: 'xl:w-9/10' },
       { label: 'XL: Width - 100%', value: 'xl:w-full' },
 
+      // max-w-none
+      { label: 'Max-w-none', value: 'max-w-none' },
+      { label: 'MD: Max-w-none', value: 'md:max-w-none' },
+      { label: 'LG: Max-w-none', value: 'lg:max-w-none' },
+      { label: 'XL: Max-w-none', value: 'xl:max-w-none' },
+
       // ------------------------
       // 9.5) MARGIN AUTO
       // ------------------------
