@@ -468,7 +468,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
 
                               case 'spacer':
                                 const { spacingValue } = contentItemdata
-                                return <div className={`h-${spacingValue}`} />
+                                return <div className={cn(spacingValue)} />
 
                               case 'insurances':
                                 const {

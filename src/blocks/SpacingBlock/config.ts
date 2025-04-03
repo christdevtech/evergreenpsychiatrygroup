@@ -1,3 +1,4 @@
+import { bgColorPickerAll } from '@/fields/bgColorPicker'
 import { Block } from 'payload'
 
 export const SpacingBlock: Block = {
@@ -161,5 +162,10 @@ export const SpacingBlock: Block = {
         },
       ],
     },
+    bgColorPickerAll({
+      overrides: {
+        defaultValue: 'bg-transparent',
+      },
+    }),
   ],
 }
