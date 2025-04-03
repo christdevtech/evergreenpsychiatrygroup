@@ -50,7 +50,9 @@ type ExtendedContentItem =
     }
   | {
       contentType: 'spacer'
-      spacingValue: string
+      spacingValue: string[]
+      spacerWidth: string[]
+      spacerBgColor: string
     }
   | {
       contentType: 'insurances'
@@ -467,8 +469,10 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                                 )
 
                               case 'spacer':
-                                const { spacingValue } = contentItemdata
-                                return <div className={cn(spacingValue)} />
+                                const { spacingValue, spacerWidth, spacerBgColor } = contentItemdata
+                                return (
+                                  <div className={cn(spacingValue, spacerWidth, spacerBgColor)} />
+                                )
 
                               case 'insurances':
                                 const {
