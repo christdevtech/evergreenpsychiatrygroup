@@ -627,6 +627,421 @@ const columnFields: Field[] = [
     ],
   },
   {
+    type: 'collapsible',
+    label: 'Column Order',
+    fields: [
+      {
+        name: 'columnOrder',
+        type: 'group',
+        label: 'Column Order',
+        fields: [
+          {
+            name: 'default',
+            type: 'select',
+            defaultValue: 'order-none',
+            options: [
+              {
+                label: 'None (Natural Order)',
+                value: 'order-none',
+              },
+              {
+                label: 'First',
+                value: 'order-first',
+              },
+              {
+                label: 'Last',
+                value: 'order-last',
+              },
+              {
+                label: '1',
+                value: 'order-1',
+              },
+              {
+                label: '2',
+                value: 'order-2',
+              },
+              {
+                label: '3',
+                value: 'order-3',
+              },
+              {
+                label: '4',
+                value: 'order-4',
+              },
+              {
+                label: '5',
+                value: 'order-5',
+              },
+              {
+                label: '6',
+                value: 'order-6',
+              },
+              {
+                label: '7',
+                value: 'order-7',
+              },
+              {
+                label: '8',
+                value: 'order-8',
+              },
+              {
+                label: '9',
+                value: 'order-9',
+              },
+              {
+                label: '10',
+                value: 'order-10',
+              },
+              {
+                label: '11',
+                value: 'order-11',
+              },
+              {
+                label: '12',
+                value: 'order-12',
+              },
+            ],
+          },
+          {
+            name: 'sm',
+            type: 'select',
+            defaultValue: 'sm:order-none',
+            options: [
+              {
+                label: 'None (Natural Order)',
+                value: 'sm:order-none',
+              },
+              {
+                label: 'First',
+                value: 'sm:order-first',
+              },
+              {
+                label: 'Last',
+                value: 'sm:order-last',
+              },
+              {
+                label: '1',
+                value: 'sm:order-1',
+              },
+              {
+                label: '2',
+                value: 'sm:order-2',
+              },
+              {
+                label: '3',
+                value: 'sm:order-3',
+              },
+              {
+                label: '4',
+                value: 'sm:order-4',
+              },
+              {
+                label: '5',
+                value: 'sm:order-5',
+              },
+              {
+                label: '6',
+                value: 'sm:order-6',
+              },
+              {
+                label: '7',
+                value: 'sm:order-7',
+              },
+              {
+                label: '8',
+                value: 'sm:order-8',
+              },
+              {
+                label: '9',
+                value: 'sm:order-9',
+              },
+              {
+                label: '10',
+                value: 'sm:order-10',
+              },
+              {
+                label: '11',
+                value: 'sm:order-11',
+              },
+              {
+                label: '12',
+                value: 'sm:order-12',
+              },
+            ],
+          },
+          {
+            name: 'md',
+            type: 'select',
+            defaultValue: 'md:order-none',
+            options: [
+              {
+                label: 'None (Natural Order)',
+                value: 'md:order-none',
+              },
+              {
+                label: 'First',
+                value: 'md:order-first',
+              },
+              {
+                label: 'Last',
+                value: 'md:order-last',
+              },
+              {
+                label: '1',
+                value: 'md:order-1',
+              },
+              {
+                label: '2',
+                value: 'md:order-2',
+              },
+              {
+                label: '3',
+                value: 'md:order-3',
+              },
+              {
+                label: '4',
+                value: 'md:order-4',
+              },
+              {
+                label: '5',
+                value: 'md:order-5',
+              },
+              {
+                label: '6',
+                value: 'md:order-6',
+              },
+              {
+                label: '7',
+                value: 'md:order-7',
+              },
+              {
+                label: '8',
+                value: 'md:order-8',
+              },
+              {
+                label: '9',
+                value: 'md:order-9',
+              },
+              {
+                label: '10',
+                value: 'md:order-10',
+              },
+              {
+                label: '11',
+                value: 'md:order-11',
+              },
+              {
+                label: '12',
+                value: 'md:order-12',
+              },
+            ],
+          },
+          {
+            name: 'lg',
+            type: 'select',
+            defaultValue: 'lg:order-none',
+            options: [
+              {
+                label: 'None (Natural Order)',
+                value: 'lg:order-none',
+              },
+              {
+                label: 'First',
+                value: 'lg:order-first',
+              },
+              {
+                label: 'Last',
+                value: 'lg:order-last',
+              },
+              {
+                label: '1',
+                value: 'lg:order-1',
+              },
+              {
+                label: '2',
+                value: 'lg:order-2',
+              },
+              {
+                label: '3',
+                value: 'lg:order-3',
+              },
+              {
+                label: '4',
+                value: 'lg:order-4',
+              },
+              {
+                label: '5',
+                value: 'lg:order-5',
+              },
+              {
+                label: '6',
+                value: 'lg:order-6',
+              },
+              {
+                label: '7',
+                value: 'lg:order-7',
+              },
+              {
+                label: '8',
+                value: 'lg:order-8',
+              },
+              {
+                label: '9',
+                value: 'lg:order-9',
+              },
+              {
+                label: '10',
+                value: 'lg:order-10',
+              },
+              {
+                label: '11',
+                value: 'lg:order-11',
+              },
+              {
+                label: '12',
+                value: 'lg:order-12',
+              },
+            ],
+          },
+          {
+            name: 'xl',
+            type: 'select',
+            defaultValue: 'xl:order-none',
+            options: [
+              {
+                label: 'None (Natural Order)',
+                value: 'xl:order-none',
+              },
+              {
+                label: 'First',
+                value: 'xl:order-first',
+              },
+              {
+                label: 'Last',
+                value: 'xl:order-last',
+              },
+              {
+                label: '1',
+                value: 'xl:order-1',
+              },
+              {
+                label: '2',
+                value: 'xl:order-2',
+              },
+              {
+                label: '3',
+                value: 'xl:order-3',
+              },
+              {
+                label: '4',
+                value: 'xl:order-4',
+              },
+              {
+                label: '5',
+                value: 'xl:order-5',
+              },
+              {
+                label: '6',
+                value: 'xl:order-6',
+              },
+              {
+                label: '7',
+                value: 'xl:order-7',
+              },
+              {
+                label: '8',
+                value: 'xl:order-8',
+              },
+              {
+                label: '9',
+                value: 'xl:order-9',
+              },
+              {
+                label: '10',
+                value: 'xl:order-10',
+              },
+              {
+                label: '11',
+                value: 'xl:order-11',
+              },
+              {
+                label: '12',
+                value: 'xl:order-12',
+              },
+            ],
+          },
+          {
+            name: '2xl',
+            type: 'select',
+            defaultValue: '2xl:order-none',
+            options: [
+              {
+                label: 'None (Natural Order)',
+                value: '2xl:order-none',
+              },
+              {
+                label: 'First',
+                value: '2xl:order-first',
+              },
+              {
+                label: 'Last',
+                value: '2xl:order-last',
+              },
+              {
+                label: '1',
+                value: '2xl:order-1',
+              },
+              {
+                label: '2',
+                value: '2xl:order-2',
+              },
+              {
+                label: '3',
+                value: '2xl:order-3',
+              },
+              {
+                label: '4',
+                value: '2xl:order-4',
+              },
+              {
+                label: '5',
+                value: '2xl:order-5',
+              },
+              {
+                label: '6',
+                value: '2xl:order-6',
+              },
+              {
+                label: '7',
+                value: '2xl:order-7',
+              },
+              {
+                label: '8',
+                value: '2xl:order-8',
+              },
+              {
+                label: '9',
+                value: '2xl:order-9',
+              },
+              {
+                label: '10',
+                value: '2xl:order-10',
+              },
+              {
+                label: '11',
+                value: '2xl:order-11',
+              },
+              {
+                label: '12',
+                value: '2xl:order-12',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     name: 'verticalAlignment',
     type: 'select',
     defaultValue: 'top',
@@ -774,65 +1189,6 @@ export const Content: Block = {
           label: 'Columns',
           minRows: 1,
           fields: columnFields,
-        },
-        {
-          type: 'collapsible',
-          label: 'Flex Direction',
-          fields: [
-            {
-              name: 'flexDirection',
-              type: 'group',
-              label: 'Flex Direction',
-              fields: [
-                {
-                  name: 'mobile',
-                  type: 'select',
-                  defaultValue: 'row',
-                  options: [
-                    {
-                      label: 'Row (Left to Right)',
-                      value: 'row',
-                    },
-                    {
-                      label: 'Row Reverse (Right to Left)',
-                      value: 'row-reverse',
-                    },
-                    {
-                      label: 'Column (Top to Bottom)',
-                      value: 'column',
-                    },
-                    {
-                      label: 'Column Reverse (Bottom to Top)',
-                      value: 'column-reverse',
-                    },
-                  ],
-                },
-                {
-                  name: 'desktop',
-                  type: 'select',
-                  defaultValue: 'row',
-                  options: [
-                    {
-                      label: 'Row (Left to Right)',
-                      value: 'row',
-                    },
-                    {
-                      label: 'Row Reverse (Right to Left)',
-                      value: 'row-reverse',
-                    },
-                    {
-                      label: 'Column (Top to Bottom)',
-                      value: 'column',
-                    },
-                    {
-                      label: 'Column Reverse (Bottom to Top)',
-                      value: 'column-reverse',
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
         },
         {
           type: 'collapsible',

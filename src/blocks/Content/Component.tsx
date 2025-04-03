@@ -93,11 +93,15 @@ interface Row {
     horizontalAlignment?: HorizontalAlignment | null
     content?: ExtendedContentItem[] | null
     spacingClasses?: string[] | null
+    columnOrder?: {
+      default?: string | null
+      sm?: string | null
+      md?: string | null
+      lg?: string | null
+      xl?: string | null
+      '2xl'?: string | null
+    } | null
   }> | null
-  flexDirection?: {
-    mobile?: string | null
-    desktop?: string | null
-  } | null
   spacingClasses?: string[] | null
 }
 
@@ -209,23 +213,16 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
       <div className="container my-16 lg:my-0 relative z-10">
         {rows?.map((row, rowIndex) => {
           const rowSpacingClasses = extractSpacingClasses(row.spacingClasses)
-          const flexDirection = row.flexDirection || { mobile: 'row', desktop: 'row' }
 
           return (
             <React.Fragment key={`row-${rowIndex}`}>
-              <div
-                className={cn(
-                  'flex flex-wrap gap-y-12 last:mb-0',
-                  `flex-${flexDirection.mobile}`,
-                  `lg:flex-${flexDirection.desktop}`,
-                  rowSpacingClasses,
-                )}
-              >
+              <div className={cn('flex flex-wrap gap-y-12 last:mb-0', rowSpacingClasses)}>
                 {row.columns?.map((column, columnIndex: number) => {
                   const size = column.size || 'full'
                   const verticalAlignment = column.verticalAlignment || 'top'
                   const horizontalAlignment = column.horizontalAlignment || 'top'
                   const columnSpacingClasses = extractSpacingClasses(column.spacingClasses)
+                  const columnOrderClasses = extractSpacingClasses(column.columnOrder)
 
                   // Get the responsive width classes based on column size
                   const getResponsiveWidthClasses = (size: ContentColumnSize) => {
@@ -261,6 +258,8 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                         'flex-grow',
                         getResponsiveWidthClasses(size),
                         columnSpacingClasses,
+                        // Default order based on original column position
+                        columnOrderClasses,
                       )}
                     >
                       <div

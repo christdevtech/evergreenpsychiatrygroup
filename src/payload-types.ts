@@ -6719,6 +6719,122 @@ export interface ContentBlock {
                     | 'full'
                   )
                 | null;
+              columnOrder?: {
+                default?:
+                  | (
+                      | 'order-none'
+                      | 'order-first'
+                      | 'order-last'
+                      | 'order-1'
+                      | 'order-2'
+                      | 'order-3'
+                      | 'order-4'
+                      | 'order-5'
+                      | 'order-6'
+                      | 'order-7'
+                      | 'order-8'
+                      | 'order-9'
+                      | 'order-10'
+                      | 'order-11'
+                      | 'order-12'
+                    )
+                  | null;
+                sm?:
+                  | (
+                      | 'sm:order-none'
+                      | 'sm:order-first'
+                      | 'sm:order-last'
+                      | 'sm:order-1'
+                      | 'sm:order-2'
+                      | 'sm:order-3'
+                      | 'sm:order-4'
+                      | 'sm:order-5'
+                      | 'sm:order-6'
+                      | 'sm:order-7'
+                      | 'sm:order-8'
+                      | 'sm:order-9'
+                      | 'sm:order-10'
+                      | 'sm:order-11'
+                      | 'sm:order-12'
+                    )
+                  | null;
+                md?:
+                  | (
+                      | 'md:order-none'
+                      | 'md:order-first'
+                      | 'md:order-last'
+                      | 'md:order-1'
+                      | 'md:order-2'
+                      | 'md:order-3'
+                      | 'md:order-4'
+                      | 'md:order-5'
+                      | 'md:order-6'
+                      | 'md:order-7'
+                      | 'md:order-8'
+                      | 'md:order-9'
+                      | 'md:order-10'
+                      | 'md:order-11'
+                      | 'md:order-12'
+                    )
+                  | null;
+                lg?:
+                  | (
+                      | 'lg:order-none'
+                      | 'lg:order-first'
+                      | 'lg:order-last'
+                      | 'lg:order-1'
+                      | 'lg:order-2'
+                      | 'lg:order-3'
+                      | 'lg:order-4'
+                      | 'lg:order-5'
+                      | 'lg:order-6'
+                      | 'lg:order-7'
+                      | 'lg:order-8'
+                      | 'lg:order-9'
+                      | 'lg:order-10'
+                      | 'lg:order-11'
+                      | 'lg:order-12'
+                    )
+                  | null;
+                xl?:
+                  | (
+                      | 'xl:order-none'
+                      | 'xl:order-first'
+                      | 'xl:order-last'
+                      | 'xl:order-1'
+                      | 'xl:order-2'
+                      | 'xl:order-3'
+                      | 'xl:order-4'
+                      | 'xl:order-5'
+                      | 'xl:order-6'
+                      | 'xl:order-7'
+                      | 'xl:order-8'
+                      | 'xl:order-9'
+                      | 'xl:order-10'
+                      | 'xl:order-11'
+                      | 'xl:order-12'
+                    )
+                  | null;
+                '2xl'?:
+                  | (
+                      | '2xl:order-none'
+                      | '2xl:order-first'
+                      | '2xl:order-last'
+                      | '2xl:order-1'
+                      | '2xl:order-2'
+                      | '2xl:order-3'
+                      | '2xl:order-4'
+                      | '2xl:order-5'
+                      | '2xl:order-6'
+                      | '2xl:order-7'
+                      | '2xl:order-8'
+                      | '2xl:order-9'
+                      | '2xl:order-10'
+                      | '2xl:order-11'
+                      | '2xl:order-12'
+                    )
+                  | null;
+              };
               verticalAlignment?: ('top' | 'center' | 'bottom') | null;
               horizontalAlignment?: ('top' | 'center' | 'bottom') | null;
               content?:
@@ -18105,10 +18221,6 @@ export interface ContentBlock {
               id?: string | null;
             }[]
           | null;
-        flexDirection?: {
-          mobile?: ('row' | 'row-reverse' | 'column' | 'column-reverse') | null;
-          desktop?: ('row' | 'row-reverse' | 'column' | 'column-reverse') | null;
-        };
         spacingClasses?: {
           m?:
             | (
@@ -62230,6 +62342,8 @@ export interface Testimonial {
 export interface SpacingBlock {
   spacing: (
     | 'pb-0'
+    | 'pb-1'
+    | 'pb-2'
     | 'pb-4'
     | 'pb-8'
     | 'pb-10'
@@ -62245,6 +62359,8 @@ export interface SpacingBlock {
     | 'pb-72'
     | 'pb-80'
     | 'md:pb-0'
+    | 'md:pb-1'
+    | 'md:pb-2'
     | 'md:pb-4'
     | 'md:pb-8'
     | 'md:pb-10'
@@ -62260,6 +62376,8 @@ export interface SpacingBlock {
     | 'md:pb-72'
     | 'md:pb-80'
     | 'lg:pb-0'
+    | 'lg:pb-1'
+    | 'lg:pb-2'
     | 'lg:pb-4'
     | 'lg:pb-8'
     | 'lg:pb-10'
@@ -62275,6 +62393,8 @@ export interface SpacingBlock {
     | 'lg:pb-72'
     | 'lg:pb-80'
     | 'xl:pb-0'
+    | 'xl:pb-1'
+    | 'xl:pb-2'
     | 'xl:pb-4'
     | 'xl:pb-8'
     | 'xl:pb-10'
@@ -62290,6 +62410,8 @@ export interface SpacingBlock {
     | 'xl:pb-72'
     | 'xl:pb-80'
     | '2xl:pb-0'
+    | '2xl:pb-1'
+    | '2xl:pb-2'
     | '2xl:pb-4'
     | '2xl:pb-8'
     | '2xl:pb-10'
@@ -62305,6 +62427,8 @@ export interface SpacingBlock {
     | '2xl:pb-72'
     | '2xl:pb-80'
     | '3xl:pb-0'
+    | '3xl:pb-1'
+    | '3xl:pb-2'
     | '3xl:pb-4'
     | '3xl:pb-8'
     | '3xl:pb-10'
@@ -63079,6 +63203,16 @@ export interface ContentBlockSelect<T extends boolean = true> {
           | T
           | {
               size?: T;
+              columnOrder?:
+                | T
+                | {
+                    default?: T;
+                    sm?: T;
+                    md?: T;
+                    lg?: T;
+                    xl?: T;
+                    '2xl'?: T;
+                  };
               verticalAlignment?: T;
               horizontalAlignment?: T;
               content?:
@@ -63336,12 +63470,6 @@ export interface ContentBlockSelect<T extends boolean = true> {
                     opacity2xl?: T;
                   };
               id?: T;
-            };
-        flexDirection?:
-          | T
-          | {
-              mobile?: T;
-              desktop?: T;
             };
         spacingClasses?:
           | T

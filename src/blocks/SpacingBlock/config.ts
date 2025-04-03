@@ -13,9 +13,12 @@ export const SpacingBlock: Block = {
       name: 'spacing',
       type: 'select',
       required: true,
+      defaultValue: ['pb-0', 'md:pb-8', 'lg:pb-12', 'xl:pb-16', '2xl:pb-32'],
       hasMany: true,
       options: [
         { label: 'None', value: 'pb-0' },
+        { label: 'Space 1', value: 'pb-1' },
+        { label: 'Space 2', value: 'pb-2' },
         { label: 'Space 4', value: 'pb-4' },
         { label: 'Space 8', value: 'pb-8' },
         { label: 'Space 10', value: 'pb-10' },
@@ -32,6 +35,8 @@ export const SpacingBlock: Block = {
         { label: 'Space 80', value: 'pb-80' },
         // add options for different screen sizes
         { label: 'md:None', value: 'md:pb-0' },
+        { label: 'md:Space 1', value: 'md:pb-1' },
+        { label: 'md:Space 2', value: 'md:pb-2' },
         { label: 'md:Space 4', value: 'md:pb-4' },
         { label: 'md:Space 8', value: 'md:pb-8' },
         { label: 'md:Space 10', value: 'md:pb-10' },
@@ -48,6 +53,8 @@ export const SpacingBlock: Block = {
         { label: 'md:Space 80', value: 'md:pb-80' },
 
         { label: 'lg:None', value: 'lg:pb-0' },
+        { label: 'lg:Space 1', value: 'lg:pb-1' },
+        { label: 'lg:Space 2', value: 'lg:pb-2' },
         { label: 'lg:Space 4', value: 'lg:pb-4' },
         { label: 'lg:Space 8', value: 'lg:pb-8' },
         { label: 'lg:Space 10', value: 'lg:pb-10' },
@@ -64,6 +71,8 @@ export const SpacingBlock: Block = {
         { label: 'lg:Space 80', value: 'lg:pb-80' },
         // XL options
         { label: 'xl:None', value: 'xl:pb-0' },
+        { label: 'xl:Space 1', value: 'xl:pb-1' },
+        { label: 'xl:Space 2', value: 'xl:pb-2' },
         { label: 'xl:Space 4', value: 'xl:pb-4' },
         { label: 'xl:Space 8', value: 'xl:pb-8' },
         { label: 'xl:Space 10', value: 'xl:pb-10' },
@@ -80,6 +89,8 @@ export const SpacingBlock: Block = {
         { label: 'xl:Space 80', value: 'xl:pb-80' },
         // 2XL options
         { label: '2xl:None', value: '2xl:pb-0' },
+        { label: '2xl:Space 1', value: '2xl:pb-1' },
+        { label: '2xl:Space 2', value: '2xl:pb-2' },
         { label: '2xl:Space 4', value: '2xl:pb-4' },
         { label: '2xl:Space 8', value: '2xl:pb-8' },
         { label: '2xl:Space 10', value: '2xl:pb-10' },
@@ -96,6 +107,8 @@ export const SpacingBlock: Block = {
         { label: '2xl:Space 80', value: '2xl:pb-80' },
         // 3XL options
         { label: '3xl:None', value: '3xl:pb-0' },
+        { label: '3xl:Space 1', value: '3xl:pb-1' },
+        { label: '3xl:Space 2', value: '3xl:pb-2' },
         { label: '3xl:Space 4', value: '3xl:pb-4' },
         { label: '3xl:Space 8', value: '3xl:pb-8' },
         { label: '3xl:Space 10', value: '3xl:pb-10' },
