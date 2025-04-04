@@ -18,7 +18,24 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         }
       }),
+      {
+        hostname: 'intake.automedsys.net',
+        protocol: 'https',
+      },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/intake',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "frame-src 'self' https://intake.automedsys.net;",
+          },
+        ],
+      },
+    ]
   },
   reactStrictMode: true,
   redirects,
