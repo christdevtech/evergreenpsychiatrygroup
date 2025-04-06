@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+// import { usePathname } from 'next/navigation'
 import React from 'react'
 
 import type { Header } from '@/payload-types'
@@ -15,7 +15,16 @@ interface HeaderClientProps {
 }
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
-  // const pathname = usePathname()
+  const { headerButtonLink } = data
+
+  const buttonHref =
+    headerButtonLink.type === 'reference' &&
+    typeof headerButtonLink.reference?.value === 'object' &&
+    headerButtonLink.reference.value.slug
+      ? `${headerButtonLink.reference?.relationTo !== 'pages' ? `/${headerButtonLink.reference?.relationTo}` : ''}/${
+          headerButtonLink.reference.value.slug
+        }`
+      : headerButtonLink.url
 
   return (
     <header className="bg-[hsl(var(--header-bg))] relative z-20">
@@ -25,15 +34,20 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             <Logo loading="eager" priority="high" />
           </Link>
 
-          <div className="bg-white rounded-lg md:rounded-full px-1.5 py-1.5 md:py-1 md:px-1 items-center md:flex md:p-1 gap-1">
-            <span className="md:hidden inline px-4">Book Now</span>
-            <span className="hidden md:inline px-2 text-sm align-middle text-slate-900 md:text-slate-900">
-              Make Appointment
-            </span>
-            <Button size="sm" radius="full" color="success" className="hidden md:block">
-              Contact us
-            </Button>
-          </div>
+          {buttonHref && (
+            <Link
+              href={buttonHref}
+              className="bg-white rounded-lg md:rounded-full px-1.5 py-1.5 md:py-1 md:px-1 items-center md:flex md:p-1 gap-1"
+            >
+              <span className="md:hidden inline px-4">Book Now</span>
+              <span className="hidden md:inline px-2 text-sm align-middle text-slate-900 md:text-slate-900">
+                Make Appointment
+              </span>
+              <Button size="sm" radius="full" color="success" className="hidden md:block">
+                Contact us
+              </Button>
+            </Link>
+          )}
         </div>
         <HeaderNav classNames="flex-none" data={data} />
       </div>

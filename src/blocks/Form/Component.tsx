@@ -21,6 +21,7 @@ export type FormBlockType = {
   form: FormType
   introContent?: SerializedEditorState
   bgColor?: string
+  newConfirmationMessage?: string | null
 }
 
 export const FormBlock: React.FC<
@@ -34,6 +35,7 @@ export const FormBlock: React.FC<
     form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
     introContent,
     bgColor,
+    newConfirmationMessage,
   } = props
 
   // Create an empty default values object based on the form fields
@@ -130,9 +132,9 @@ export const FormBlock: React.FC<
           reset(getDefaultValues())
 
           // Show success toast
-          if (confirmationMessage) {
+          if (newConfirmationMessage) {
             toast.success('Thank you for your message', {
-              description: confirmationMessage,
+              description: newConfirmationMessage,
               duration: Infinity,
               action: {
                 label: 'Close',

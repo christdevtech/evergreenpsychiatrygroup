@@ -26855,6 +26855,10 @@ export interface ArchiveBlock {
  */
 export interface FormBlock {
   form: string | Form;
+  /**
+   * This message will be displayed instead of the default confirmation message if the form is successfully submitted.
+   */
+  newConfirmationMessage?: string | null;
   bgColor?:
     | (
         | 'bg-inherit'
@@ -28056,6 +28060,21 @@ export interface ConditionsBlock {
        * Choose how the link should be rendered.
        */
       appearance?: ('default' | 'outline') | null;
+    };
+    moreLink: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: string | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: string | Post;
+          } | null);
+      url?: string | null;
+      label: string;
     };
   };
   rightColumn: {
@@ -63734,6 +63753,7 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
  */
 export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
+  newConfirmationMessage?: T;
   bgColor?: T;
   enableIntro?: T;
   introContent?: T;
@@ -63810,6 +63830,15 @@ export interface ConditionsBlockSelect<T extends boolean = true> {
               url?: T;
               label?: T;
               appearance?: T;
+            };
+        moreLink?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
             };
       };
   rightColumn?:
@@ -64769,6 +64798,21 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  headerButtonLink: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -64906,6 +64950,15 @@ export interface HeaderSelect<T extends boolean = true> {
                   };
             };
         id?: T;
+      };
+  headerButtonLink?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
       };
   updatedAt?: T;
   createdAt?: T;

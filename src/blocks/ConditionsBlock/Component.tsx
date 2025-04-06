@@ -2,54 +2,15 @@ import React from 'react'
 import { CMSLink } from '@/components/Link'
 import { cn } from '@/utilities/ui'
 import { Check } from 'lucide-react'
+import type { ConditionsBlock as ConditionsBlockProps } from '@/payload-types'
 
 // Define the types for our block since it's not yet in payload-types
-interface ConditionItem {
-  condition: string
-}
 
-interface BenefitItem {
-  benefit: string
-}
-
-type LinkAppearance =
-  | 'default'
-  | 'outline'
-  | 'destructive'
-  | 'ghost'
-  | 'secondary'
-  | 'link'
-  | 'inline'
-  | null
-
-interface ConditionsBlockProps {
-  leftColumn?: {
-    backgroundColor?: string
-    title?: string
-    conditions?: ConditionItem[]
-    link?: {
-      label: string
-      appearance?: LinkAppearance
-      [key: string]: any
-    }
-  }
-  rightColumn?: {
-    backgroundColor?: string
-    title?: string
-    benefits?: BenefitItem[]
-  }
-}
-
-type Props = ConditionsBlockProps & {
-  className?: string
-  disableInnerContainer?: boolean
-}
-
-export const ConditionsBlock: React.FC<Props> = (props) => {
-  const { leftColumn, rightColumn, className } = props
+export const ConditionsBlock: React.FC<ConditionsBlockProps> = (props) => {
+  const { leftColumn, rightColumn } = props
 
   return (
-    <div className={cn('relative py-12 md:py-16 xl:py-24', className)}>
+    <div className={cn('relative py-12 md:py-16 xl:py-24')}>
       <div className={cn('container')}>
         <div className="flex flex-col lg:flex-row">
           {/* Left Column */}
@@ -70,12 +31,18 @@ export const ConditionsBlock: React.FC<Props> = (props) => {
                 <div className="flex flex-col space-y-8 mb-8">
                   <p className="text-white text-lg mb-2">Do you suffer any of the following</p>
                   <ul className="space-y-8">
-                    {leftColumn.conditions.map((item: ConditionItem, index: number) => (
-                      <li key={index} className="text-white text-lg">
+                    {leftColumn.conditions.map((item, index: number) => (
+                      <p key={index} className="text-white text-lg">
                         {item.condition}
-                      </li>
+                      </p>
                     ))}
-                    <li className="text-white text-lg underline">And more</li>
+                    <p>
+                      <CMSLink
+                        {...leftColumn.moreLink}
+                        appearance={'inline'}
+                        className="text-white text-lg underline transition scale-100 hover:scale-125 "
+                      ></CMSLink>
+                    </p>
                   </ul>
                 </div>
               )}
@@ -107,7 +74,7 @@ export const ConditionsBlock: React.FC<Props> = (props) => {
 
               {rightColumn?.benefits && rightColumn.benefits.length > 0 && (
                 <ul className="space-y-0 divide-y-2 divide-white">
-                  {rightColumn.benefits.map((item: BenefitItem, index: number) => (
+                  {rightColumn.benefits.map((item, index: number) => (
                     <li key={index} className="py-8 gap-6 flex items-center">
                       <div className="flex-shrink-0">
                         <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center">
