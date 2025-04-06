@@ -2,11 +2,7 @@ import { Staff } from '@/payload-types'
 import { revalidatePath, revalidateTag } from 'next/cache'
 import { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
 
-export const revalidateStaff: CollectionAfterChangeHook<Staff> = ({
-  doc,
-  previousDoc,
-  req: { payload, context },
-}) => {
+export const revalidateStaff: CollectionAfterChangeHook<Staff> = ({ doc, req: { context } }) => {
   if (!context.disableRevalidate) {
     revalidateTag('staff-sitemap')
   }

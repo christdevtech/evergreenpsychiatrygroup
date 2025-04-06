@@ -24,7 +24,6 @@ export const FAQBlock: React.FC<Props> = async (props) => {
     backgroundColor,
     title,
     description,
-    faqs: faqsFromProps,
     link,
     linkClasses,
     className,
@@ -33,6 +32,7 @@ export const FAQBlock: React.FC<Props> = async (props) => {
     faqs: selectedFaqs,
     limit,
   } = props
+
   let faqs: Faq[] = []
   const categoriesToShow = categories?.map((category) => {
     if (typeof category === 'object') {
@@ -42,17 +42,26 @@ export const FAQBlock: React.FC<Props> = async (props) => {
   })
   if (populateBy === 'categories') {
     const payload = await getPayload({ config: configPromise })
-    const faqsToShow = await payload.find({
-      collection: 'faqs',
-      where: {
-        category: {
-          in: categoriesToShow,
+    if (categoriesToShow?.length && categoriesToShow.length > 0) {
+      const faqsToShow = await payload.find({
+        collection: 'faqs',
+        where: {
+          category: {
+            in: categoriesToShow,
+          },
         },
-      },
-      depth: 2,
-      limit: limit || 6,
-    })
-    faqs = faqsToShow.docs
+        depth: 2,
+        limit: limit || 6,
+      })
+      faqs = faqsToShow.docs
+    } else {
+      const faqsToShow = await payload.find({
+        collection: 'faqs',
+        depth: 2,
+        limit: limit || 6,
+      })
+      faqs = faqsToShow.docs
+    }
   } else {
     faqs = selectedFaqs?.map((faq) => faq as Faq) || []
   }

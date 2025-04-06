@@ -10,8 +10,6 @@ import type { Footer } from '@/payload-types'
 export const dynamic = 'force-dynamic'
 
 export async function Footer() {
-  let footerData: Footer
-
   const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/footer?depth=4`, {
     method: 'GET',
     credentials: 'include',
@@ -20,7 +18,7 @@ export async function Footer() {
     },
   })
   const data = await req.json()
-  footerData = data as Footer
+  const footerData = data as Footer
 
   return <FooterClient data={footerData} />
 }

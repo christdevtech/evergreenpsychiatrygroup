@@ -1,17 +1,17 @@
-import { formatDateTime } from 'src/utilities/formatDateTime'
+// import { formatDateTime } from 'src/utilities/formatDateTime'
 import React from 'react'
 
 import { Post as PostType } from '@/payload-types'
 
-import { Media } from '@/components/Media'
-import { formatAuthors } from '@/utilities/formatAuthors'
+// import { Media } from '@/components/Media'
+// import { formatAuthors } from '@/utilities/formatAuthors'
 import Link from 'next/link'
 import { Button } from '@payloadcms/ui'
 import Image from 'next/image'
 export const PostHero: React.FC<{
   post: PostType
 }> = ({ post }) => {
-  const { categories, heroImage, populatedAuthors, publishedAt, title, meta } = post
+  const { heroImage, title, meta } = post
 
   return (
     <div>

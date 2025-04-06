@@ -30,7 +30,6 @@ export const ServiceHero: React.FC<Page['hero']> = ({
   bgColor,
 }) => {
   const {
-    enabled: glassEnabled = true,
     bgOpacity = 'bg-white/75',
     backdropBlur = 'backdrop-blur-md',
     borderRadius = 'rounded-lg',

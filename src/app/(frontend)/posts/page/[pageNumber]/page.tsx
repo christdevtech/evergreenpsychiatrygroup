@@ -6,10 +6,10 @@ import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
-import PageClient from './page.client'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 600
 
 type Args = {

@@ -1,5 +1,5 @@
 'use client'
-import type { FormFieldBlock, Form as FormType } from '@payloadcms/plugin-form-builder/types'
+import type { Form as FormType } from '@payloadcms/plugin-form-builder/types'
 
 import { useRouter } from 'next/navigation'
 import React, { useCallback, useState } from 'react'
@@ -8,7 +8,7 @@ import RichText from '@/components/RichText'
 import { Button } from '@/components/ui/button'
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 import { toast } from '@/components/ui/toast'
-import { Loader2, X } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 
 import { fields } from './fields'
 import { getClientSideURL } from '@/utilities/getURL'
@@ -40,6 +40,7 @@ export const FormBlock: React.FC<
 
   // Create an empty default values object based on the form fields
   const getDefaultValues = () => {
+    // @typescript-eslint/no-explicit-any
     const defaultValues: Record<string, any> = {}
 
     if (formFromProps.fields) {
@@ -71,6 +72,7 @@ export const FormBlock: React.FC<
   const router = useRouter()
 
   const onSubmit = useCallback(
+    // @typescript-eslint/no-explicit-any
     (data: Record<string, any>) => {
       let loadingTimerID: ReturnType<typeof setTimeout>
       const submitForm = async () => {

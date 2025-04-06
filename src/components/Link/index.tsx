@@ -32,7 +32,6 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     reference,
     size: sizeFromProps,
     url,
-    onClick,
   } = props
 
   const href =

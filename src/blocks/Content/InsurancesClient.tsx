@@ -77,10 +77,20 @@ export const InsurancesClient: React.FC<InsurancesProps> = ({
       '8': 'lg:grid-cols-8',
     }
 
+    const xlColumnsMap: Record<string, string> = {
+      '3': 'xl:grid-cols-3',
+      '4': 'xl:grid-cols-4',
+      '5': 'xl:grid-cols-5',
+      '6': 'xl:grid-cols-6',
+      '7': 'xl:grid-cols-7',
+      '8': 'xl:grid-cols-8',
+    }
+
     return cn(
       smColumnsMap[sm] || 'grid-cols-2',
       mdColumnsMap[md] || 'md:grid-cols-3',
       lgColumnsMap[lg] || 'lg:grid-cols-4',
+      xlColumnsMap[xl] || 'xl:grid-cols-4',
     )
   }
 

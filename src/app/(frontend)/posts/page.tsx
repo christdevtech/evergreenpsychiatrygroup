@@ -12,7 +12,7 @@ import Link from 'next/link'
 import { Button } from '@payloadcms/ui'
 import PostCTA from '@/components/PostCTA'
 
-export const dynamic = 'force-static'
+export const dynamic = 'force-dynamic'
 export const revalidate = 600
 
 export default async function Page() {

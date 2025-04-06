@@ -10,7 +10,7 @@ import type { Header } from '@/payload-types'
 export const dynamic = 'force-dynamic'
 
 export async function Header() {
-  let headerData: Header
+  // let headerData: Header
 
   const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/header?depth=4`, {
     method: 'GET',
@@ -20,7 +20,7 @@ export async function Header() {
     },
   })
   const data = await req.json()
-  headerData = data as Header
+  const headerData = data as Header
 
   return <HeaderClient data={headerData} />
 }
