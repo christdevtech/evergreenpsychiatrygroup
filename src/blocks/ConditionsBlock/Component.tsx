@@ -32,6 +32,11 @@ interface ConditionsBlockProps {
       appearance?: LinkAppearance
       [key: string]: any
     }
+    moreLink?: {
+      label: string
+      appearance?: LinkAppearance
+      [key: string]: any
+    }
   }
   rightColumn?: {
     backgroundColor?: string
@@ -75,7 +80,12 @@ export const ConditionsBlock: React.FC<Props> = (props) => {
                         {item.condition}
                       </li>
                     ))}
-                    <li className="text-white text-lg underline">And more</li>
+
+                    {leftColumn.moreLink && (
+                      <li className="text-white text-lg underline">
+                        <CMSLink {...leftColumn.moreLink} />
+                      </li>
+                    )}
                   </ul>
                 </div>
               )}

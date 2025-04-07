@@ -93,6 +93,18 @@ export const ConditionsBlock: Block = {
             },
           },
         }),
+        link({
+          appearances: false,
+          overrides: {
+            name: 'moreLink',
+            label: 'More Button',
+            defaultValue: {
+              type: 'custom',
+              url: '/services',
+              label: 'And more',
+            },
+          },
+        }),
       ],
     },
     {

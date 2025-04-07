@@ -91,6 +91,17 @@ export const Header: GlobalConfig = {
         },
       },
     },
+    link({
+      overrides: {
+        name: 'headerButtonLink',
+        defaultValue: {
+          type: 'custom',
+          url: '/intake',
+          label: 'Book Now',
+        },
+      },
+      appearances: false,
+    }),
   ],
   hooks: {
     afterChange: [revalidateHeader],

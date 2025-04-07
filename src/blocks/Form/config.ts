@@ -47,6 +47,15 @@ export const FormBlock: Block = {
       }),
       label: 'Intro Content',
     },
+    {
+      name: 'newConfirmationMessage',
+      type: 'textarea',
+      defaultValue: 'One of our team members will be in touch soon!',
+      admin: {
+        description:
+          'This message will be displayed instead of the default confirmation message if the form is successfully submitted.',
+      },
+    },
   ],
   graphQL: {
     singularName: 'FormBlock',
