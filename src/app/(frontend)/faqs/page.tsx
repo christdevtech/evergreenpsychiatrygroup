@@ -33,7 +33,14 @@ export default async function Faqs() {
     backgroundColor: 'bg-teal-600',
     title: 'Emergency and Support <br />Resources',
 
-    titleClasses: ['text-4xl', 'font-semibold', 'text-white', 'md:text-center', 'mb-12'],
+    titleClasses: [
+      'text-3xl',
+      'md:text-4xl',
+      'font-semibold',
+      'text-white',
+      'md:text-center',
+      'mb-12',
+    ],
 
     mainText: {
       root: {
@@ -73,9 +80,8 @@ export default async function Faqs() {
       'md:text-center',
       'mb-16',
       'lg:w-7/10',
-      'w-4/5',
+      'md:w-4/5',
       'font-medium',
-      'mx-auto',
     ],
     subtitle: 'Emergencies',
 
