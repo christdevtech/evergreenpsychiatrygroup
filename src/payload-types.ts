@@ -27170,10 +27170,6 @@ export interface FormBlock {
     };
     [k: string]: unknown;
   } | null;
-  /**
-   * This message will be displayed instead of the default confirmation message if the form is successfully submitted.
-   */
-  newConfirmationMessage?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'formBlock';
@@ -63761,7 +63757,6 @@ export interface FormBlockSelect<T extends boolean = true> {
   bgColor?: T;
   enableIntro?: T;
   introContent?: T;
-  newConfirmationMessage?: T;
   id?: T;
   blockName?: T;
 }
