@@ -76,12 +76,14 @@ export default async function Faqs() {
 
     mainTextClasses: [
       'text-xl',
+      'md:text-2xl',
       'text-white',
       'md:text-center',
       'mb-16',
       'lg:w-7/10',
       'md:w-4/5',
       'font-medium',
+      'md:mx-auto',
     ],
     subtitle: 'Emergencies',
 
