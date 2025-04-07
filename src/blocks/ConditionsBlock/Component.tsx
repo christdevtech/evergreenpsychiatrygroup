@@ -2,7 +2,7 @@ import React from 'react'
 import { CMSLink } from '@/components/Link'
 import { cn } from '@/utilities/ui'
 import { Check } from 'lucide-react'
-import type { ConditionsBlock as ConditionsBlockProps } from '@/payload-types'
+// import type { ConditionsBlock as ConditionsBlockProps } from '@/payload-types'
 
 // Define the types for our block since it's not yet in payload-types
 
