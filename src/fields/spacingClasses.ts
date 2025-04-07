@@ -284,7 +284,7 @@ export const extractSpacingClasses = (data: Record<string, any> | undefined | nu
       })
     } else {
       // Standard processing for objects without backgroundType
-      Object.entries(obj).forEach(([key, value]) => {
+      Object.entries(obj).forEach(([value]) => {
         if (value && typeof value === 'string') {
           // Only add if it's a non-empty string (a CSS class)
           classes.push(value)

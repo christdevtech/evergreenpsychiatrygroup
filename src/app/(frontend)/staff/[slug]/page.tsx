@@ -5,7 +5,6 @@ import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/utilities/ui'
 import Link from 'next/link'
 
 type Args = {

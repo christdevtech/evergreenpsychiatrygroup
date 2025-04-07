@@ -26855,6 +26855,10 @@ export interface ArchiveBlock {
  */
 export interface FormBlock {
   form: string | Form;
+  /**
+   * This message will be displayed instead of the default confirmation message if the form is successfully submitted.
+   */
+  newConfirmationMessage?: string | null;
   bgColor?:
     | (
         | 'bg-inherit'
@@ -63753,6 +63757,7 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
  */
 export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
+  newConfirmationMessage?: T;
   bgColor?: T;
   enableIntro?: T;
   introContent?: T;

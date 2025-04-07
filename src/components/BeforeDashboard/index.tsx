@@ -1,7 +1,7 @@
 import { Banner } from '@payloadcms/ui/elements/Banner'
 import React from 'react'
 
-import { SeedButton } from './SeedButton'
+// import { SeedButton } from './SeedButton'
 import './index.scss'
 import { Button } from '@payloadcms/ui'
 import Link from 'next/link'

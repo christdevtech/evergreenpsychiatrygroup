@@ -40,7 +40,6 @@ export const PillarsBlock: React.FC<Props> = (props) => {
     itemTitleClasses,
     itemTextClasses,
     className,
-    disableInnerContainer = false,
   } = props
 
   return (

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { cn } from '@/utilities/ui'
 import { Media } from '@/components/Media'
 import { CMSLink } from '@/components/Link'

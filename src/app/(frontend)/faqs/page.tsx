@@ -1,5 +1,5 @@
 import FaqClient from './page.client'
-import { Faq, Location, EmergenciesBlock as EmergenciesBlockType } from '@/payload-types'
+import { Faq, EmergenciesBlock as EmergenciesBlockType } from '@/payload-types'
 import payloadConfig from '@payload-config'
 import { getPayload } from 'payload'
 import { Button } from '@payloadcms/ui'

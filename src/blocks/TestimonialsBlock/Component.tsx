@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { cn } from '@/utilities/ui'
 import { Media } from '@/components/Media'
 import TestimonialSlider from '@/components/TestimonialSlider'

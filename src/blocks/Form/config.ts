@@ -18,6 +18,15 @@ export const FormBlock: Block = {
       relationTo: 'forms',
       required: true,
     },
+    {
+      name: 'newConfirmationMessage',
+      type: 'text',
+      defaultValue: 'A member of our team will be in touch shortly.',
+      admin: {
+        description:
+          'This message will be displayed instead of the default confirmation message if the form is successfully submitted.',
+      },
+    },
     bgColorPickerAll({
       overrides: {
         defaultValue: 'bg-slate-200',
