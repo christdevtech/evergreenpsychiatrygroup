@@ -133,7 +133,7 @@ export const FormBlock: React.FC<
 
           // Show success toast
           if (newConfirmationMessage) {
-            toast.success('Form submitted successfully', {
+            toast.success('Thank you for your message', {
               description: newConfirmationMessage,
               duration: Infinity,
               action: {

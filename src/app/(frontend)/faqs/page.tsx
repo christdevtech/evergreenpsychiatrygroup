@@ -82,7 +82,6 @@ export default async function Faqs() {
       'mb-16',
       'lg:w-7/10',
       'md:w-4/5',
-      'font-medium',
       'md:mx-auto',
     ],
     subtitle: 'Emergencies',
