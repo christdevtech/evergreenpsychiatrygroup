@@ -34,17 +34,21 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             <Logo loading="eager" priority="high" />
           </Link>
           {buttonHref && (
-            <Link href={buttonHref}>
+            <div>
               <div className="bg-white rounded-lg md:rounded-full px-1.5 py-1.5 md:py-1 md:px-1 items-center md:flex md:p-1 gap-1">
-                <span className="md:hidden inline px-4">Book Now</span>
-                <span className="hidden md:inline px-2 text-sm align-middle text-slate-900 md:text-slate-900">
-                  Make Appointment
+                <span className="md:hidden inline px-4">
+                  <Link href={buttonHref}>Book Now</Link>
                 </span>
-                <Button size="sm" radius="full" color="success" className="hidden md:block">
-                  Contact us
-                </Button>
+                <span className="hidden md:inline px-2 text-sm align-middle text-slate-900 md:text-slate-900">
+                  <Link href={buttonHref}>Make Appointment</Link>
+                </span>
+                <Link href={'/contact'}>
+                  <Button size="sm" radius="full" color="success" className="hidden md:block">
+                    Contact us
+                  </Button>
+                </Link>
               </div>
-            </Link>
+            </div>
           )}
         </div>
         <HeaderNav classNames="flex-none" data={data} />
