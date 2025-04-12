@@ -48,35 +48,135 @@ const contentTypes: Field[] = [
     required: true,
     defaultValue: 'richText',
     options: [
+      { label: 'Rich Text', value: 'richText' },
+      { label: 'Link', value: 'link' },
+      { label: 'Media', value: 'media' },
+      { label: 'Location', value: 'location' },
+      { label: 'Social', value: 'social' },
+      { label: 'Spacer', value: 'spacer' },
+      { label: 'Insurances', value: 'insurances' },
+      { label: 'scheduleCard', value: 'scheduleCard' },
+    ],
+  },
+  {
+    name: 'paymentSchedule',
+    type: 'group',
+    fields: [
       {
-        label: 'Rich Text',
-        value: 'richText',
+        type: 'collapsible',
+        admin: {
+          initCollapsed: true,
+        },
+        label: 'Card Design Options',
+        fields: [
+          {
+            name: 'cardPadding',
+            type: 'select',
+            hasMany: true,
+            defaultValue: ['p-4', 'md:p-8'],
+            options: [
+              { label: 'None', value: 'p-0' },
+              { label: 'Small', value: 'p-2' },
+              { label: 'Medium', value: 'p-4' },
+              { label: 'Large', value: 'p-6' },
+              { label: 'XLarge', value: 'p-8' },
+              //md options
+              { label: 'md:None', value: 'md:p-0' },
+              { label: 'md:Small', value: 'md:p-2' },
+              { label: 'md:Medium', value: 'md:p-4' },
+              { label: 'md:Large', value: 'md:p-6' },
+              { label: 'md:XLarge', value: 'md:p-8' },
+              { label: 'md:2XLarge', value: 'md:p-12' },
+              { label: 'md:3XLarge', value: 'md:p-16' },
+              // lg options
+              { label: 'lg:None', value: 'lg:p-0' },
+              { label: 'lg:Small', value: 'lg:p-2' },
+              { label: 'lg:Medium', value: 'lg:p-4' },
+              { label: 'lg:Large', value: 'lg:p-6' },
+              { label: 'lg:XLarge', value: 'lg:p-8' },
+              { label: 'lg:2XLarge', value: 'lg:p-12' },
+              { label: 'lg:3XLarge', value: 'lg:p-16' },
+              // xl options
+              { label: 'xl:None', value: 'xl:p-0' },
+              { label: 'xl:Small', value: 'xl:p-2' },
+              { label: 'xl:Medium', value: 'xl:p-4' },
+              { label: 'xl:Large', value: 'xl:p-6' },
+              { label: 'xl:XLarge', value: 'xl:p-8' },
+              { label: 'xl:2XLarge', value: 'xl:p-12' },
+              { label: 'xl:3XLarge', value: 'xl:p-16' },
+              { label: 'xl:4XLarge', value: 'xl:p-24' },
+              { label: 'xl:5XLarge', value: 'xl:p-32' },
+            ],
+          },
+          bgColorPickerAll({
+            overrides: {
+              name: 'cardBackgroundColor',
+              label: 'Card Background Color',
+              defaultValue: 'bg-white',
+            },
+          }),
+          bgColorPickerAll({
+            overrides: {
+              name: 'cardSeparatorColor',
+              defaultValue: 'bg-neutral-300',
+              label: 'Card Separator Color',
+            },
+          }),
+          textClasses({
+            overrides: {
+              name: 'itemsClasses',
+              defaultValue: ['text-base', 'md:text-lg', 'lg:text-xl', 'xl:text-2xl'],
+            },
+          }),
+          textClasses({
+            overrides: {
+              name: 'priceClasses',
+              defaultValue: [
+                'text-base',
+                'md:text-lg',
+                'lg:text-xl',
+                'xl:text-2xl',
+                'font-semibold',
+              ],
+            },
+          }),
+        ],
       },
+
       {
-        label: 'Link',
-        value: 'link',
-      },
-      {
-        label: 'Media',
-        value: 'media',
-      },
-      {
-        label: 'Location',
-        value: 'location',
-      },
-      {
-        label: 'Social',
-        value: 'social',
-      },
-      {
-        label: 'Spacer',
-        value: 'spacer',
-      },
-      {
-        label: 'Insurances',
-        value: 'insurances',
+        name: 'items',
+        type: 'array',
+        fields: [
+          {
+            name: 'step',
+            type: 'text',
+            required: true,
+          },
+          {
+            name: 'price',
+            type: 'text',
+            required: true,
+          },
+        ],
+        defaultValue: [
+          {
+            step: 'Initial appointment',
+            price: '$150 - $200',
+          },
+          {
+            step: 'Follow-up appointment',
+            price: '$75 - $100',
+          },
+          {
+            step: 'Cancellation fee',
+            price: '$200',
+          },
+        ],
       },
     ],
+    admin: {
+      condition: (_, { contentType }) => contentType === 'scheduleCard',
+    },
   },
   {
     name: 'spacingValue',
@@ -352,6 +452,7 @@ const contentTypes: Field[] = [
     type: 'collapsible',
     admin: {
       condition: (_, { contentType }) => contentType === 'social',
+      initCollapsed: true,
     },
 
     fields: [
@@ -417,6 +518,7 @@ const contentTypes: Field[] = [
     type: 'collapsible',
     admin: {
       condition: (_, { contentType }) => contentType === 'insurances',
+      initCollapsed: true,
     },
     fields: [
       {
@@ -629,6 +731,9 @@ const columnFields: Field[] = [
   {
     type: 'collapsible',
     label: 'Column Order',
+    admin: {
+      initCollapsed: true,
+    },
     fields: [
       {
         name: 'columnOrder',

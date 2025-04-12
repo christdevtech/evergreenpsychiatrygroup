@@ -77,65 +77,20 @@ type ExtendedContentItem =
       }>
       bgColor?: string
     }
-
-interface SeparatorConfig {
-  enabled?: boolean
-  color?: string
-  thickness?: string
-  opacity?: string
-  margin?: string
-}
-
-interface Row {
-  columns?: Array<{
-    size?: ContentColumnSize | null
-    verticalAlignment?: VerticalAlignment | null
-    horizontalAlignment?: HorizontalAlignment | null
-    content?: ExtendedContentItem[] | null
-    spacingClasses?: string[] | null
-    columnOrder?: {
-      default?: string | null
-      sm?: string | null
-      md?: string | null
-      lg?: string | null
-      xl?: string | null
-      '2xl'?: string | null
-    } | null
-  }> | null
-  spacingClasses?: string[] | null
-}
-
-// interface ContentBlockProps {
-//   rows?: Row[] | null
-//   background?: {
-//     type?: 'color' | 'gradient' | 'media' | null
-//     backgroundColor?: string | null
-//     gradientClasses?: {
-//       type?: string | null
-//       fromColor?: string | null
-//       toColor?: string | null
-//       viaColor?: string | null
-//     } | null
-//     media?: any
-//     overlay?: {
-//       enabled?: boolean | null
-//       opacity?: number | null
-//       gradientOverlay?: {
-//         type?: string | null
-//         fromColor?: string | null
-//         toColor?: string | null
-//         viaColor?: string | null
-//       } | null
-//     } | null
-//   } | null
-//   separator?: {
-//     enabled?: boolean
-//     color?: string
-//     thickness?: string
-//     opacity?: string
-//     margin?: string
-//   } | null
-// }
+  | {
+      contentType: 'scheduleCard'
+      paymentSchedule: {
+        cardPadding: string[]
+        cardBackgroundColor: string
+        cardSeparatorColor: string
+        itemsClasses: string[] | null
+        priceClasses: string[] | null
+        items: {
+          step: string
+          price: string
+        }[]
+      }
+    }
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
   const { rows, background, separator } = props
@@ -175,7 +130,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     center: 'justify-center',
     bottom: 'justify-end',
   }
-  const horizontalAlignmentClasses: Record<VerticalAlignment, string> = {
+  const horizontalAlignmentClasses: Record<HorizontalAlignment, string> = {
     top: 'items-start',
     center: 'items-center',
     bottom: 'items-end',
@@ -472,6 +427,45 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                                 return (
                                   <div className={cn(spacingValue, spacerWidth, spacerBgColor)} />
                                 )
+                              case 'scheduleCard':
+                                const { paymentSchedule } = contentItemdata
+                                return (
+                                  <div className={cn('flex flex-col gap-4 md:gap-8')}>
+                                    {paymentSchedule.items.map((item, index) => (
+                                      <div
+                                        key={index}
+                                        className={cn(
+                                          paymentSchedule.cardSeparatorColor,
+                                          'grid grid-cols-8 content-between content-stretch rounded-xl md:rounded-2xl shadow-md md:shadow-lg',
+                                          'space-x-2 overflow-hidden',
+                                        )}
+                                      >
+                                        <div
+                                          className={cn(
+                                            paymentSchedule.cardBackgroundColor,
+                                            paymentSchedule.itemsClasses,
+                                            paymentSchedule.cardPadding,
+                                            'col-span-5',
+                                            'flex justify-start items-center',
+                                          )}
+                                        >
+                                          {item.step}
+                                        </div>
+                                        <div
+                                          className={cn(
+                                            paymentSchedule.cardBackgroundColor,
+                                            paymentSchedule.priceClasses,
+                                            paymentSchedule.cardPadding,
+                                            'col-span-3',
+                                            'flex justify-start items-center',
+                                          )}
+                                        >
+                                          {item.price}
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                )
 
                               case 'insurances':
                                 const {
@@ -506,7 +500,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                           }
 
                           return (
-                            <div key={`content-${contentIndex}`} className="contentItem">
+                            <div key={`content-${contentIndex}`} className="w-full">
                               <ContentItem {...(contentItem as ExtendedContentItem)} />
                             </div>
                           )
