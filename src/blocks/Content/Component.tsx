@@ -213,7 +213,6 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                         'flex-grow',
                         getResponsiveWidthClasses(size),
                         columnSpacingClasses,
-                        // Default order based on original column position
                         columnOrderClasses,
                       )}
                     >
